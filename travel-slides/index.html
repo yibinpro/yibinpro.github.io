@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>2026年十一+中秋 13天双人度假方案规划</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <!-- Base Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Premium Custom Styles -->
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ff3366 0%, #ff6633 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --text-gold: #f39c12;
+            --france-grad: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            --thailand-grad: linear-gradient(135deg, #fda085 0%, #f6d365 100%);
+            --australia-grad: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --china-grad: linear-gradient(135deg, #d31027 0%, #ea384d 100%);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Serif SC', -apple-system, sans-serif;
+            background: #0d0e12;
+            background-image: 
+                radial-gradient(at 10% 20%, rgba(255, 51, 102, 0.05) 0px, transparent 50%),
+                radial-gradient(at 90% 80%, rgba(56, 239, 125, 0.05) 0px, transparent 50%);
+        }
+
+        .reveal {
+            font-size: 28px;
+        }
+
+        .reveal .slides section {
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        /* Glassmorphism Slide Container */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px 50px;
+            box-shadow: var(--glass-shadow);
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Headings */
+        h1.title-main {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff, #a5a5a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: none;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h2.title-section {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 900;
+            text-transform: none;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        h3.title-sub {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--text-gold);
+            margin-top: 0;
+            font-size: 26px;
+        }
+
+        /* Typography & Custom Elements */
+        p.desc {
+            color: #ccc;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .highlight-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 10px;
+            color: white;
+        }
+
+        .badge-france { background: var(--france-grad); }
+        .badge-thailand { background: var(--thailand-grad); color: #333; }
+        .badge-australia { background: var(--australia-grad); }
+        .badge-china { background: var(--china-grad); }
+
+        /* Timelines */
+        .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .timeline-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-box:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .timeline-day {
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--text-gold);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-content {
+            font-size: 15px;
+            color: #e0e0e0;
+            line-height: 1.4;
+        }
+
+        /* 3-Column Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .highlight-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .highlight-card h4 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .highlight-card ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 15px;
+            color: #bbb;
+        }
+
+        .highlight-card ul li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        /* Comparison Table */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .compare-table th {
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            font-weight: 700;
+            text-align: left;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .compare-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .compare-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Animations & Cover Design */
+        .cover-container {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .glowing-btn {
+            background: var(--primary-gradient);
+            border: none;
+            padding: 12px 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tag-item {
+            background: rgba(255,255,255,0.08);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 15px;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: COVER -->
+            <section data-background-color="#0a0b0e" class="cover-section">
+                <div class="glass-card cover-container">
+                    <h1 class="title-main" style="font-size: 56px; margin-bottom: 20px;">2026年十一+中秋双人度假方案</h1>
+                    <p class="desc" style="font-size: 24px; color: #a0a0a0;">
+                        ✨ <span class="highlight-text">13天超长黄金假期</span> · 6套高品质慢旅行规划 ✨
+                    </p>
+                    <div class="tag-row">
+                        <div class="tag-item"><i class="fa-solid fa-user-friends"></i> 28岁情侣组合</div>
+                        <div class="tag-item"><i class="fa-solid fa-mug-hot"></i> 休闲Citywalk</div>
+                        <div class="tag-item"><i class="fa-solid fa-utensils"></i> 极致老饕寻味</div>
+                        <div class="tag-item"><i class="fa-solid fa-bed"></i> 高奢精品酒店</div>
+                    </div>
+                    <div class="glowing-btn">按键盘右键 → 开始探索</div>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: COMPARISON TABLE -->
+            <section data-background-color="#0a0b0e">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-sliders"></i> 6套方案一览与评分对比</h2>
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>路线方案</th>
+                                <th>主打体验</th>
+                                <th>预算</th>
+                                <th>签证</th>
+                                <th>秋季指数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-france">法国蔚蓝海岸</span></td>
+                                <td>浪漫艺术、海滨度假、米其林</td>
+                                <td>奢华/高</td>
+                                <td>申根签（需录指纹）</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-thailand">泰国曼谷+苏梅</span></td>
+                                <td>奢华酒店、泰式SPA、顶级餐饮</td>
+                                <td>中档</td>
+                                <td>免签（护照直飞）</td>
+                                <td>⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-australia">澳洲双城慢行</span></td>
+                                <td>咖啡之都、春季自驾、考拉企鹅</td>
+                                <td>中高档</td>
+                                <td>电子签（1-3周）</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-china">粤闽美食之旅</span></td>
+                                <td>老饕寻味、骑楼街区、海滨咖啡</td>
+                                <td>中档</td>
+                                <td>无需</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-china">滇西慢时光</span></td>
+                                <td>洱海放空、避世古镇、田园咖啡</td>
+                                <td>中高档</td>
+                                <td>无需</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-china">巴蜀双城度假</span></td>
+                                <td>温泉私汤、熊猫、火锅、市井气</td>
+                                <td>中档</td>
+                                <td>无需</td>
+                                <td>⭐⭐⭐⭐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ============================== ROUTE 1 ============================== -->
+            <!-- SLIDE 3: FRANCE OVERVIEW -->
+            <section data-background-color="#0F2027">
+                <div class="glass-card">
+                    <span class="badge badge-france">方案一 · 法国</span>
+                    <h2 class="title-section" style="border:none; padding:0; margin-top:10px;">南法蔚蓝海岸与巴黎艺术慢享</h2>
+                    <h3 class="title-sub">法式浪漫、博物馆漫步、蔚蓝海滨与顶级大餐</h3>
+                    <p class="desc">
+                        10月的法国南部阳光明媚温和，避开了夏季的人潮；巴黎秋意渐浓，落叶与古老的林荫道散发出极具质感的浪漫色彩。
+                    </p>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-map-marked-alt"></i> 核心Citywalk</h4>
+                            <ul>
+                                <li>巴黎左岸圣日耳曼德佩</li>
+                                <li>巴黎潮流地标玛黑区</li>
+                                <li>南法尼斯老城烟火</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-palette"></i> 艺术慢游</h4>
+                            <ul>
+                                <li>橘园美术馆《睡莲》</li>
+                                <li>罗丹美术馆玫瑰花园</li>
+                                <li>费拉角庄园极致九园</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-route"></i> 节奏亮点</h4>
+                            <ul>
+                                <li>不赶景点，每天晚起</li>
+                                <li>普罗旺斯桃红葡萄酒</li>
+                                <li>塞纳河畔夕阳漫步</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: FRANCE TIMELINE -->
+            <section data-background-color="#0F2027">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-calendar-alt"></i> 法国13天·慢日历规划</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-box">
+                            <div class="timeline-day">D1 - D4 巴黎</div>
+                            <div class="timeline-content">入住左岸，打卡橘园看莫奈睡莲；漫步玛黑区独立买手店；在蒙马特高地看夕阳。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D5 - D7 尼斯</div>
+                            <div class="timeline-content">搭乘法铁TGV前往南法尼斯。闲逛老城萨雷雅广场；登城堡山俯瞰天使湾；探访悬崖小镇埃兹与摩纳哥。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D8 - D9 蔚蓝海岸</div>
+                            <div class="timeline-content">去滨海自由城吹海风；在昂蒂布毕加索美术馆打卡；在戛纳沙滩躺椅享受阳光。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D10 - D13 巴黎归国</div>
+                            <div class="timeline-content">返回巴黎，预留一天在乐蓬马歇百货购物；塞纳河畔喝咖啡，预订米其林晚餐完美收尾。</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================== ROUTE 2 ============================== -->
+            <!-- SLIDE 5: THAILAND OVERVIEW -->
+            <section data-background-color="#1A1C20">
+                <div class="glass-card">
+                    <span class="badge badge-thailand">方案二 · 泰国</span>
+                    <h2 class="title-section" style="border:none; padding:0; margin-top:10px;">泰奢享 —— 曼谷饕餮与苏梅岛海岛躺平</h2>
+                    <h3 class="title-sub">顶级奢华酒店、泰式海景SPA、米其林街头与私人帆船</h3>
+                    <p class="desc">
+                        10月的泰国雨季进入尾声，天气凉爽。此方案精选湄南河畔高奢酒店与苏梅岛悬崖泳池别墅，主打极致的度假感。
+                    </p>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-hotel"></i> 顶奢住地</h4>
+                            <ul>
+                                <li>曼谷四季/嘉佩乐</li>
+                                <li>苏梅岛丽思卡尔顿/W</li>
+                                <li>悬崖私人泳池别墅</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-lemon"></i> 舌尖饕餮</h4>
+                            <ul>
+                                <li>曼谷Asia's 50 Best创意菜</li>
+                                <li>石龙军路米其林街头小吃</li>
+                                <li>苏梅海滩咖喱蟹与生蚝</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-sun"></i> 悠闲享乐</h4>
+                            <ul>
+                                <li>3小时顶级精油SPA</li>
+                                <li>包双体帆船夕阳巡航</li>
+                                <li>海滩俱乐部DJ电音晚会</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: THAILAND TIMELINE -->
+            <section data-background-color="#1A1C20">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-calendar-alt"></i> 泰国13天·慢日历规划</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-box">
+                            <div class="timeline-day">D1 - D2 曼谷初识</div>
+                            <div class="timeline-content">入住昭披耶河畔酒店；打卡纯白郑王庙；前往石龙军路艺术街区探索。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D3 - D4 曼谷摩登</div>
+                            <div class="timeline-content">逛Ari文艺咖啡街区；在Emsphere血拼；晚上在Mahanakhon高空酒吧微醺。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D5 - D8 苏梅躺平</div>
+                            <div class="timeline-content">飞往苏梅岛。在泳池享受漂浮早餐；打卡渔人码头，看震撼海滩火舞秀；包双体帆船出海。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D9 - D13 深度苏梅</div>
+                            <div class="timeline-content">在Seen海滩俱乐部泳池派对狂欢；享海景泰式SPA；D12飞回曼谷，D13买伴手礼回国。</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================== ROUTE 3 ============================== -->
+            <!-- SLIDE 7: AUSTRALIA OVERVIEW -->
+            <section data-background-color="#12181B">
+                <div class="glass-card">
+                    <span class="badge badge-australia">方案三 · 澳大利亚</span>
+                    <h2 class="title-section" style="border:none; padding:0; margin-top:10px;">南半球的春天 —— 墨尔本与悉尼双城慢行</h2>
+                    <h3 class="title-sub">世界咖啡之都、春季大洋路公路自驾、悉尼海港漫步</h3>
+                    <p class="desc">
+                        10月份正值澳大利亚春暖花开的季节。气候微凉，极其适合在墨尔本和悉尼的精致街区里喝咖啡、晒太阳、慢自驾。
+                    </p>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-coffee"></i> 咖啡之都</h4>
+                            <ul>
+                                <li>墨尔本胡同露天Flat White</li>
+                                <li>Fitzroy全澳第一可颂Lune</li>
+                                <li>Brunch与现代澳式烹饪</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-car"></i> 慢速自驾</h4>
+                            <ul>
+                                <li>大洋路最美海岸线自驾</li>
+                                <li>宿阿波罗湾听海边木屋</li>
+                                <li>十二门徒石看黄昏落日</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-leaf"></i> 悉尼春日</h4>
+                            <ul>
+                                <li>歌剧院旁吹海风喝下午茶</li>
+                                <li>邦代海滩至库吉海岸慢行</li>
+                                <li>坐复古轮渡前往曼利海滩</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 8: AUSTRALIA TIMELINE -->
+            <section data-background-color="#12181B">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-calendar-alt"></i> 澳大利亚13天·慢日历规划</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-box">
+                            <div class="timeline-day">D1 - D3 墨尔本</div>
+                            <div class="timeline-content">漫步Degraves St喝手冲；逛Fitzroy文艺街区独立设计师店与画廊。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D4 - D5 葡萄园与企鹅</div>
+                            <div class="timeline-content">前往亚拉河谷酒庄品酒；傍晚前往菲利普岛看世界上最小的神仙企鹅归巢。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D6 - D7 大洋路</div>
+                            <div class="timeline-content">租车慢开大洋路，中途歇脚阿波罗湾；看十二门徒巨石，随后返回墨尔本还车。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D8 - D13 悉尼慢步</div>
+                            <div class="timeline-content">飞往悉尼。闲逛岩石区周末集市；徒步邦代悬崖步道；乘轮渡游曼利海滩，D13返程。</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================== ROUTE 4 ============================== -->
+            <!-- SLIDE 9: GUANGDONG-FUJIAN OVERVIEW -->
+            <section data-background-color="#1A0F11">
+                <div class="glass-card">
+                    <span class="badge badge-china">方案四 · 国内粤闽</span>
+                    <h2 class="title-section" style="border:none; padding:0; margin-top:10px;">粤闽美食与海滨Citywalk之旅</h2>
+                    <h3 class="title-sub">广州早茶、顺德清水打边炉、潮州功夫茶、厦门海滨咖啡</h3>
+                    <p class="desc">
+                        13天纯高铁出行，避开飞机的疲惫。从广州的西关老街吃到潮汕的生腌牛肉，最后在厦门的沙坡尾港口静享夕阳咖啡。
+                    </p>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-bowl-food"></i> 舌尖天花板</h4>
+                            <ul>
+                                <li>广州玉堂春暖顶级早茶</li>
+                                <li>顺德毋米粥与双皮奶</li>
+                                <li>潮汕牛肉火锅与毒药生腌</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-city"></i> 街区Citywalk</h4>
+                            <ul>
+                                <li>广州东山区红砖民国洋房</li>
+                                <li>汕头小公园南洋骑楼街区</li>
+                                <li>厦门沙坡尾复古买手店</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-water"></i> 悠悠闽南风</h4>
+                            <ul>
+                                <li>潮州牌坊街工夫单丛茶</li>
+                                <li>广济桥晚间震撼灯光秀</li>
+                                <li>避开人潮漫步鼓浪屿幽静角</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 10: GUANGDONG-FUJIAN TIMELINE -->
+            <section data-background-color="#1A0F11">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-calendar-alt"></i> 粤闽13天·美食日历规划</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-box">
+                            <div class="timeline-day">D1 - D3 广州</div>
+                            <div class="timeline-content">叹早茶；打卡沙面欧式欧陆风情与东山口买手店；傍晚在珠江河畔散步。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D4 - D5 顺德</div>
+                            <div class="timeline-content">轻轨10分钟直达顺德。逛清晖园；吃顺德毋米粥火锅、双皮奶和烧鹅。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D6 - D9 潮汕</div>
+                            <div class="timeline-content">乘高铁去潮汕。吃牛肉火锅、卤狮头鹅与生腌；潮州老街喝工夫单丛茶，看广济桥。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D10 - D13 厦门</div>
+                            <div class="timeline-content">去厦门沙坡尾逛复古店；在黄厝海滩喝海景咖啡看日落；八市海鲜大餐后返程.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================== ROUTE 5 ============================== -->
+            <!-- SLIDE 11: YUNNAN OVERVIEW -->
+            <section data-background-color="#0F1A15">
+                <div class="glass-card">
+                    <span class="badge badge-china">方案五 · 国内滇西</span>
+                    <h2 class="title-section" style="border:none; padding:0; margin-top:10px;">滇西慢时光度假（大理-沙溪-丽江）</h2>
+                    <h3 class="title-sub">苍山洱海自驾、茶马古道避世古镇、金黄秋稻与雪山咖啡</h3>
+                    <p class="desc">
+                        10月份是喜洲古镇千亩稻田金黄的季节，美如童话。没有赶景点的喧嚣，只有在苍山下、古院子里晒太阳、烤火发呆。
+                    </p>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-mountain"></i> 洱海放空</h4>
+                            <ul>
+                                <li>双廊海景民宿枕水听涛</li>
+                                <li>开敞篷车自驾最美环海东路</li>
+                                <li>喜洲金黄稻田拍宫崎骏同款</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-house-chimney"></i> 避世沙溪</h4>
+                            <ul>
+                                <li>马帮遗迹玉津桥清晨薄雾</li>
+                                <li>先锋白族书局阳光看书</li>
+                                <li>山谷古戏台静享烤乳扇</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-snowflake"></i> 雪山仰望</h4>
+                            <ul>
+                                <li>宿丽江束河安静轻奢院落</li>
+                                <li>白沙古镇二楼直面雪山咖啡</li>
+                                <li>玉湖村石头古树漫步</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 12: YUNNAN TIMELINE -->
+            <section data-background-color="#0F1A15">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-calendar-alt"></i> 滇西13天·金秋日历规划</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-box">
+                            <div class="timeline-day">D1 - D4 大理洱海</div>
+                            <div class="timeline-content">直飞大理。宿双廊一线海景房；自驾环海；漫步喜洲金黄稻田，喝一杯云南小粒。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D5 - D7 沙溪古镇</div>
+                            <div class="timeline-content">自驾2小时抵沙溪。晨登玉津桥看薄雾；先锋书局发呆；吃一顿极其鲜美的野生菌火锅。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D8 - D11 丽江古韵</div>
+                            <div class="timeline-content">自驾去丽江，入住安静的束河古镇；去白沙古镇找个框景雪山的咖啡馆二楼发呆。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D12 - D13 漫步返程</div>
+                            <div class="timeline-content">逛玉湖村火山石老屋，打卡“荒野之国”装置艺术，D12还车，D13返程。</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================== ROUTE 6 ============================== -->
+            <!-- SLIDE 13: SICHUAN OVERVIEW -->
+            <section data-background-color="#1A180F">
+                <div class="glass-card">
+                    <span class="badge badge-china">方案六 · 国内巴蜀</span>
+                    <h2 class="title-section" style="border:none; padding:0; margin-top:10px;">巴蜀巴适双城记（成都-青城山-重庆）</h2>
+                    <h3 class="title-sub">盖碗茶采耳、竹林温泉私汤、火锅江湖与魔幻高空咖啡</h3>
+                    <p class="desc">
+                        前半段在成都体验安逸的街头生活，中段隐居青城山泡温泉洗肺，后半段进入重庆，感受8D魔幻城市的超现实震撼。
+                    </p>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-mug-saucer"></i> 成都安逸</h4>
+                            <ul>
+                                <li>人民公园鹤鸣茶社盖碗茶采耳</li>
+                                <li>太古里买手店与玉林东路潮流</li>
+                                <li>清晨避开人潮探访熊猫基地</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-hot-tub-person"></i> 青城私汤</h4>
+                            <ul>
+                                <li>隐居青城山奢华六善温泉酒店</li>
+                                <li>竹林绿意中做奢华SPA理疗</li>
+                                <li>都江堰看巨型自拍熊猫雕塑</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4><i class="fa-solid fa-fire"></i> 重庆奇幻</h4>
+                            <ul>
+                                <li>走崖边步道，在崖缝咖啡馆看江</li>
+                                <li>鹅岭二厂废旧印刷厂文艺Citywalk</li>
+                                <li>吃正宗防空洞火锅与千与千寻夜景</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 14: SICHUAN TIMELINE -->
+            <section data-background-color="#1A180F">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-calendar-alt"></i> 巴蜀13天·安逸日历规划</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-box">
+                            <div class="timeline-day">D1 - D4 成都慢活</div>
+                            <div class="timeline-content">入住太古里高奢酒店；喝茶采耳；逛玉林潮流街区与祠堂街；看熊猫滚滚。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D5 - D7 青城修养</div>
+                            <div class="timeline-content">轻轨40分钟直达青城山。入住六善酒店，泡私汤温泉洗肺；去都江堰看南桥蓝眼泪。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D8 - D11 重庆魔幻</div>
+                            <div class="timeline-content">高铁2.5小时到重庆。走山城步道；去戴家巷崖边喝咖啡；吃防空洞火锅，看洪崖洞。</div>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="timeline-day">D12 - D13 弹子石与返程</div>
+                            <div class="timeline-content">逛弹子石老街中西四合院，喝江景下午茶；D13从重庆返程。</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================== OUTRO ============================== -->
+            <!-- SLIDE 15: PREPARATION & TIPS -->
+            <section data-background-color="#0a0b0e">
+                <div class="glass-card">
+                    <h2 class="title-section"><i class="fa-solid fa-info-circle"></i> 行前准备与签证指南</h2>
+                    <div class="highlights-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="highlight-card">
+                            <h4 style="color: var(--text-gold);"><i class="fa-solid fa-passport"></i> 签证申办时效</h4>
+                            <ul style="font-size: 16px;">
+                                <li><strong>法国（申根签）</strong>：需要准备较多材料并前往签证中心录指纹。目前已是7月中旬，<span style="color:#ff3366; font-weight:bold;">这周内必须预约</span>，否则十一极可能来不及。</li>
+                                <li><strong>澳大利亚（电子签）</strong>：全网在线递签，无需交护照，一般1-3周出签，可在出发前1个月完成。</li>
+                                <li><strong>泰国</strong>：中泰永久互免签证，有护照说走就走。</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card">
+                            <h4 style="color: var(--text-gold);"><i class="fa-solid fa-plane-departure"></i> 机酒预订时机</h4>
+                            <ul style="font-size: 16px;">
+                                <li><strong>国外线</strong>：机票建议在7月底前锁定，尤其是国庆旺季直飞苏梅岛和欧洲的航班。</li>
+                                <li><strong>国内线</strong>：十一期间国内高端精品民宿极其抢手（如大理夕上/木夕、青城山六善），需提早1-2个月预订。</li>
+                                <li><strong>火车票</strong>：国内高铁票在出行前15天开售，建议设好闹钟抢票。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 30px;">
+                        <p class="desc" style="font-size: 18px; margin: 0;">✨ 祝你们拥有一个安逸、浪漫、充满美味的十一长假！ ✨</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            // Slide settings
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            backgroundTransition: 'fade',
+            width: 1100,
+            height: 700,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+    </script>
+</body>
+</html>
