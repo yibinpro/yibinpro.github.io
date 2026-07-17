@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026金秋度假提案 · 京沪出发双人行</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-base: #FAF9F6;
+            --color-primary: #1F3B32; /* Deep Sage */
+            --color-accent-europe: #C08A3E; /* Brass Gold */
+            --color-accent-malaysia: #D46A43; /* Terracotta */
+            --color-text-main: #2C3531;
+            --color-text-muted: #6E7572;
+            --card-border: 1px solid #ECEAE4;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Serif SC', -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--color-text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0 20px;
+        }
+
+        header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 900;
+            font-size: 28px;
+            letter-spacing: 1px;
+            margin: 0 0 10px;
+            color: var(--color-primary);
+        }
+
+        header p {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        /* Switch Tabs */
+        .tabs-container {
+            display: flex;
+            background: #EFECE6;
+            padding: 4px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .tab-btn {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 26px;
+            cursor: pointer;
+            color: var(--color-text-muted);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: #FFFFFF;
+            color: var(--color-primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Content Section */
+        .route-content {
+            display: none;
+        }
+
+        .route-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Flight Coordination Card */
+        .sync-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 30px;
+            border: var(--card-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .sync-card h3 {
+            margin-top: 0;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #F0EDE9;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .flight-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #F0EDE9;
+        }
+
+        .flight-row:last-child {
+            border-bottom: none;
+        }
+
+        .city-badge {
+            background: #EFECE6;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        /* Day-by-Day Timeline */
+        .day-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: var(--card-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 18px;
+        }
+
+        .day-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--color-accent-europe);
+        }
+
+        .tab-malaysia .day-num {
+            color: var(--color-accent-malaysia);
+        }
+
+        .day-title {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 1.5px solid #ECEAE4;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            border-left: 1.5px solid transparent;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5.5px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-accent-europe);
+        }
+
+        .tab-malaysia .timeline-item::before {
+            background: var(--color-accent-malaysia);
+        }
+
+        .timeline-time {
+            font-weight: 700;
+            font-size: 11px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .timeline-desc {
+            color: var(--color-text-main);
+        }
+
+        .timeline-desc strong {
+            color: var(--color-primary);
+        }
+
+        /* Tips & Packing List */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .check-item i {
+            margin-top: 4px;
+            color: var(--color-primary);
+        }
+
+        /* Footnotes */
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            margin-top: 60px;
+        }
+
+        .footer-note a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>2026秋日旅行提案</h1>
+        <p>Shanghai & Beijing Dual Departure</p>
+    </header>
+
+    <!-- Tab Buttons -->
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab('europe')">
+            <i class="fa-solid fa-earth-europe"></i> 法国意大利 (8-9天)
+        </button>
+        <button class="tab-btn" onclick="switchTab('malaysia')">
+            <i class="fa-solid fa-umbrella-beach"></i> 马来西亚 (8-9天)
+        </button>
+    </div>
+
+    <!-- ================== FRANCE & ITALY ================== -->
+    <div id="tab-europe" class="route-content active">
+        
+        <!-- Flight Sync Card -->
+        <div class="sync-card">
+            <h3><i class="fa-solid fa-plane-arrival"></i> 京沪同抵·去程联调方案</h3>
+            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">通过选择起飞时间相近的直飞航班，在巴黎戴高乐机场（CDG）汇合：</p>
+            <div class="flight-row">
+                <div><span class="city-badge">北京出发</span> 国航 CA875 (PEK ➡️ CDG)</div>
+                <div>起飞 12:05 ➡️ 抵达 17:45</div>
+            </div>
+            <div class="flight-row">
+                <div><span class="city-badge">上海出发</span> 东航 MU553 (PVG ➡️ CDG)</div>
+                <div>起飞 12:15 ➡️ 抵达 18:35</div>
+            </div>
+            <p style="font-size: 12px; color: var(--color-accent-europe); margin: 10px 0 0; font-weight: 600;">
+                💡 汇合点：戴高乐机场 T2E 航站楼到达大厅。上海出发稍晚45分钟抵达，北京出发可在咖啡厅稍作等待，随后一同乘专车前往酒店。
+            </p>
+        </div>
+
+        <div class="sync-card">
+            <h3><i class="fa-solid fa-plane-departure"></i> 同期返程·回程联调方案</h3>
+            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">从意大利米兰（MXP）回国，分别直飞返回京沪：</p>
+            <div class="flight-row">
+                <div><span class="city-badge">回北京</span> 国航 CA950 (MXP ➡️ PEK)</div>
+                <div>起飞 13:30 ➡️ 次日 05:30 抵达</div>
+            </div>
+            <div class="flight-row">
+                <div><span class="city-badge">回上海</span> 东航 MU720 (MXP ➡️ PVG)</div>
+                <div>起飞 12:50 ➡️ 次日 06:10 抵达</div>
+            </div>
+        </div>
+
+        <!-- Itinerary -->
+        <h2 style="font-family: 'Noto Serif SC', serif; font-size: 20px; margin: 40px 0 20px; color: var(--color-primary);">📅 每日行程规划（精细慢享）</h2>
+
+        <!-- Day 1 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 1</span>
+                <span class="day-title">巴黎团聚，初识左岸</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">19:30</div>
+                <div class="timeline-desc">在戴高乐机场汇合，乘坐专车前往巴黎左岸酒店入住。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">21:00</div>
+                <div class="timeline-desc">在塞纳河畔的小酒馆享用宵夜，喝一杯迎新酒。</div>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 2</span>
+                <span class="day-title">巴黎潮流Citywalk与咖啡香气</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:30</div>
+                <div class="timeline-desc">慢行至<strong>玛黑区 (Le Marais)</strong>。探索小众买手店与沙龙香水店。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00</div>
+                <div class="timeline-desc">在<strong>孚日广场 (Place des Vosges)</strong>旁喝一杯热巧克力，在草地上晒太阳。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">19:30</div>
+                <div class="timeline-desc">预订经典法式 Bistro 晚餐（推荐 <i>Frenchie</i>）。</div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 3</span>
+                <span class="day-title">莫奈睡莲与塞纳河落日</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00</div>
+                <div class="timeline-desc">前往杜乐丽花园旁的<strong>橘园美术馆 (Musée de l'Orangerie)</strong>，安静欣赏莫奈的巨幅《睡莲》。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">15:00</div>
+                <div class="timeline-desc">在著名的左岸<strong>莎士比亚书店</strong>和巴黎圣母院外围散步。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">18:00</div>
+                <div class="timeline-desc">落日时分漫步塞纳河畔，静候埃菲尔铁塔整点闪烁。</div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 4</span>
+                <span class="day-title">巴黎 ➡️ 米兰 ➡️ 科莫湖</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">09:00</div>
+                <div class="timeline-desc">搭乘欧洲内陆航班（约1.5小时）飞往米兰，抵达后直接租车自驾或乘火车（约1小时）前往<strong>科莫湖 (Lake Como)</strong>。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">15:00</div>
+                <div class="timeline-desc">入住科莫湖畔的景观酒店，在露台静看湖光山色。</div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 5</span>
+                <span class="day-title">科莫湖奢华慢度假</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:00</div>
+                <div class="timeline-desc">租一艘带驾驶员的木质复古快艇（Riva Boat），巡游湖面，远眺名流别墅。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00</div>
+                <div class="timeline-desc">在贝拉焦（Bellagio）小镇步行Citywalk，享受意式冰淇淋（Gelato）。</div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 6</span>
+                <span class="day-title">科莫湖 ➡️ 威尼斯</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00</div>
+                <div class="timeline-desc">乘火车（约2.5小时）前往水上都市<strong>威尼斯 (Venice)</strong>。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">15:00</div>
+                <div class="timeline-desc">入住主岛精品酒店。漫步圣马可广场，避开人群，寻找无人的运河小巷。</div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 7</span>
+                <span class="day-title">威尼斯水道与墨鱼汁意面</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:30</div>
+                <div class="timeline-desc">乘坐贡多拉（Gondola）穿梭于古老水道中。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">18:00</div>
+                <div class="timeline-desc">在运河旁的景观餐厅享用正宗的墨鱼汁面与起泡酒（Aperol Spritz）。</div>
+            </div>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 8</span>
+                <span class="day-title">威尼斯 ➡️ 米兰 —— 经典建筑与最后一晚</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00</div>
+                <div class="timeline-desc">乘火车（约2小时）返回时尚之都<strong>米兰 (Milan)</strong>。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00</div>
+                <div class="timeline-desc">打卡米兰大教堂（Duomo）与埃马努埃莱二世长廊，进行回国前的伴手礼采购。</div>
+            </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 9</span>
+                <span class="day-title">米兰 ➡️ 返程</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">09:30</div>
+                <div class="timeline-desc">一同打车前往米兰马尔彭萨机场（MXP）。在机场完成海关退税。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">12:50/13:30</div>
+                <div class="timeline-desc">分别搭乘东航/国航直飞航班，返回上海和北京。</div>
+            </div>
+        </div>
+
+        <!-- Prep Checklist -->
+        <div class="sync-card">
+            <h3><i class="fa-solid fa-passport"></i> 欧洲行前准备清单</h3>
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>申根签证（法国）</strong><br>需立刻准备流水及在职证明并预约指纹。</div>
+                </div>
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>境外电话卡/欧游通</strong><br>国内提早在淘宝买好物理卡，或开通天翼/移动全球通。</div>
+                </div>
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>货币与双币信用卡</strong><br>兑换500欧零钱，准备含欧元通道的VISA/Mastercard。</div>
+                </div>
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>内陆机票与意铁车票</strong><br>提早半个月在Italo/Trenitalia官网购买意铁票。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== MALAYSIA ================== -->
+    <div id="tab-malaysia" class="route-content tab-malaysia">
+        
+        <!-- Flight Sync Card -->
+        <div class="sync-card">
+            <h3><i class="fa-solid fa-plane-arrival"></i> 京沪同抵·去程联调方案</h3>
+            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">选择大马国航或亚航直飞航班，在吉隆坡国际机场（KUL）汇合：</p>
+            <div class="flight-row">
+                <div><span class="city-badge">北京出发</span> 马航 MH319 (PKX ➡️ KUL)</div>
+                <div>起飞 09:30 ➡️ 抵达 16:00</div>
+            </div>
+            <div class="flight-row">
+                <div><span class="city-badge">上海出发</span> 马航 MH389 (PVG ➡️ KUL)</div>
+                <div>起飞 09:10 ➡️ 抵达 14:40</div>
+            </div>
+            <p style="font-size: 12px; color: var(--color-accent-malaysia); margin: 10px 0 0; font-weight: 600;">
+                💡 汇合点：吉隆坡机场 KUL Terminal 1 到达大厅的星巴克。上海出发稍早1小时20分钟抵达，北京出发落地后即可一同出关前往市区。
+            </p>
+        </div>
+
+        <div class="sync-card">
+            <h3><i class="fa-solid fa-plane-departure"></i> 同期返程·回程联调方案</h3>
+            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">结束兰卡威行程，下午返回吉隆坡中转，搭乘晚间航班一同飞回：</p>
+            <div class="flight-row">
+                <div><span class="city-badge">回北京</span> 马航 MH318 (KUL ➡️ PKX)</div>
+                <div>起飞 00:40 ➡️ 07:00 抵达</div>
+            </div>
+            <div class="flight-row">
+                <div><span class="city-badge">回上海</span> 马航 MH388 (KUL ➡️ PVG)</div>
+                <div>起飞 23:30 ➡️ 次日 05:00 抵达</div>
+            </div>
+        </div>
+
+        <!-- Itinerary -->
+        <h2 style="font-family: 'Noto Serif SC', serif; font-size: 20px; margin: 40px 0 20px; color: var(--color-primary);">📅 每日行程规划（避暑避堵）</h2>
+
+        <!-- Day 1 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 1</span>
+                <span class="day-title">吉隆坡汇合，打卡双子塔夜景</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">17:00</div>
+                <div class="timeline-desc">在KUL机场汇合，一同打车前往市中心奢华酒店入住。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">19:30</div>
+                <div class="timeline-desc">在城中顶级景观露台，一边享用美食一边观赏亮灯的双子塔。</div>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 2</span>
+                <span class="day-title">南洋老街Citywalk与美食之旅</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:30</div>
+                <div class="timeline-desc">漫步<strong>鬼仔巷与茨厂街</strong>，感受南洋华人复古老街的魅力。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">13:00</div>
+                <div class="timeline-desc">品尝正宗的亚罗街黄亚华烧鸡翅、福建面以及椰浆饭。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:00</div>
+                <div class="timeline-desc">在网红文青园区 <strong>RexKL (昔日戏院改建)</strong> 的迷宫书店打卡，喝冰镇南洋咖啡。</div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 3</span>
+                <span class="day-title">吉隆坡 ➡️ 槟城 —— 艺术古迹之旅</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00</div>
+                <div class="timeline-desc">搭乘内陆小班机（约1小时）或双轨电动火车前往世界遗产之城——<strong>槟城 (Penang)</strong>。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">15:00</div>
+                <div class="timeline-desc">入住乔治镇（George Town）带有浓郁英式殖民风的精品酒店（如 E&O 东方大酒店）。</div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 4</span>
+                <span class="day-title">乔治镇壁画街与榴莲饕餮</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00</div>
+                <div class="timeline-desc">慢悠悠寻找街头著名的壁画（如《姐弟共骑》），逛逛极具韵味的姓氏桥（姓周桥）。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00</div>
+                <div class="timeline-desc">品尝槟城名物——猫山王榴莲、炒粿条和煎蕊甜品。</div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 5</span>
+                <span class="day-title">槟城 ➡️ 兰卡威 —— 开启度假岛生活</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:00</div>
+                <div class="timeline-desc">搭乘内陆航班飞抵免税度假天堂——<strong>兰卡威 (Langkawi)</strong>。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00</div>
+                <div class="timeline-desc">入住位于雨林深处或沙滩畔的五星级度假村（如 The Datai 或 威斯汀）。</div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 6</span>
+                <span class="day-title">巨鹰广场与珍南海滩日落</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:00</div>
+                <div class="timeline-desc">租车自驾。游览地标巨鹰广场，中午在海边享用海鲜烧烤。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">17:30</div>
+                <div class="timeline-desc">前往<strong>珍南海滩 (Cenang Beach)</strong>，躺在沙滩垫上喝冰啤酒，静静观赏落入地平线的火烧云日落。</div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 7</span>
+                <span class="day-title">红树林生态游船（慢节奏版）</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00</div>
+                <div class="timeline-desc">半包一艘私人木船巡游红树林。观察喂鹰、看穿梭的奇特蜥蜴和静谧的喀斯特地貌。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">19:00</div>
+                <div class="timeline-desc">在度假村餐厅享用浪漫的海滩烛光晚餐。</div>
+            </div>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 8</span>
+                <span class="day-title">兰卡威免税店血拼与回国中转</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:00</div>
+                <div class="timeline-desc">在瓜镇免税店购买极具性价比的巧克力与高档洋酒（兰卡威为全岛免税）。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:00</div>
+                <div class="timeline-desc">搭乘内陆航班飞回吉隆坡。</div>
+            </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">Day 9</span>
+                <span class="day-title">吉隆坡中转 ➡️ 返程</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">23:30/00:40</div>
+                <div class="timeline-desc">办理登机牌并退税，一同踏上夜间航班，分别飞回上海和北京。</div>
+            </div>
+        </div>
+
+        <!-- Prep Checklist -->
+        <div class="sync-card">
+            <h3><i class="fa-solid fa-passport"></i> 马来西亚行前准备清单</h3>
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>免签及MDAC电子申报</strong><br>马来西亚对华免签，但出发前3天必须在网上填写 MDAC 电子入境卡。</div>
+                </div>
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>网约车 Grab App</strong><br>出行前在国内应用商店下载好 Grab，绑定国内信用卡即可直接扣款打车。</div>
+                </div>
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>英标转换插头</strong><br>马来西亚插头为英规三角扁插，需要自备转换器。</div>
+                </div>
+                <div class="check-item">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <div><strong>防晒与防蚊喷雾</strong><br>海岛紫外线强烈，红树林与雨林需配备强力避蚊胺（DEET）喷雾。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        方案由 Antigravity 整理设计 · <a href="file:///Users/gengyibin/.gemini/antigravity-ide/brain/c9f352f4-6851-49db-a106-7b62dba75ed2/travel_itineraries_all.md">查看原长假方案</a>
+    </div>
+</div>
+
+<script>
+    function switchTab(tabId) {
+        // Toggle tab buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        // Toggle contents
+        document.querySelectorAll('.route-content').forEach(content => content.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+</script>
+</body>
+</html>
