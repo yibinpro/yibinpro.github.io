@@ -265,6 +265,95 @@
             text-decoration: none;
             font-weight: 700;
         }
+
+        /* Hotel Styles */
+        .hotel-section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            margin: 40px 0 20px;
+            color: var(--color-primary);
+            border-bottom: 2px solid #ECEAE4;
+            padding-bottom: 10px;
+        }
+        .hotel-city-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 16px;
+            margin: 25px 0 15px;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hotel-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .hotel-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 20px;
+            border: var(--card-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: var(--transition-smooth);
+        }
+        .hotel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+        }
+        .hotel-info {
+            flex: 1;
+            padding-right: 15px;
+        }
+        .hotel-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+        .hotel-desc {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+        .hotel-meta {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        .hotel-tier {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .tier-luxury {
+            background: #FCE4EC;
+            color: #C2185B;
+        }
+        .tier-boutique {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+        .tier-comfort {
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+        .hotel-price {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--color-text-main);
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -473,6 +562,145 @@
             </div>
         </div>
 
+        <!-- Hotels Recommendation -->
+        <h2 class="hotel-section-title">🏨 巴黎与意大利·精选酒店参考</h2>
+        
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 巴黎 (Paris)</h3>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Le Meurice 或 Plaza Athénée</div>
+                    <div class="hotel-desc">顶级宫殿级酒店。前者直面杜乐丽花园，后者拥有经典的蒙田大道红色遮阳篷，明星名流最爱。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-luxury">奢华高奢</span>
+                    <div class="hotel-price">¥8,000+ /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Hotel Caron de Beaumarchais</div>
+                    <div class="hotel-desc">位于潮流玛黑区。18世纪法式古典装潢，床头配有花卉与木质古董，极具巴黎复古浪漫情调。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-boutique">设计精品</span>
+                    <div class="hotel-price">¥2,500 - 3,500 /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Hotel Saint-André des Arts</div>
+                    <div class="hotel-desc">位于左岸圣日耳曼区。70年代波普与法式优雅融合，步行到莎士比亚书店仅需5分钟，性价比极佳。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-comfort">高性价比</span>
+                    <div class="hotel-price">¥1,500 - 2,200 /晚</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 科莫湖 (Lake Como)</h3>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Grand Hotel Tremezzo</div>
+                    <div class="hotel-desc">百年传奇奢华酒店。标志性的湖面浮动游泳池与绝美意式花园，拍照如同电影画面。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-luxury">奢华高奢</span>
+                    <div class="hotel-price">¥7,000+ /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Filario Hotel & Residences</div>
+                    <div class="hotel-desc">设计酒店联盟成员。区别于传统古典，采用冷淡极简风设计，享有极私密的私人海滩与无边泳池。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-boutique">设计精品</span>
+                    <div class="hotel-price">¥3,000 - 4,500 /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Hotel Barchetta Excelsior</div>
+                    <div class="hotel-desc">位于科莫镇中心广场，直面湖畔码头。下楼即是咖啡馆，出行探索科莫湖周边非常便利。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-comfort">高性价比</span>
+                    <div class="hotel-price">¥1,500 - 2,500 /晚</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 威尼斯 (Venice)</h3>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">The Gritti Palace</div>
+                    <div class="hotel-desc">大运河畔的顶级宫殿酒店。由15世纪威尼斯总督府改建，纯正的巴洛克皇室装潢，推窗即是安康圣母圣殿。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-luxury">奢华高奢</span>
+                    <div class="hotel-price">¥7,500+ /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Novecento Boutique Hotel</div>
+                    <div class="hotel-desc">隐藏在小巷内的私密设计精品。融合威尼斯传统与东方摩洛哥风格，安静而带有温暖的艺术氛围。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-boutique">设计精品</span>
+                    <div class="hotel-price">¥2,500 - 3,500 /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Hotel Flora</div>
+                    <div class="hotel-desc">圣马可广场旁闹中取静的爬藤花园酒店。环境清幽绿意盎然，早餐在爬满青藤的小院里享用。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-comfort">高性价比</span>
+                    <div class="hotel-price">¥1,400 - 2,200 /晚</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 米兰 (Milan)</h3>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Bvlgari Hotel Milano</div>
+                    <div class="hotel-desc">隐匿于米兰市中心的宝格丽庄园。带私人绝美意式花园、大理石泳池，极致低调奢华。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-luxury">奢华高奢</span>
+                    <div class="hotel-price">¥9,000+ /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Senato Hotel Milano</div>
+                    <div class="hotel-desc">位于时尚区，纯白意式简约风格。大堂中空黑白水池与金饰灯具设计感极强，深受时尚人士追捧。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-boutique">设计精品</span>
+                    <div class="hotel-price">¥2,500 - 3,500 /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Magna Pars l'Hotel Parfum</div>
+                    <div class="hotel-desc">前香水厂改建的香氛主题套房酒店。每间套房都以一种植物香调命名，环境清新有品位。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-comfort">高性价比</span>
+                    <div class="hotel-price">¥1,600 - 2,400 /晚</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Prep Checklist -->
         <div class="sync-card">
             <h3><i class="fa-solid fa-passport"></i> 欧洲行前准备清单</h3>
@@ -674,6 +902,111 @@
             <div class="timeline-item">
                 <div class="timeline-time">23:30/00:40</div>
                 <div class="timeline-desc">办理登机牌并退税，一同踏上夜间航班，分别飞回上海和北京。</div>
+            </div>
+        </div>
+
+        <!-- Hotels Recommendation -->
+        <h2 class="hotel-section-title">🏨 吉隆坡与海岛·精选酒店参考</h2>
+        
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 吉隆坡 (Kuala Lumpur)</h3>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Four Seasons Hotel KL</div>
+                    <div class="hotel-desc">紧邻KLCC双子塔。拥有俯瞰双子塔公园的无边泳池与顶级餐饮，服务体贴无死角。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-luxury">奢华高奢</span>
+                    <div class="hotel-price">¥1,600+ /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">The RuMa Hotel and Residences</div>
+                    <div class="hotel-desc">融合大马锡矿开采历史底蕴与现代侘寂美学。氛围静谧舒适，充满沉稳高级感。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-boutique">设计精品</span>
+                    <div class="hotel-price">¥800 - 1,200 /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">The Chow Kit - An Ormond Hotel</div>
+                    <div class="hotel-desc">纽约红砖复古风设计。极简而精致的工业风软装，荣获多次亚洲设计大奖，性价比极高。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-comfort">高性价比</span>
+                    <div class="hotel-price">¥400 - 600 /晚</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 槟城 (Penang)</h3>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Eastern & Oriental Hotel (E&O)</div>
+                    <div class="hotel-desc">拥有130年历史的传奇英式殖民风酒店。推荐入住 Heritage 翼，直面马六甲海峡吃海景下午茶。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-luxury">奢华高奢</span>
+                    <div class="hotel-price">¥1,400+ /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Seven Terraces (七间房)</div>
+                    <div class="hotel-desc">由19世纪娘惹排屋改造。红木中式古董家具与英式地砖交融，是体验当地传统文化的顶级美宿。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-boutique">设计精品</span>
+                    <div class="hotel-price">¥800 - 1,200 /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">The Edison George Town</div>
+                    <div class="hotel-desc">由百年富商豪宅改建。高亮Tiffany蓝与纯白撞色，配以精致的西式对称庭院，非常治愈。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-comfort">高性价比</span>
+                    <div class="hotel-price">¥500 - 700 /晚</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 兰卡威 (Langkawi)</h3>
+        <div class="hotel-grid">
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">The Datai Langkawi</div>
+                    <div class="hotel-desc">隐于千万年古老雨林深处的度假殿堂。直面全岛最美的私人海湾沙滩，是避世奢享的代名词。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-luxury">奢华高奢</span>
+                    <div class="hotel-price">¥3,800+ /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Temple Tree Resort</div>
+                    <div class="hotel-desc">由大马各省份百年的华商、马来贵族古木屋异地组装重建成的野奢村庄，每栋都有独特的故事。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-boutique">设计精品</span>
+                    <div class="hotel-price">¥900 - 1,400 /晚</div>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <div class="hotel-name">Casa del Mar</div>
+                    <div class="hotel-desc">西班牙海滨风情民宿。推门即可直奔珍南海滩，傍晚坐在海滩躺椅上吹海风，十分悠闲。</div>
+                </div>
+                <div class="hotel-meta">
+                    <span class="hotel-tier tier-comfort">高性价比</span>
+                    <div class="hotel-price">¥800 - 1,200 /晚</div>
+                </div>
             </div>
         </div>
 
