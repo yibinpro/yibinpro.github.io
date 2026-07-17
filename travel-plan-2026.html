@@ -369,6 +369,89 @@
             padding: 4px 8px !important;
             border-left: 3px solid var(--color-primary) !important;
         }
+
+        /* Ticket Booking Styles */
+        .ticket-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .ticket-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 16px 20px;
+            border: var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition-smooth);
+        }
+        @media (max-width: 480px) {
+            .ticket-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .ticket-meta {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        .ticket-info {
+            flex: 1;
+        }
+        .ticket-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ticket-channel {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            margin-top: 3px;
+        }
+        .ticket-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .badge-urgent {
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
+        }
+        .badge-normal {
+            background: #FFF8E1;
+            color: #F57F17;
+            border: 1px solid #FFE082;
+        }
+        .badge-easy {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
+        }
+
+        /* Mobile Table Style */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: var(--card-border);
+        }
+        .compare-table {
+            min-width: 500px;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -430,54 +513,56 @@
         <!-- Budget Card -->
         <div class="sync-card">
             <h3><i class="fa-solid fa-coins"></i> 💰 双人 8-9 天预算估算 (RMB)</h3>
-            <table class="compare-table" style="font-size: 13px;">
-                <thead>
-                    <tr>
-                        <th>消费项</th>
-                        <th>舒适型 (Comfort)</th>
-                        <th>设计精品 (Boutique)</th>
-                        <th>奢华高奢 (Luxury)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>机票 (黄金周双人)</strong></td>
-                        <td>¥16,000</td>
-                        <td>¥20,000</td>
-                        <td>¥24,000</td>
-                    </tr>
-                    <tr>
-                        <td><strong>酒店 (8晚双人)</strong></td>
-                        <td>¥14,400 <span style="font-size:10px;color:gray;">(平均1800/晚)</span></td>
-                        <td>¥24,000 <span style="font-size:10px;color:gray;">(平均3000/晚)</span></td>
-                        <td>¥64,000 <span style="font-size:10px;color:gray;">(平均8000/晚)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>当地交通 (内陆机/租车/火车)</strong></td>
-                        <td>¥4,000</td>
-                        <td>¥6,000</td>
-                        <td>¥10,000</td>
-                    </tr>
-                    <tr>
-                        <td><strong>餐饮与游玩活动</strong></td>
-                        <td>¥8,000</td>
-                        <td>¥12,000</td>
-                        <td>¥20,000</td>
-                    </tr>
-                    <tr style="border-top: 2px solid var(--color-primary); background: #FAF9F6;">
-                        <td><strong>预计总计 (双人)</strong></td>
-                        <td><strong>¥42,400</strong></td>
-                        <td><strong>¥62,000</strong></td>
-                        <td><strong>¥118,000</strong></td>
-                    </tr>
-                    <tr style="font-size:11px; color:var(--color-text-muted);">
-                        <td>人均花费</td>
-                        <td>约 ¥2.12万 /人</td>
-                        <td>约 ¥3.10万 /人</td>
-                        <td>约 ¥5.90万 /人</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="compare-table" style="font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>消费项</th>
+                            <th>舒适型 (Comfort)</th>
+                            <th>设计精品 (Boutique)</th>
+                            <th>奢华高奢 (Luxury)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>机票 (黄金周双人)</strong></td>
+                            <td>¥16,000</td>
+                            <td>¥20,000</td>
+                            <td>¥24,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>酒店 (8晚双人)</strong></td>
+                            <td>¥14,400 <span style="font-size:10px;color:gray;">(平均1800/晚)</span></td>
+                            <td>¥24,000 <span style="font-size:10px;color:gray;">(平均3000/晚)</span></td>
+                            <td>¥64,000 <span style="font-size:10px;color:gray;">(平均8000/晚)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>当地交通 (内陆机/租车/火车)</strong></td>
+                            <td>¥4,000</td>
+                            <td>¥6,000</td>
+                            <td>¥10,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>餐饮与游玩活动</strong></td>
+                            <td>¥8,000</td>
+                            <td>¥12,000</td>
+                            <td>¥20,000</td>
+                        </tr>
+                        <tr style="border-top: 2px solid var(--color-primary); background: #FAF9F6;">
+                            <td><strong>预计总计 (双人)</strong></td>
+                            <td><strong>¥42,400</strong></td>
+                            <td><strong>¥62,000</strong></td>
+                            <td><strong>¥118,000</strong></td>
+                        </tr>
+                        <tr style="font-size:11px; color:var(--color-text-muted);">
+                            <td>人均花费</td>
+                            <td>约 ¥2.12万 /人</td>
+                            <td>约 ¥3.10万 /人</td>
+                            <td>约 ¥5.90万 /人</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Itinerary -->
@@ -632,6 +717,56 @@
             <div class="timeline-item">
                 <div class="timeline-time">12:50/13:30</div>
                 <div class="timeline-desc">分别搭乘东航/国航直飞航班，返回上海和北京。</div>
+            </div>
+        </div>
+
+        <!-- Tickets Booking Guide -->
+        <h2 class="hotel-section-title">🎫 建议提前订票与预约指南</h2>
+        <div class="ticket-list">
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-paintbrush"></i> 巴黎·橘园美术馆 (Musée de l'Orangerie)</div>
+                    <div class="ticket-channel">官方渠道：官网在线预约 | 需预约特定入场时间段，现场不设售票。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 30 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-church"></i> 米兰·《最后的晚餐》壁画 (Cenacolo Vinciano)</div>
+                    <div class="ticket-channel">官方渠道：Cenacolo Vinciano 官网 | 抢票难度极高。若抢空，可尝试预订含导览的旅行团门票。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-urgent">必须提前 90 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-ship"></i> 科莫湖·私人复古木船 (Riva Boat)</div>
+                    <div class="ticket-channel">预订渠道：Como Classic Boats 等线上预订 | 黄金周出海极其热门。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 45 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-ticket"></i> 威尼斯·圣马可大教堂 & 钟楼登顶</div>
+                    <div class="ticket-channel">官方渠道：圣马可官方预约平台 | 购买快速通道免去现场2小时的长队排队时间。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 30 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-train"></i> 意铁火车票 (米兰 ➡️ 威尼斯)</div>
+                    <div class="ticket-channel">预订渠道：Italo 或 Trenitalia App/官网 | 提早预订折扣可低至4折。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-easy">建议提前 30 天</span>
+                </div>
             </div>
         </div>
 
@@ -834,54 +969,56 @@
         <!-- Budget Card -->
         <div class="sync-card">
             <h3><i class="fa-solid fa-coins"></i> 💰 双人 8-9 天预算估算 (RMB)</h3>
-            <table class="compare-table" style="font-size: 13px;">
-                <thead>
-                    <tr>
-                        <th>消费项</th>
-                        <th>舒适型 (Comfort)</th>
-                        <th>设计精品 (Boutique)</th>
-                        <th>奢华高奢 (Luxury)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>机票 (黄金周双人)</strong></td>
-                        <td>¥8,000</td>
-                        <td>¥10,000</td>
-                        <td>¥12,000</td>
-                    </tr>
-                    <tr>
-                        <td><strong>酒店 (8晚双人)</strong></td>
-                        <td>¥4,800 <span style="font-size:10px;color:gray;">(平均600/晚)</span></td>
-                        <td>¥8,000 <span style="font-size:10px;color:gray;">(平均1000/晚)</span></td>
-                        <td>¥17,600 <span style="font-size:10px;color:gray;">(平均2200/晚)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>当地交通 (内陆机/打车/自驾)</strong></td>
-                        <td>¥1,500</td>
-                        <td>¥2,500</td>
-                        <td>¥4,000</td>
-                    </tr>
-                    <tr>
-                        <td><strong>餐饮与游玩活动</strong></td>
-                        <td>¥3,500</td>
-                        <td>¥5,500</td>
-                        <td>¥8,000</td>
-                    </tr>
-                    <tr style="border-top: 2px solid var(--color-primary); background: #FAF9F6;">
-                        <td><strong>预计总计 (双人)</strong></td>
-                        <td><strong>¥17,800</strong></td>
-                        <td><strong>¥26,000</strong></td>
-                        <td><strong>¥41,600</strong></td>
-                    </tr>
-                    <tr style="font-size:11px; color:var(--color-text-muted);">
-                        <td>人均花费</td>
-                        <td>约 ¥8,900 /人</td>
-                        <td>约 ¥1.30万 /人</td>
-                        <td>约 ¥2.08万 /人</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="compare-table" style="font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>消费项</th>
+                            <th>舒适型 (Comfort)</th>
+                            <th>设计精品 (Boutique)</th>
+                            <th>奢华高奢 (Luxury)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>机票 (黄金周双人)</strong></td>
+                            <td>¥8,000</td>
+                            <td>¥10,000</td>
+                            <td>¥12,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>酒店 (8晚双人)</strong></td>
+                            <td>¥4,800 <span style="font-size:10px;color:gray;">(平均600/晚)</span></td>
+                            <td>¥8,000 <span style="font-size:10px;color:gray;">(平均1000/晚)</span></td>
+                            <td>¥17,600 <span style="font-size:10px;color:gray;">(平均2200/晚)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>当地交通 (内陆机/打车/自驾)</strong></td>
+                            <td>¥1,500</td>
+                            <td>¥2,500</td>
+                            <td>¥4,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>餐饮与游玩活动</strong></td>
+                            <td>¥3,500</td>
+                            <td>¥5,500</td>
+                            <td>¥8,000</td>
+                        </tr>
+                        <tr style="border-top: 2px solid var(--color-primary); background: #FAF9F6;">
+                            <td><strong>预计总计 (双人)</strong></td>
+                            <td><strong>¥17,800</strong></td>
+                            <td><strong>¥26,000</strong></td>
+                            <td><strong>¥41,600</strong></td>
+                        </tr>
+                        <tr style="font-size:11px; color:var(--color-text-muted);">
+                            <td>人均花费</td>
+                            <td>约 ¥8,900 /人</td>
+                            <td>约 ¥1.30万 /人</td>
+                            <td>约 ¥2.08万 /人</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Itinerary -->
@@ -1028,6 +1165,47 @@
             <div class="timeline-item">
                 <div class="timeline-time">23:30/00:40</div>
                 <div class="timeline-desc">办理登机牌并退税，一同踏上夜间航班，分别飞回上海和北京。</div>
+            </div>
+        </div>
+
+        <!-- Tickets Booking Guide -->
+        <h2 class="hotel-section-title">🎫 建议提前订票与预约指南</h2>
+        <div class="ticket-list">
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-building"></i> 吉隆坡·双子塔天桥 (Twin Towers Skybridge)</div>
+                    <div class="ticket-channel">官方渠道：双子塔官网 | 每天限额发放门票，通常在1个月前开放，放票即秒空。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-urgent">必须提前 30 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-mountain"></i> 槟城·升旗山缆车 (Penang Hill Funicular)</div>
+                    <div class="ticket-channel">官方渠道：升旗山官网或 Klook | 黄金周建议直接购买 Fast Lane（快速通道），省时约1.5小时。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-easy">提前 2-3 天 (买快速票)</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-anchor"></i> 兰卡威·红树林私人包船 / 帆船落日巡游</div>
+                    <div class="ticket-channel">预订渠道：淘宝、Klook 或联系度假村 | 黄金周私人双体帆船档期需提早锁定。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 15 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-car"></i> 兰卡威·自驾租车</div>
+                    <div class="ticket-channel">预订渠道：租租车 App 或 Langkawi 本地车行 | 需要准备中国驾照原件及英文翻译件。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 15 天</span>
+                </div>
             </div>
         </div>
 
