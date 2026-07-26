@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026金秋度假提案 · 京沪出发双人行</title>
+    <title>2026金秋·法意双国10天9晚深度度假路书</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -15,13 +15,17 @@
     <style>
         :root {
             --bg-base: #FAF9F6;
-            --color-primary: #1F3B32; /* Deep Sage */
-            --color-accent-europe: #C08A3E; /* Brass Gold */
-            --color-accent-malaysia: #D46A43; /* Terracotta */
+            --color-primary: #1C2D42; /* Deep Navy */
+            --color-accent: #C08A3E; /* Brass Gold */
             --color-text-main: #2C3531;
             --color-text-muted: #6E7572;
             --card-border: 1px solid #ECEAE4;
             --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            
+            --tag-city-bg: #E1F5FE;
+            --tag-city-color: #0288D1;
+            --tag-outdoor-bg: #E8F5E9;
+            --tag-outdoor-color: #2E7D32;
         }
 
         body {
@@ -37,27 +41,27 @@
         .container {
             max-width: 680px;
             margin: 0 auto;
-            padding: 40px 20px 80px;
+            padding: 30px 20px 80px;
         }
 
         /* Header Style */
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 40px 0 20px;
+            margin-bottom: 30px;
+            padding: 30px 0 10px;
         }
 
         header h1 {
             font-family: 'Noto Serif SC', serif;
             font-weight: 900;
-            font-size: 28px;
+            font-size: 26px;
             letter-spacing: 1px;
             margin: 0 0 10px;
             color: var(--color-primary);
         }
 
         header p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--color-text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -70,7 +74,7 @@
             background: #EFECE6;
             padding: 4px;
             border-radius: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             position: relative;
         }
 
@@ -78,8 +82,8 @@
             flex: 1;
             border: none;
             background: transparent;
-            padding: 12px;
-            font-size: 14px;
+            padding: 10px;
+            font-size: 13px;
             font-weight: 700;
             border-radius: 26px;
             cursor: pointer;
@@ -88,7 +92,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .tab-btn.active {
@@ -112,12 +116,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Flight Coordination Card */
+        /* Cards */
         .sync-card {
             background: #FFFFFF;
             border-radius: 20px;
             padding: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border: var(--card-border);
             box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
@@ -171,17 +175,15 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 18px;
+            border-bottom: 1px solid #F0EDE9;
+            padding-bottom: 10px;
         }
 
         .day-num {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
             font-size: 20px;
-            color: var(--color-accent-europe);
-        }
-
-        .tab-malaysia .day-num {
-            color: var(--color-accent-malaysia);
+            color: var(--color-accent);
         }
 
         .day-title {
@@ -195,7 +197,7 @@
             position: relative;
             padding-left: 20px;
             border-left: 1.5px solid #ECEAE4;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             font-size: 14px;
         }
 
@@ -212,11 +214,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--color-accent-europe);
-        }
-
-        .tab-malaysia .timeline-item::before {
-            background: var(--color-accent-malaysia);
+            background: var(--color-accent);
         }
 
         .timeline-time {
@@ -224,59 +222,125 @@
             font-size: 11px;
             color: var(--color-text-muted);
             text-transform: uppercase;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .timeline-desc {
             color: var(--color-text-main);
         }
 
-        .timeline-desc strong {
-            color: var(--color-primary);
+        /* Scenic Tag styles */
+        .scenic-tag {
+            font-size: 9px;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Tips & Packing List */
-        .checklist-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
+        .tag-city {
+            background: var(--tag-city-bg);
+            color: var(--tag-city-color);
         }
 
-        .check-item {
+        .tag-outdoor {
+            background: var(--tag-outdoor-bg);
+            color: var(--tag-outdoor-color);
+        }
+
+        /* Tickets Booking Styles */
+        .ticket-list {
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 13px;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
         }
-
-        .check-item i {
-            margin-top: 4px;
+        .ticket-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 16px 20px;
+            border: var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition-smooth);
+        }
+        @media (max-width: 480px) {
+            .ticket-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .ticket-meta {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        .ticket-info {
+            flex: 1;
+        }
+        .ticket-title {
+            font-weight: 700;
+            font-size: 14px;
             color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        /* Footnotes */
-        .footer-note {
-            text-align: center;
+        .ticket-channel {
             font-size: 12px;
             color: var(--color-text-muted);
-            margin-top: 60px;
+            margin-top: 3px;
         }
-
-        .footer-note a {
+        .ticket-channel a {
             color: var(--color-primary);
-            text-decoration: none;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .ticket-channel a:hover {
+            color: var(--color-accent);
+        }
+        .ticket-badge {
+            font-size: 10px;
             font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .badge-urgent {
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
+        }
+        .badge-normal {
+            background: #FFF8E1;
+            color: #F57F17;
+            border: 1px solid #FFE082;
+        }
+        .badge-easy {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
         }
 
         /* Hotel Styles */
         .hotel-section-title {
             font-family: 'Noto Serif SC', serif;
             font-size: 20px;
-            margin: 40px 0 20px;
+            margin: 30px 0 20px;
             color: var(--color-primary);
             border-bottom: 2px solid #ECEAE4;
             padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .hotel-city-title {
             font-family: 'Noto Serif SC', serif;
@@ -358,99 +422,6 @@
             white-space: nowrap;
         }
 
-        /* Leaflet Custom tooltip style */
-        .custom-tooltip {
-            background: #FFFFFF !important;
-            border: var(--card-border) !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
-            color: var(--color-text-main) !important;
-            font-size: 11px !important;
-            border-radius: 6px !important;
-            padding: 4px 8px !important;
-            border-left: 3px solid var(--color-primary) !important;
-        }
-
-        /* Ticket Booking Styles */
-        .ticket-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-        .ticket-card {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 16px 20px;
-            border: var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            transition: var(--transition-smooth);
-        }
-        @media (max-width: 480px) {
-            .ticket-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            .ticket-meta {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-        .ticket-info {
-            flex: 1;
-        }
-        .ticket-title {
-            font-weight: 700;
-            font-size: 14px;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .ticket-channel {
-            font-size: 12px;
-            color: var(--color-text-muted);
-            margin-top: 3px;
-        }
-        .ticket-channel a {
-            color: var(--color-primary);
-            text-decoration: underline;
-            font-weight: 600;
-        }
-        .ticket-channel a:hover {
-            color: var(--color-accent-europe);
-        }
-        .tab-malaysia .ticket-channel a:hover {
-            color: var(--color-accent-malaysia);
-        }
-        .ticket-badge {
-            font-size: 10px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 6px;
-            white-space: nowrap;
-        }
-        .badge-urgent {
-            background: #FFEBEE;
-            color: #C62828;
-            border: 1px solid #FFCDD2;
-        }
-        .badge-normal {
-            background: #FFF8E1;
-            color: #F57F17;
-            border: 1px solid #FFE082;
-        }
-        .badge-easy {
-            background: #E8F5E9;
-            color: #2E7D32;
-            border: 1px solid #C8E6C9;
-        }
-
         /* Mobile Table Style */
         .table-wrapper {
             overflow-x: auto;
@@ -461,7 +432,72 @@
         }
         .compare-table {
             min-width: 500px;
-            margin-top: 0;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .compare-table th {
+            background: rgba(0,0,0,0.02);
+            padding: 12px;
+            font-weight: 700;
+            text-align: left;
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+        }
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+        .compare-table tr:hover {
+            background: rgba(0,0,0,0.01);
+        }
+
+        /* Checklist */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        @media (max-width: 480px) {
+            .checklist-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+        }
+        .check-item i {
+            margin-top: 4px;
+            color: var(--color-accent);
+        }
+
+        /* Leaflet Custom tooltip style */
+        .custom-tooltip {
+            background: #FFFFFF !important;
+            border: var(--card-border) !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+            color: var(--color-text-main) !important;
+            font-size: 11px !important;
+            border-radius: 6px !important;
+            padding: 4px 8px !important;
+            border-left: 3px solid var(--color-accent) !important;
+        }
+
+        /* Footnotes */
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            margin-top: 60px;
+        }
+        .footer-note a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -469,66 +505,260 @@
 
 <div class="container">
     <header>
-        <h1>2026秋日旅行提案</h1>
-        <p>Shanghai & Beijing Dual Departure</p>
+        <h1>法意双国·10天9晚度假路书</h1>
+        <p>9月24日 - 10月3日 · 北京/上海出发联调</p>
     </header>
 
     <!-- Tab Buttons -->
     <div class="tabs-container">
-        <button class="tab-btn active" onclick="switchTab('europe')">
-            <i class="fa-solid fa-earth-europe"></i> 法国意大利 (8-9天)
+        <button class="tab-btn active" onclick="switchTab('itinerary')">
+            <i class="fa-solid fa-calendar-days"></i> 每日行程
         </button>
-        <button class="tab-btn" onclick="switchTab('malaysia')">
-            <i class="fa-solid fa-umbrella-beach"></i> 马来西亚 (8-9天)
+        <button class="tab-btn" onclick="switchTab('hotels')">
+            <i class="fa-solid fa-hotel"></i> 酒店与预算
+        </button>
+        <button class="tab-btn" onclick="switchTab('bookings')">
+            <i class="fa-solid fa-ticket"></i> 订票与准备
         </button>
     </div>
 
-    <!-- Interactive Map -->
-    <div id="map-container" style="position: relative; margin-bottom: 35px;">
-        <div id="map" style="height: 300px; width: 100%; border-radius: 20px; border: var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.02); z-index: 1;"></div>
+    <!-- Interactive Map (Visible on all tabs) -->
+    <div id="map-container" style="position: relative; margin-bottom: 30px;">
+        <div id="map" style="height: 260px; width: 100%; border-radius: 20px; border: var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.02); z-index: 1;"></div>
     </div>
 
-    <!-- ================== FRANCE & ITALY ================== -->
-    <div id="tab-europe" class="route-content active">
+    <!-- ================== TAB 1: ITINERARY ================== -->
+    <div id="tab-itinerary" class="route-content active">
         
         <!-- Flight Sync Card -->
         <div class="sync-card">
-            <h3><i class="fa-solid fa-plane-arrival"></i> 京沪同抵·去程联调方案</h3>
-            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">通过选择起飞时间相近的直飞航班，在巴黎戴高乐机场（CDG）汇合：</p>
+            <h3><i class="fa-solid fa-plane-arrival"></i> 京沪同抵·去程航班联调</h3>
             <div class="flight-row">
-                <div><span class="city-badge">北京出发</span> 国航 CA875 (PEK ➡️ CDG)</div>
+                <div><span class="city-badge">北京出发</span> 国航 CA875 (9月24日 PEK ➡️ CDG)</div>
                 <div>起飞 12:05 ➡️ 抵达 17:45</div>
             </div>
             <div class="flight-row">
-                <div><span class="city-badge">上海出发</span> 东航 MU553 (PVG ➡️ CDG)</div>
+                <div><span class="city-badge">上海出发</span> 东航 MU553 (9月24日 PVG ➡️ CDG)</div>
                 <div>起飞 12:15 ➡️ 抵达 18:35</div>
             </div>
-            <p style="font-size: 12px; color: var(--color-accent-europe); margin: 10px 0 0; font-weight: 600;">
-                💡 汇合点：戴高乐机场 T2E 航站楼到达大厅。上海出发稍晚45分钟抵达，北京出发可在咖啡厅稍作等待，随后一同乘专车前往酒店。
+            <p style="font-size: 12px; color: var(--color-accent); margin: 10px 0 0; font-weight: 600;">
+                💡 汇合点：巴黎戴高乐机场 T2E 到达大厅。上海出发晚落地50分钟，北京出发可在咖啡厅稍候，会合后一同乘专车直奔酒店。
             </p>
         </div>
 
         <div class="sync-card">
-            <h3><i class="fa-solid fa-plane-departure"></i> 同期返程·回程联调方案</h3>
-            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">从意大利米兰（MXP）回国，分别直飞返回京沪：</p>
+            <h3><i class="fa-solid fa-plane-departure"></i> 同期返程·回程航班联调</h3>
             <div class="flight-row">
-                <div><span class="city-badge">回北京</span> 国航 CA950 (MXP ➡️ PEK)</div>
+                <div><span class="city-badge">回北京</span> 国航 CA950 (10月3日 MXP ➡️ PEK)</div>
                 <div>起飞 13:30 ➡️ 次日 05:30 抵达</div>
             </div>
             <div class="flight-row">
-                <div><span class="city-badge">回上海</span> 东航 MU720 (MXP ➡️ PVG)</div>
+                <div><span class="city-badge">回上海</span> 东航 MU720 (10月3日 MXP ➡️ PVG)</div>
                 <div>起飞 12:50 ➡️ 次日 06:10 抵达</div>
+            </div>
+            <p style="font-size: 12px; color: var(--color-accent); margin: 10px 0 0; font-weight: 600;">
+                💡 一同前往米兰马尔彭萨机场 (MXP) 办理退税，两人的航班起飞仅相差40分钟，可在候机厅一同度过登机前的最后时光。
+            </p>
+        </div>
+
+        <!-- Light Outdoor Guide Card -->
+        <div class="sync-card" style="border-left: 4px solid var(--color-accent);">
+            <h3><i class="fa-solid fa-tree"></i> 🌿 沿途推荐体验的【轻户外】景观</h3>
+            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">行程已合理融入以下舒适度假型户外，无需专业装备与强体能：</p>
+            <ul style="font-size: 13px; margin: 0; padding-left: 20px;">
+                <li style="margin-bottom: 6px;"><strong>科莫湖畔庄园步道</strong>：步行游览 <i>Villa del Balbianello</i> 庄园，平整的小径两旁布满百年古藤与雕塑，直面蔚蓝大湖。</li>
+                <li style="margin-bottom: 6px;"><strong>巴黎皇家花园放空</strong>：在杜乐丽花园拖把标志性的绿铁椅，坐在随处可见的喷泉旁晒太阳；或慢步罗丹美术馆的玫瑰花海。</li>
+                <li style="margin-bottom: 6px;"><strong>米兰大教堂登顶</strong>：乘坐电梯直达露天的哥特式石雕屋顶，漫步在尖顶与飞扶壁之间，俯瞰米兰全景。</li>
+            </ul>
+        </div>
+
+        <!-- Itinerary -->
+        <h2 style="font-family: 'Noto Serif SC', serif; font-size: 20px; margin: 30px 0 15px; color: var(--color-primary);">📅 每日详细行程单</h2>
+
+        <!-- Day 1 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">9月24日</span>
+                <span class="day-title">Day 1 · 巴黎团聚</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 18:35 - 20:00</div>
+                <div class="timeline-desc">两人在戴高乐机场顺利汇合，坐专车前往巴黎左岸的精品酒店办理入住。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 20:30</div>
+                <div class="timeline-desc">在圣日耳曼街区找一家传统的法式小酒馆，吃个法式宵夜并享用迎新酒。</div>
             </div>
         </div>
 
-        <!-- Budget Card -->
+        <!-- Day 2 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">9月25日</span>
+                <span class="day-title">Day 2 · 巴黎潮流街区与午后咖啡</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 10:30</div>
+                <div class="timeline-desc">自然醒后出发，漫步<strong>玛黑区 (Le Marais)</strong>。逛逛小众艺术画廊、沙龙香水店与独立买手店。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 14:30</div>
+                <div class="timeline-desc">在孚日广场的草坪旁，喝杯经典的 Carette 热巧克力，享受法式午后暖阳。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 19:30</div>
+                <div class="timeline-desc">预订巴黎极具口碑的现代法式小馆 <i>Frenchie</i>，享受一顿慢节奏精致晚餐。</div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">9月26日</span>
+                <span class="day-title">Day 3 · 睡莲艺术、花园散步与塞纳河落日</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 10:00</div>
+                <div class="timeline-desc">参观<strong>橘园美术馆 (Musée de l'Orangerie)</strong>，沉浸在莫奈巨幅《睡莲》的白色展厅中。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 11:30</div>
+                <div class="timeline-desc">在美术馆外的<strong>杜乐丽花园</strong>散步，拖把绿铁椅坐在喷泉池边聊天看鸽子。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 15:00</div>
+                <div class="timeline-desc">步行至左岸，探索著名的莎士比亚旧书店，外观巴黎圣母院。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 18:00</div>
+                <div class="timeline-desc">落日时分，在塞纳河畔散步，静静守候埃菲尔铁塔整点亮灯闪烁。</div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">9月27日</span>
+                <span class="day-title">Day 4 · 巴黎 ➡️ 米兰 ➡️ 科莫湖</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 09:30</div>
+                <div class="timeline-desc">搭乘欧洲内陆航班（约1.5小时）飞往米兰。抵达后直接在机场租车自驾或乘火车前往<strong>科莫湖 (Lake Como)</strong>。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 16:00</div>
+                <div class="timeline-desc">入住科莫湖畔的避世景观酒店。傍晚坐在酒店阳台上看阿尔卑斯山倒映在碧波湖水中，享受纯粹的自然宁静。</div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">9月28日</span>
+                <span class="day-title">Day 5 · 湖上木质游艇与悬崖庄园</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 11:00</div>
+                <div class="timeline-desc">包一艘私人复古木质快艇（Riva Boat），从湖面巡游，欣赏两岸错落有致的彩色小镇。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 14:00</div>
+                <div class="timeline-desc">登岸游览著名的 **Villa del Balbianello（巴比阿内罗庄园）**。漫步庄园修剪整齐的爬藤拱廊，感受电影般的湖畔户外仙境。</div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">9月29日</span>
+                <span class="day-title">Day 6 · 科莫湖 ➡️ 威尼斯</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 10:00</div>
+                <div class="timeline-desc">依依不舍告别科莫湖，乘火车（约2.5小时）直达威尼斯主岛。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 15:30</div>
+                <div class="timeline-desc">入住主岛的古典风情酒店。午后漫步圣马可广场，在幽静的威尼斯小桥流水间穿行。</div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">9月30日</span>
+                <span class="day-title">Day 7 · 威尼斯运河与贡多拉</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 10:30</div>
+                <div class="timeline-desc">乘坐纯手工木制贡多拉 (Gondola) 游船，穿梭于蜿蜒曲折的小运河中。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 18:00</div>
+                <div class="timeline-desc">在运河边露天座享用一顿地道的威尼斯墨鱼汁海鲜面，喝一杯橘红色的 Aperol Spritz。</div>
+            </div>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">10月1日</span>
+                <span class="day-title">Day 8 · 威尼斯 ➡️ 米兰登顶</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 09:30</div>
+                <div class="timeline-desc">乘坐高铁（约2小时）返回时尚之都米兰。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-outdoor">户外风光</span> 15:00</div>
+                <div class="timeline-desc">乘电梯直达**米兰大教堂屋顶**。漫步在大教堂无数精致的白色大理石哥特尖顶和石雕森林之间，眺望整座城市。</div>
+            </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">10月2日</span>
+                <span class="day-title">Day 9 · 米兰大长廊与退税采购</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 10:00</div>
+                <div class="timeline-desc">在埃马努埃莱二世长廊漫步，进行回国前的礼品与伴手礼采购。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 20:00</div>
+                <div class="timeline-desc">在米兰找一家有品味的意式 Bistro 享用晚餐，为十天的法意秋季之行画上句号。</div>
+            </div>
+        </div>
+
+        <!-- Day 10 -->
+        <div class="day-card">
+            <div class="day-header">
+                <span class="day-num">10月3日</span>
+                <span class="day-title">Day 10 · 米兰 ➡️ 回国</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 09:00</div>
+                <div class="timeline-desc">一同乘坐机场快线或打车前往米兰 MXP 机场，办妥海关退税。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time"><span class="scenic-tag tag-city">城市人文</span> 12:50/13:30</div>
+                <div class="timeline-desc">分别搭乘东航/国航直飞客机，满载回忆返回上海和北京。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================== TAB 2: HOTELS & BUDGET ================== -->
+    <div id="tab-hotels" class="route-content">
+        
+        <!-- Budget Estimation Card -->
         <div class="sync-card">
-            <h3><i class="fa-solid fa-coins"></i> 💰 双人 8-9 天预算估算 (RMB)</h3>
+            <h3><i class="fa-solid fa-coins"></i> 💰 双人 10天9晚 预算估算 (RMB)</h3>
             <div class="table-wrapper">
-                <table class="compare-table" style="font-size: 13px;">
+                <table class="compare-table">
                     <thead>
                         <tr>
-                            <th>消费项</th>
+                            <th>消费类目</th>
                             <th>舒适型 (Comfort)</th>
                             <th>设计精品 (Boutique)</th>
                             <th>奢华高奢 (Luxury)</th>
@@ -538,267 +768,51 @@
                         <tr>
                             <td><strong>机票 (国庆双人往返)</strong></td>
                             <td>¥24,000 <span style="font-size:10px;color:gray;">(经济舱 ¥1.2w/人)</span></td>
-                            <td>¥30,000 <span style="font-size:10px;color:gray;">(优质经济舱/热门直飞)</span></td>
+                            <td>¥30,000 <span style="font-size:10px;color:gray;">(黄金周热门直飞)</span></td>
                             <td>¥80,000 <span style="font-size:10px;color:gray;">(双人直飞公务舱)</span></td>
                         </tr>
                         <tr>
-                            <td><strong>酒店 (8晚双人)</strong></td>
-                            <td>¥14,400 <span style="font-size:10px;color:gray;">(平均1800/晚)</span></td>
-                            <td>¥24,000 <span style="font-size:10px;color:gray;">(平均3000/晚)</span></td>
-                            <td>¥64,000 <span style="font-size:10px;color:gray;">(平均8000/晚)</span></td>
+                            <td><strong>酒店 (9晚双人)</strong></td>
+                            <td>¥16,200 <span style="font-size:10px;color:gray;">(平均1800/晚)</span></td>
+                            <td>¥27,000 <span style="font-size:10px;color:gray;">(平均3000/晚)</span></td>
+                            <td>¥72,000 <span style="font-size:10px;color:gray;">(平均8000/晚)</span></td>
                         </tr>
                         <tr>
-                            <td><strong>当地交通 (内陆机/租车/火车)</strong></td>
-                            <td>¥4,000</td>
-                            <td>¥6,000</td>
-                            <td>¥10,000</td>
+                            <td><strong>当地交通 (欧洲飞机/租车/火车)</strong></td>
+                            <td>¥4,500</td>
+                            <td>¥6,500</td>
+                            <td>¥11,000</td>
                         </tr>
                         <tr>
-                            <td><strong>餐饮与游玩活动</strong></td>
-                            <td>¥8,000</td>
-                            <td>¥12,000</td>
-                            <td>¥20,000</td>
+                            <td><strong>餐饮与游玩活动 (含门票/包船)</strong></td>
+                            <td>¥9,000</td>
+                            <td>¥13,500</td>
+                            <td>¥22,000</td>
                         </tr>
-                        <tr style="border-top: 2px solid var(--color-primary); background: #FAF9F6;">
+                        <tr style="border-top: 2px solid var(--color-accent); background: #FAF9F6; font-weight: 700;">
                             <td><strong>预计总计 (双人)</strong></td>
-                            <td><strong>¥50,400</strong></td>
-                            <td><strong>¥72,000</strong></td>
-                            <td><strong>¥174,000</strong></td>
+                            <td><strong>¥53,700</strong></td>
+                            <td><strong>¥77,000</strong></td>
+                            <td><strong>¥185,000</strong></td>
                         </tr>
                         <tr style="font-size:11px; color:var(--color-text-muted);">
-                            <td>人均花费</td>
-                            <td>约 ¥2.52万 /人</td>
-                            <td>约 ¥3.60万 /人</td>
-                            <td>约 ¥8.70万 /人</td>
+                            <td>人均预算</td>
+                            <td>约 ¥2.68万 /人</td>
+                            <td>约 ¥3.85万 /人</td>
+                            <td>约 ¥9.25万 /人</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <p style="font-size: 11px; color: var(--color-text-muted); margin: 10px 0 0;">
-                *机票预估基于国庆黄金周北京/上海直飞巴黎/米兰往返机票的真实溢价范围（黄金周直飞价格极高，已根据当前市场票价区间调高预算）。
+                * 机票预估已针对国庆黄金周北京/上海直飞巴黎/米兰往返机票进行真实高价溢价调高。
             </p>
         </div>
 
-        <!-- Outdoor Card -->
-        <div class="sync-card" style="border-left: 4px solid var(--color-accent-europe);">
-            <h3><i class="fa-solid fa-tree"></i> 🌿 沿途推荐体验的【轻户外】景观</h3>
-            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">以下户外活动均属于舒适度假风，零体能要求，不需专业装备：</p>
-            <ul style="font-size: 13px; margin: 0; padding-left: 20px;">
-                <li style="margin-bottom: 6px;"><strong>科莫湖畔庄园步道</strong>：步行游览 <i>Villa del Balbianello</i> 庄园，平整的小径两旁布满百年古藤与雕塑，直面蔚蓝大湖。</li>
-                <li style="margin-bottom: 6px;"><strong>巴黎皇家花园放空</strong>：在杜乐丽花园拖把标志性的绿铁椅，坐在喷泉旁晒太阳；或漫步罗丹美术馆的玫瑰花海。</li>
-                <li style="margin-bottom: 6px;"><strong>米兰大教堂登顶</strong>：乘坐电梯直达露天的哥特式石雕屋顶，漫步在尖顶与飞扶壁之间，俯瞰米兰全景。</li>
-            </ul>
-        </div>
-
-        <!-- Itinerary -->
-        <h2 style="font-family: 'Noto Serif SC', serif; font-size: 20px; margin: 40px 0 20px; color: var(--color-primary);">📅 每日行程规划（精细慢享）</h2>
-
-        <!-- Day 1 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 1</span>
-                <span class="day-title">巴黎团聚，初识左岸</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">19:30</div>
-                <div class="timeline-desc">在戴高乐机场汇合，乘坐专车前往巴黎左岸酒店入住。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">21:00</div>
-                <div class="timeline-desc">在塞纳河畔的小酒馆享用宵夜，喝一杯迎新酒。</div>
-            </div>
-        </div>
-
-        <!-- Day 2 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 2</span>
-                <span class="day-title">巴黎潮流Citywalk与咖啡香气</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:30</div>
-                <div class="timeline-desc">慢行至<strong>玛黑区 (Le Marais)</strong>。探索小众买手店与沙龙香水店。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">14:00</div>
-                <div class="timeline-desc">在<strong>孚日广场 (Place des Vosges)</strong>旁喝一杯热巧克力，在草地上晒太阳。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">19:30</div>
-                <div class="timeline-desc">预订经典法式 Bistro 晚餐（推荐 <i>Frenchie</i>）。</div>
-            </div>
-        </div>
-
-        <!-- Day 3 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 3</span>
-                <span class="day-title">莫奈睡莲与塞纳河落日</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:00</div>
-                <div class="timeline-desc">前往杜乐丽花园旁的<strong>橘园美术馆 (Musée de l'Orangerie)</strong>，安静欣赏莫奈的巨幅《睡莲》。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">15:00</div>
-                <div class="timeline-desc">在著名的左岸<strong>莎士比亚书店</strong>和巴黎圣母院外围散步。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">18:00</div>
-                <div class="timeline-desc">落日时分漫步塞纳河畔，静候埃菲尔铁塔整点闪烁。</div>
-            </div>
-        </div>
-
-        <!-- Day 4 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 4</span>
-                <span class="day-title">巴黎 ➡️ 米兰 ➡️ 科莫湖</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">09:00</div>
-                <div class="timeline-desc">搭乘欧洲内陆航班（约1.5小时）飞往米兰，抵达后直接租车自驾或乘火车（约1小时）前往<strong>科莫湖 (Lake Como)</strong>。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">15:00</div>
-                <div class="timeline-desc">入住科莫湖畔的景观酒店，在露台静看湖光山色。</div>
-            </div>
-        </div>
-
-        <!-- Day 5 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 5</span>
-                <span class="day-title">科莫湖奢华慢度假</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">11:00</div>
-                <div class="timeline-desc">租一艘带驾驶员的木质复古快艇（Riva Boat），巡游湖面，远眺名流别墅。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">14:00</div>
-                <div class="timeline-desc">在贝拉焦（Bellagio）小镇步行Citywalk，享受意式冰淇淋（Gelato）。</div>
-            </div>
-        </div>
-
-        <!-- Day 6 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 6</span>
-                <span class="day-title">科莫湖 ➡️ 威尼斯</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:00</div>
-                <div class="timeline-desc">乘火车（约2.5小时）前往水上都市<strong>威尼斯 (Venice)</strong>。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">15:00</div>
-                <div class="timeline-desc">入住主岛精品酒店。漫步圣马可广场，避开人群，寻找无人的运河小巷。</div>
-            </div>
-        </div>
-
-        <!-- Day 7 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 7</span>
-                <span class="day-title">威尼斯水道与墨鱼汁意面</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:30</div>
-                <div class="timeline-desc">乘坐贡多拉（Gondola）穿梭于古老水道中。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">18:00</div>
-                <div class="timeline-desc">在运河旁的景观餐厅享用正宗的墨鱼汁面与起泡酒（Aperol Spritz）。</div>
-            </div>
-        </div>
-
-        <!-- Day 8 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 8</span>
-                <span class="day-title">威尼斯 ➡️ 米兰 —— 经典建筑与最后一晚</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:00</div>
-                <div class="timeline-desc">乘火车（约2小时）返回时尚之都<strong>米兰 (Milan)</strong>。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">14:00</div>
-                <div class="timeline-desc">打卡米兰大教堂（Duomo）与埃马努埃莱二世长廊，进行回国前的伴手礼采购。</div>
-            </div>
-        </div>
-
-        <!-- Day 9 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 9</span>
-                <span class="day-title">米兰 ➡️ 返程</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">09:30</div>
-                <div class="timeline-desc">一同打车前往米兰马尔彭萨机场（MXP）。在机场完成海关退税。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">12:50/13:30</div>
-                <div class="timeline-desc">分别搭乘东航/国航直飞航班，返回上海和北京。</div>
-            </div>
-        </div>
-
-        <!-- Tickets Booking Guide -->
-        <h2 class="hotel-section-title">🎫 建议提前订票与预约指南</h2>
-        <div class="ticket-list">
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-paintbrush"></i> 巴黎·橘园美术馆 (Musée de l'Orangerie)</div>
-                    <div class="ticket-channel">官方渠道：<a href="https://billetterie.musee-orangerie.fr/en-GB/home" target="_blank">官网在线预约 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 需预约特定入场时间段，现场不设售票。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-normal">建议提前 30 天</span>
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-church"></i> 米兰·《最后的晚餐》壁画 (Cenacolo Vinciano)</div>
-                    <div class="ticket-channel">官方渠道：<a href="https://cenacolovinciano.vivaticket.it/" target="_blank">Vivaticket 官方抢票平台 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 抢票难度极高。若抢空，可尝试预订含导览的旅行团门票。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-urgent">必须提前 90 天</span>
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-ship"></i> 科莫湖·私人复古木船 (Riva Boat)</div>
-                    <div class="ticket-channel">预订渠道：Como Classic Boats 等线上预订 | 黄金周出海极其热门。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-normal">建议提前 45 天</span>
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-ticket"></i> 威尼斯·圣马可大教堂 & 钟楼登顶</div>
-                    <div class="ticket-channel">官方渠道：圣马可官方预约平台 | 购买快速通道免去现场2小时的长队排队时间。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-normal">建议提前 30 天</span>
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-train"></i> 意铁火车票 (米兰 ➡️ 威尼斯)</div>
-                    <div class="ticket-channel">预订渠道：Italo 或 Trenitalia App/官网 | 提早预订折扣可低至4折。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-easy">建议提前 30 天</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hotels Recommendation -->
-        <h2 class="hotel-section-title">🏨 巴黎与意大利·精选酒店参考</h2>
+        <!-- Hotels Reference -->
+        <h2 class="hotel-section-title">🏨 全程 9晚 精选酒店参考</h2>
         
-        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 巴黎 (Paris)</h3>
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 巴黎 (Paris) —— 停留3晚</h3>
         <div class="hotel-grid">
             <div class="hotel-card">
                 <div class="hotel-info">
@@ -832,7 +846,7 @@
             </div>
         </div>
 
-        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 科莫湖 (Lake Como)</h3>
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 科莫湖 (Lake Como) —— 停留2晚</h3>
         <div class="hotel-grid">
             <div class="hotel-card">
                 <div class="hotel-info">
@@ -866,7 +880,7 @@
             </div>
         </div>
 
-        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 威尼斯 (Venice)</h3>
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 威尼斯 (Venice) —— 停留2晚</h3>
         <div class="hotel-grid">
             <div class="hotel-card">
                 <div class="hotel-info">
@@ -900,7 +914,7 @@
             </div>
         </div>
 
-        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 米兰 (Milan)</h3>
+        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 米兰 (Milan) —— 停留2晚</h3>
         <div class="hotel-grid">
             <div class="hotel-card">
                 <div class="hotel-info">
@@ -933,6 +947,60 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- ================== TAB 3: BOOKINGS & PREP ================== -->
+    <div id="tab-bookings" class="route-content">
+        
+        <!-- Tickets Booking Guide -->
+        <h2 class="hotel-section-title">🎫 建议提前订票与预约指南</h2>
+        <div class="ticket-list">
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-paintbrush"></i> 巴黎·橘园美术馆 (Musée de l'Orangerie)</div>
+                    <div class="ticket-channel">官方渠道：<a href="https://billetterie.musee-orangerie.fr/en-GB/home" target="_blank">官网在线预约 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 需预约特定入场时间段，现场不设售票。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 30 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-church"></i> 米兰·《最后的晚餐》壁画 (Cenacolo Vinciano)</div>
+                    <div class="ticket-channel">官方渠道：<a href="https://cenacolovinciano.vivaticket.it/" target="_blank">Vivaticket 官方抢票平台 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 抢票难度极高。若抢空，可尝试预订含导览的旅行团门票。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-urgent">必须提前 90 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-ship"></i> 科莫湖·私人复古木船 (Riva Boat)</div>
+                    <div class="ticket-channel">预订渠道：<a href="https://www.comoclassicboats.com/" target="_blank">Como Classic Boats 官网 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> 等线上预订 | 黄金周出海极其热门。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 45 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-ticket"></i> 威尼斯·圣马可大教堂 & 钟楼登顶</div>
+                    <div class="ticket-channel">官方渠道：<a href="https://www.basilicasanmarco.it/" target="_blank">圣马可大教堂预约平台 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 购买快速通道免去现场排队。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-normal">建议提前 30 天</span>
+                </div>
+            </div>
+            <div class="ticket-card">
+                <div class="ticket-info">
+                    <div class="ticket-title"><i class="fa-solid fa-train"></i> 意铁火车票 (米兰 ➡️ 威尼斯)</div>
+                    <div class="ticket-channel">预订渠道：<a href="https://www.italotreno.it/en" target="_blank">Italo 官网 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> 或 <a href="https://www.trenitalia.com/en.html" target="_blank">Trenitalia 官网 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 提早预订折扣低。</div>
+                </div>
+                <div class="ticket-meta">
+                    <span class="ticket-badge badge-easy">建议提前 30 天</span>
+                </div>
+            </div>
+        </div>
 
         <!-- Prep Checklist -->
         <div class="sync-card">
@@ -940,7 +1008,7 @@
             <div class="checklist-grid">
                 <div class="check-item">
                     <i class="fa-regular fa-circle-check"></i>
-                    <div><strong>申根签证（法国）</strong><br>需立刻准备流水及在职证明并预约指纹。</div>
+                    <div><strong>申根签证（法国）</strong><br>需立刻准备流水及在职证明并预约指纹。目前已临近出发，时间急迫。</div>
                 </div>
                 <div class="check-item">
                     <i class="fa-regular fa-circle-check"></i>
@@ -958,427 +1026,6 @@
         </div>
     </div>
 
-    <!-- ================== MALAYSIA ================== -->
-    <div id="tab-malaysia" class="route-content tab-malaysia">
-        
-        <!-- Flight Sync Card -->
-        <div class="sync-card">
-            <h3><i class="fa-solid fa-plane-arrival"></i> 京沪同抵·去程联调方案</h3>
-            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">选择大马国航或亚航直飞航班，在吉隆坡国际机场（KUL）汇合：</p>
-            <div class="flight-row">
-                <div><span class="city-badge">北京出发</span> 马航 MH319 (PKX ➡️ KUL)</div>
-                <div>起飞 09:30 ➡️ 抵达 16:00</div>
-            </div>
-            <div class="flight-row">
-                <div><span class="city-badge">上海出发</span> 马航 MH389 (PVG ➡️ KUL)</div>
-                <div>起飞 09:10 ➡️ 抵达 14:40</div>
-            </div>
-            <p style="font-size: 12px; color: var(--color-accent-malaysia); margin: 10px 0 0; font-weight: 600;">
-                💡 汇合点：吉隆坡机场 KUL Terminal 1 到达大厅的星巴克。上海出发稍早1小时20分钟抵达，北京出发落地后即可一同出关前往市区。
-            </p>
-        </div>
-
-        <div class="sync-card">
-            <h3><i class="fa-solid fa-plane-departure"></i> 同期返程·回程联调方案</h3>
-            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">结束兰卡威行程，下午返回吉隆坡中转，搭乘晚间航班一同飞回：</p>
-            <div class="flight-row">
-                <div><span class="city-badge">回北京</span> 马航 MH318 (KUL ➡️ PKX)</div>
-                <div>起飞 00:40 ➡️ 07:00 抵达</div>
-            </div>
-            <div class="flight-row">
-                <div><span class="city-badge">回上海</span> 马航 MH388 (KUL ➡️ PVG)</div>
-                <div>起飞 23:30 ➡️ 次日 05:00 抵达</div>
-            </div>
-        </div>
- 
-        <!-- Budget Card -->
-        <!-- Budget Card -->
-        <div class="sync-card">
-            <h3><i class="fa-solid fa-coins"></i> 💰 双人 8-9 天预算估算 (RMB)</h3>
-            <div class="table-wrapper">
-                <table class="compare-table" style="font-size: 13px;">
-                    <thead>
-                        <tr>
-                            <th>消费项</th>
-                            <th>舒适型 (Comfort)</th>
-                            <th>设计精品 (Boutique)</th>
-                            <th>奢华高奢 (Luxury)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>机票 (国庆双人往返)</strong></td>
-                            <td>¥12,000 <span style="font-size:10px;color:gray;">(经济舱 ¥6k/人)</span></td>
-                            <td>¥16,000 <span style="font-size:10px;color:gray;">(优质直飞/旺季主流)</span></td>
-                            <td>¥36,000 <span style="font-size:10px;color:gray;">(双人直飞公务舱)</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>酒店 (8晚双人)</strong></td>
-                            <td>¥4,800 <span style="font-size:10px;color:gray;">(平均600/晚)</span></td>
-                            <td>¥8,000 <span style="font-size:10px;color:gray;">(平均1000/晚)</span></td>
-                            <td>¥17,600 <span style="font-size:10px;color:gray;">(平均2200/晚)</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>当地交通 (内陆机/打车/自驾)</strong></td>
-                            <td>¥1,500</td>
-                            <td>¥2,500</td>
-                            <td>¥4,000</td>
-                        </tr>
-                        <tr>
-                            <td><strong>餐饮与游玩活动</strong></td>
-                            <td>¥3,500</td>
-                            <td>¥5,500</td>
-                            <td>¥8,000</td>
-                        </tr>
-                        <tr style="border-top: 2px solid var(--color-primary); background: #FAF9F6;">
-                            <td><strong>预计总计 (双人)</strong></td>
-                            <td><strong>¥21,800</strong></td>
-                            <td><strong>¥32,000</strong></td>
-                            <td><strong>¥65,600</strong></td>
-                        </tr>
-                        <tr style="font-size:11px; color:var(--color-text-muted);">
-                            <td>人均花费</td>
-                            <td>约 ¥1.09万 /人</td>
-                            <td>约 ¥1.60万 /人</td>
-                            <td>约 ¥3.28万 /人</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p style="font-size: 11px; color: var(--color-text-muted); margin: 10px 0 0;">
-                *机票预估基于国庆黄金周北京/上海直飞吉隆坡往返机票的真实溢价范围（黄金周大马往返直飞票价往往翻倍，已根据旺季行情调高预算）。
-            </p>
-        </div>
-
-        <!-- Outdoor Card -->
-        <div class="sync-card" style="border-left: 4px solid var(--color-accent-malaysia);">
-            <h3><i class="fa-solid fa-tree"></i> 🌿 沿途推荐体验的【轻户外】景观</h3>
-            <p style="font-size: 13px; color: var(--color-text-muted); margin-top:0;">以下户外活动均属于舒适度假风，零体能要求，不需专业装备：</p>
-            <ul style="font-size: 13px; margin: 0; padding-left: 20px;">
-                <li style="margin-bottom: 6px;"><strong>兰卡威红树林私人游船</strong>：完全无需走路，包一艘小木船游弋在千万年石灰岩悬崖河道，看老鹰低空捕鱼。</li>
-                <li style="margin-bottom: 6px;"><strong>珍南海滩落日散步</strong>：漫步细软白沙滩，或躺在沙滩俱乐部的豆袋沙发上，喝着冰椰汁看火山烧云落日。</li>
-                <li style="margin-bottom: 6px;"><strong>兰卡威天空之桥</strong>：坐全景缆车直达山顶，走上悬空的弯曲大吊桥俯瞰热带雨林与安达曼群岛，风光极佳。</li>
-                <li style="margin-bottom: 6px;"><strong>槟城升旗山避暑</strong>：坐缆车登顶，比市区凉快5℃，在绿树成荫的空中步道慢行漫游。</li>
-            </ul>
-        </div>
-
-        <!-- Itinerary -->
-        <h2 style="font-family: 'Noto Serif SC', serif; font-size: 20px; margin: 40px 0 20px; color: var(--color-primary);">📅 每日行程规划（避暑避堵）</h2>
-
-        <!-- Day 1 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 1</span>
-                <span class="day-title">吉隆坡汇合，打卡双子塔夜景</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">17:00</div>
-                <div class="timeline-desc">在KUL机场汇合，一同打车前往市中心奢华酒店入住。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">19:30</div>
-                <div class="timeline-desc">在城中顶级景观露台，一边享用美食一边观赏亮灯的双子塔。</div>
-            </div>
-        </div>
-
-        <!-- Day 2 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 2</span>
-                <span class="day-title">南洋老街Citywalk与美食之旅</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:30</div>
-                <div class="timeline-desc">漫步<strong>鬼仔巷与茨厂街</strong>，感受南洋华人复古老街的魅力。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">13:00</div>
-                <div class="timeline-desc">品尝正宗的亚罗街黄亚华烧鸡翅、福建面以及椰浆饭。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">16:00</div>
-                <div class="timeline-desc">在网红文青园区 <strong>RexKL (昔日戏院改建)</strong> 的迷宫书店打卡，喝冰镇南洋咖啡。</div>
-            </div>
-        </div>
-
-        <!-- Day 3 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 3</span>
-                <span class="day-title">吉隆坡 ➡️ 槟城 —— 艺术古迹之旅</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:00</div>
-                <div class="timeline-desc">搭乘内陆小班机（约1小时）或双轨电动火车前往世界遗产之城——<strong>槟城 (Penang)</strong>。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">15:00</div>
-                <div class="timeline-desc">入住乔治镇（George Town）带有浓郁英式殖民风的精品酒店（如 E&O 东方大酒店）。</div>
-            </div>
-        </div>
-
-        <!-- Day 4 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 4</span>
-                <span class="day-title">乔治镇壁画街与榴莲饕餮</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:00</div>
-                <div class="timeline-desc">慢悠悠寻找街头著名的壁画（如《姐弟共骑》），逛逛极具韵味的姓氏桥（姓周桥）。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">14:00</div>
-                <div class="timeline-desc">品尝槟城名物——猫山王榴莲、炒粿条和煎蕊甜品。</div>
-            </div>
-        </div>
-
-        <!-- Day 5 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 5</span>
-                <span class="day-title">槟城 ➡️ 兰卡威 —— 开启度假岛生活</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">11:00</div>
-                <div class="timeline-desc">搭乘内陆航班飞抵免税度假天堂——<strong>兰卡威 (Langkawi)</strong>。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">14:00</div>
-                <div class="timeline-desc">入住位于雨林深处或沙滩畔的五星级度假村（如 The Datai 或 威斯汀）。</div>
-            </div>
-        </div>
-
-        <!-- Day 6 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 6</span>
-                <span class="day-title">巨鹰广场与珍南海滩日落</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">11:00</div>
-                <div class="timeline-desc">租车自驾。游览地标巨鹰广场，中午在海边享用海鲜烧烤。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">17:30</div>
-                <div class="timeline-desc">前往<strong>珍南海滩 (Cenang Beach)</strong>，躺在沙滩垫上喝冰啤酒，静静观赏落入地平线的火烧云日落。</div>
-            </div>
-        </div>
-
-        <!-- Day 7 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 7</span>
-                <span class="day-title">红树林生态游船（慢节奏版）</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">10:00</div>
-                <div class="timeline-desc">半包一艘私人木船巡游红树林。观察喂鹰、看穿梭的奇特蜥蜴和静谧的喀斯特地貌。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">19:00</div>
-                <div class="timeline-desc">在度假村餐厅享用浪漫的海滩烛光晚餐。</div>
-            </div>
-        </div>
-
-        <!-- Day 8 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 8</span>
-                <span class="day-title">兰卡威免税店血拼与回国中转</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">11:00</div>
-                <div class="timeline-desc">在瓜镇免税店购买极具性价比的巧克力与高档洋酒（兰卡威为全岛免税）。</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">16:00</div>
-                <div class="timeline-desc">搭乘内陆航班飞回吉隆坡。</div>
-            </div>
-        </div>
-
-        <!-- Day 9 -->
-        <div class="day-card">
-            <div class="day-header">
-                <span class="day-num">Day 9</span>
-                <span class="day-title">吉隆坡中转 ➡️ 返程</span>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">23:30/00:40</div>
-                <div class="timeline-desc">办理登机牌并退税，一同踏上夜间航班，分别飞回上海和北京。</div>
-            </div>
-        </div>
-
-        <!-- Tickets Booking Guide -->
-        <h2 class="hotel-section-title">🎫 建议提前订票与预约指南</h2>
-        <div class="ticket-list">
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-building"></i> 吉隆坡·双子塔天桥 (Twin Towers Skybridge)</div>
-                    <div class="ticket-channel">官方渠道：<a href="https://www.petronastwintowers.com.my/" target="_blank">双子塔官方预约平台 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 每天限额发放门票，通常在1个月前开放。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-urgent">必须提前 30 天</span>
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-mountain"></i> 槟城·升旗山缆车 (Penang Hill Funicular)</div>
-                    <div class="ticket-channel">预订渠道：<a href="https://www.klook.com/zh-CN/activity/13210-penang-hill-fast-track-funicular-ticket-penang/" target="_blank">Klook 快速票购买通道 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 黄金周建议直接购买 Fast Lane，现场省时1.5小时。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-easy">提前 2-3 天 (买快速票)</span>
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-anchor"></i> 兰卡威·红树林私人包船 / 帆船落日巡游</div>
-                    <div class="ticket-channel">预订渠道：<a href="https://www.klook.com/zh-CN/activity/51627-langkawi-sunset-cruise/" target="_blank">Klook 兰卡威落日巡游 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> 或联系度假村 | 黄金周私人双体帆船档期需提早锁定。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-normal">建议提前 15 天</span>
-                </div>
-            </div>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <div class="ticket-title"><i class="fa-solid fa-car"></i> 兰卡威·自驾租车</div>
-                    <div class="ticket-channel">预订渠道：<a href="https://www.zuzuche.com/" target="_blank">租租车官网/App <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a> | 需准备中国驾照原件及英文翻译件。</div>
-                </div>
-                <div class="ticket-meta">
-                    <span class="ticket-badge badge-normal">建议提前 15 天</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hotels Recommendation -->
-        <h2 class="hotel-section-title">🏨 吉隆坡与海岛·精选酒店参考</h2>
-        
-        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 吉隆坡 (Kuala Lumpur)</h3>
-        <div class="hotel-grid">
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">Four Seasons Hotel KL</div>
-                    <div class="hotel-desc">紧邻KLCC双子塔。拥有俯瞰双子塔公园的无边泳池与顶级餐饮，服务体贴无死角。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-luxury">奢华高奢</span>
-                    <div class="hotel-price">¥1,600+ /晚</div>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">The RuMa Hotel and Residences</div>
-                    <div class="hotel-desc">融合大马锡矿开采历史底蕴与现代侘寂美学。氛围静谧舒适，充满沉稳高级感。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-boutique">设计精品</span>
-                    <div class="hotel-price">¥800 - 1,200 /晚</div>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">The Chow Kit - An Ormond Hotel</div>
-                    <div class="hotel-desc">纽约红砖复古风设计。极简而精致的工业风软装，荣获多次亚洲设计大奖，性价比极高。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-comfort">高性价比</span>
-                    <div class="hotel-price">¥400 - 600 /晚</div>
-                </div>
-            </div>
-        </div>
-
-        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 槟城 (Penang)</h3>
-        <div class="hotel-grid">
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">Eastern & Oriental Hotel (E&O)</div>
-                    <div class="hotel-desc">拥有130年历史的传奇英式殖民风酒店。推荐入住 Heritage 翼，直面马六甲海峡吃海景下午茶。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-luxury">奢华高奢</span>
-                    <div class="hotel-price">¥1,400+ /晚</div>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">Seven Terraces (七间房)</div>
-                    <div class="hotel-desc">由19世纪娘惹排屋改造。红木中式古董家具与英式地砖交融，是体验当地传统文化的顶级美宿。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-boutique">设计精品</span>
-                    <div class="hotel-price">¥800 - 1,200 /晚</div>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">The Edison George Town</div>
-                    <div class="hotel-desc">由百年富商豪宅改建。高亮Tiffany蓝与纯白撞色，配以精致的西式对称庭院，非常治愈。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-comfort">高性价比</span>
-                    <div class="hotel-price">¥500 - 700 /晚</div>
-                </div>
-            </div>
-        </div>
-
-        <h3 class="hotel-city-title"><i class="fa-solid fa-location-dot"></i> 兰卡威 (Langkawi)</h3>
-        <div class="hotel-grid">
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">The Datai Langkawi</div>
-                    <div class="hotel-desc">隐于千万年古老雨林深处的度假殿堂。直面全岛最美的私人海湾沙滩，是避世奢享的代名词。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-luxury">奢华高奢</span>
-                    <div class="hotel-price">¥3,800+ /晚</div>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">Temple Tree Resort</div>
-                    <div class="hotel-desc">由大马各省份百年的华商、马来贵族古木屋异地组装重建成的野奢村庄，每栋都有独特的故事。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-boutique">设计精品</span>
-                    <div class="hotel-price">¥900 - 1,400 /晚</div>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-info">
-                    <div class="hotel-name">Casa del Mar</div>
-                    <div class="hotel-desc">西班牙海滨风情民宿。推门即可直奔珍南海滩，傍晚坐在海滩躺椅上吹海风，十分悠闲。</div>
-                </div>
-                <div class="hotel-meta">
-                    <span class="hotel-tier tier-comfort">高性价比</span>
-                    <div class="hotel-price">¥800 - 1,200 /晚</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Prep Checklist -->
-        <div class="sync-card">
-            <h3><i class="fa-solid fa-passport"></i> 马来西亚行前准备清单</h3>
-            <div class="checklist-grid">
-                <div class="check-item">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <div><strong>免签及MDAC电子申报</strong><br>马来西亚对华免签，但出发前3天必须在<a href="https://imigresen-online.imi.gov.my/mdac/main" target="_blank" style="color: var(--color-primary); text-decoration: underline; font-weight: 700;">大马移民局 MDAC 官网 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a>填写电子入境卡。</div>
-                </div>
-                <div class="check-item">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <div><strong>网约车 Grab App</strong><br>出行前在国内应用商店下载好 Grab，绑定国内信用卡即可直接扣款打车。</div>
-                </div>
-                <div class="check-item">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <div><strong>英标转换插头</strong><br>马来西亚插头为英规三角扁插，需要自备转换器。</div>
-                </div>
-                <div class="check-item">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <div><strong>防晒与防蚊喷雾</strong><br>海岛紫外线强烈，红树林与雨林需配备强力避蚊胺（DEET）喷雾。</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="footer-note">
         方案由 Antigravity 整理设计 · <a href="file:///Users/gengyibin/.gemini/antigravity-ide/brain/c9f352f4-6851-49db-a106-7b62dba75ed2/travel_itineraries_all.md">查看原长假方案</a>
     </div>
@@ -1389,35 +1036,23 @@
     let markersLayer = L.layerGroup();
     let polylineLayer = L.layerGroup();
 
-    const routesData = {
-        europe: {
-            center: [47.2, 7.5],
-            zoom: 5,
-            points: [
-                { name: "巴黎 (Paris)", coords: [48.8566, 2.3522] },
-                { name: "科莫湖 (Lake Como)", coords: [46.0160, 9.2572] },
-                { name: "威尼斯 (Venice)", coords: [45.4408, 12.3155] },
-                { name: "米兰 (Milan)", coords: [45.4642, 9.1900] }
-            ],
-            color: '#C08A3E'
-        },
-        malaysia: {
-            center: [4.8, 100.3],
-            zoom: 7,
-            points: [
-                { name: "吉隆坡 (Kuala Lumpur)", coords: [3.1390, 101.6869] },
-                { name: "槟城 (Penang)", coords: [5.4141, 100.3288] },
-                { name: "兰卡威 (Langkawi)", coords: [6.3500, 99.8000] }
-            ],
-            color: '#D46A43'
-        }
+    const routeData = {
+        center: [47.2, 7.5],
+        zoom: 5,
+        points: [
+            { name: "1. 巴黎 (Paris)", coords: [48.8566, 2.3522] },
+            { name: "2. 科莫湖 (Lake Como)", coords: [46.0160, 9.2572] },
+            { name: "3. 威尼斯 (Venice)", coords: [45.4408, 12.3155] },
+            { name: "4. 米兰 (Milan)", coords: [45.4642, 9.1900] }
+        ],
+        color: '#C08A3E'
     };
 
     function initMap() {
         map = L.map('map', {
             zoomControl: false,
             attributionControl: false
-        }).setView(routesData.europe.center, routesData.europe.zoom);
+        }).setView(routeData.center, routeData.zoom);
 
         // Elegant light minimal tile layer (CartoDB Positron)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -1427,24 +1062,21 @@
         markersLayer.addTo(map);
         polylineLayer.addTo(map);
 
-        updateMap('europe');
+        drawRoute();
     }
 
-    function updateMap(routeKey) {
+    function drawRoute() {
         markersLayer.clearLayers();
         polylineLayer.clearLayers();
 
-        const route = routesData[routeKey];
-        map.setView(route.center, route.zoom);
-
         const latlngs = [];
-        route.points.forEach((pt, index) => {
+        routeData.points.forEach((pt, index) => {
             latlngs.push(pt.coords);
 
             const customIcon = L.divIcon({
                 className: 'custom-map-marker',
                 html: `<div style="
-                    background: ${route.color}; 
+                    background: ${routeData.color}; 
                     width: 20px; 
                     height: 20px; 
                     border-radius: 50%; 
@@ -1473,7 +1105,7 @@
 
         // Add connecting travel lines
         L.polyline(latlngs, {
-            color: route.color,
+            color: routeData.color,
             weight: 2,
             dashArray: '5, 10',
             opacity: 0.8
@@ -1483,14 +1115,16 @@
     function switchTab(tabId) {
         // Toggle tab buttons
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        event.currentTarget.classList.add('active');
+        event.target.closest('.tab-btn').classList.add('active');
 
         // Toggle contents
         document.querySelectorAll('.route-content').forEach(content => content.classList.remove('active'));
         document.getElementById('tab-' + tabId).classList.add('active');
 
-        // Trigger map animation & swap markers
-        updateMap(tabId);
+        // Leaflet needs map.invalidateSize() when showing hidden container
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 100);
     }
 
     window.onload = function() {
