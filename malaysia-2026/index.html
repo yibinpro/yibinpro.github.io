@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026 十一国庆 · 马来西亚双人浪漫之旅 (北京 & 上海 出发)</title>
-  <meta name="description" content="2026年国庆十一假期马来西亚8天7晚双人自由行全攻略，包含北京/上海同到同走携程机票搭配、精选酒店、沙巴亚庇+吉隆坡线路及打卡清单。">
+  <meta name="description" content="2026年国庆十一假期马来西亚8天7晚双人自由行全攻略，包含北京/上海同到同走携程机票搭配、精选酒店、沙巴亚庇+吉隆坡线路、景点门票预订通道及打卡清单。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -101,7 +101,7 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       list-style: none;
     }
 
@@ -425,7 +425,6 @@
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--accent-gold);
-
     }
 
     .timeline-content {
@@ -479,6 +478,82 @@
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--accent-gold);
+    }
+
+    /* Tickets Grid */
+    .ticket-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .ticket-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ticket-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-teal);
+    }
+
+    .ticket-type {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-teal);
+      background: rgba(20, 184, 166, 0.15);
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .ticket-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .ticket-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .ticket-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 16px;
+    }
+
+    .ticket-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .btn-ticket {
+      background: var(--gradient-hero);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-ticket:hover {
+      opacity: 0.9;
     }
 
     /* Spot Cards Grid */
@@ -597,6 +672,7 @@
       <ul class="nav-links">
         <li><a href="#flights">机票搭配</a></li>
         <li><a href="#itinerary">8天行程</a></li>
+        <li><a href="#tickets">门票预订</a></li>
         <li><a href="#hotels">精选酒店</a></li>
         <li><a href="#spots">打卡景点</a></li>
         <li><a href="#prep">行前准备</a></li>
@@ -612,7 +688,7 @@
     <div class="container">
       <div class="hero-tag">✨ 2026 国庆 9.24 - 10.03 自由行策划</div>
       <h1>马来西亚 8天7晚 <span>双人浪漫之旅</span></h1>
-      <p>北京 & 上海 异地出发 · 精准机票时段匹配（同到同走） · 城市与海岛度假全指南</p>
+      <p>北京 & 上海 异地出发 · 精准机票时段匹配（同到同走） · 景点门票预约与海岛度假全指南</p>
 
       <div class="hero-stats">
         <div class="stat-card">
@@ -904,6 +980,94 @@
     </div>
   </section>
 
+  <!-- Tickets & Booking Section -->
+  <section id="tickets" class="container">
+    <div class="section-header">
+      <h2>🎟️ 必看门票预订与一日游通道</h2>
+      <p>黄金周热门景点提前锁定攻略（国庆期间建议提前 15-30 天预约）</p>
+    </div>
+
+    <div class="ticket-grid">
+      <!-- Ticket 1 -->
+      <div class="ticket-card">
+        <div>
+          <span class="ticket-type">吉隆坡 · 必提前抢票</span>
+          <h3 class="ticket-title">吉隆坡双峰塔登塔门票 (Petronas Towers)</h3>
+          <p class="ticket-info">含 86 层云端观景台 + 41 层天桥。国庆每日限量发售，现场排队几乎买不到！建议提前 20 天在携程/Klook锁定场次。</p>
+        </div>
+        <div class="ticket-footer">
+          <div class="ticket-price">约 ¥160 /人 (RM 98)</div>
+          <a href="https://www.ctrip.com" target="_blank" class="btn-ticket">携程抢票 ➔</a>
+        </div>
+      </div>
+
+      <!-- Ticket 2 -->
+      <div class="ticket-card">
+        <div>
+          <span class="ticket-type">沙巴亚庇 · 海岛经典</span>
+          <h3 class="ticket-title">美人鱼岛出海浮潜/深潜一日游</h3>
+          <p class="ticket-info">包含市区酒店接送 + 快艇 + 两次果冻海浮潜 + 海景午餐 + 拖伞/水上项目可选。建议提前线上订好，省心方便。</p>
+        </div>
+        <div class="ticket-footer">
+          <div class="ticket-price">约 ¥350 - 480 /人</div>
+          <a href="https://www.ctrip.com" target="_blank" class="btn-ticket">预订一日游 ➔</a>
+        </div>
+      </div>
+
+      <!-- Ticket 3 -->
+      <div class="ticket-card">
+        <div>
+          <span class="ticket-type">沙巴亚庇 · 梦幻夜景</span>
+          <h3 class="ticket-title">Kawa 红树林寻长鼻猴 + 萤火虫游船</h3>
+          <p class="ticket-info">下午接送，含下午茶 + 寻长鼻猴游船 + 海边日落自助晚餐 + 漫天萤火虫银河游船，情侣出游必选。</p>
+        </div>
+        <div class="ticket-footer">
+          <div class="ticket-price">约 ¥160 - 240 /人</div>
+          <a href="https://www.ctrip.com" target="_blank" class="btn-ticket">预订一日游 ➔</a>
+        </div>
+      </div>
+
+      <!-- Ticket 4 -->
+      <div class="ticket-card">
+        <div>
+          <span class="ticket-type">沙巴亚庇 · 高山避暑</span>
+          <h3 class="ticket-title">神山国家公园 + Desa 奶牛场一日游</h3>
+          <p class="ticket-info">打卡“小新西兰”Desa 奶牛场（喂小牛、吃鲜奶冰淇淋）+ 波令温泉树顶吊桥，专车包车/拼车。</p>
+        </div>
+        <div class="ticket-footer">
+          <div class="ticket-price">约 ¥220 - 320 /人</div>
+          <a href="https://www.ctrip.com" target="_blank" class="btn-ticket">预订一日游 ➔</a>
+        </div>
+      </div>
+
+      <!-- Ticket 5 -->
+      <div class="ticket-card">
+        <div>
+          <span class="ticket-type">吉隆坡 · 无缝交通</span>
+          <h3 class="ticket-title">吉隆坡机场快线 KLIA Ekspres 车票</h3>
+          <p class="ticket-info">KUL 机场直达吉隆坡中环车站 (KL Sentral) 仅需 28 分钟，全程空调高速，在线购票扫二维码直接进站。</p>
+        </div>
+        <div class="ticket-footer">
+          <div class="ticket-price">单程约 ¥90 (RM 55)</div>
+          <a href="https://www.ctrip.com" target="_blank" class="btn-ticket">在线预订 ➔</a>
+        </div>
+      </div>
+
+      <!-- Ticket 6 -->
+      <div class="ticket-card">
+        <div>
+          <span class="ticket-type">通讯必备 · 高速上网</span>
+          <h3 class="ticket-title">马来西亚 4G/5G 高速流量 eSIM / 电话卡</h3>
+          <p class="ticket-info">推荐 CelcomDigi 或 Maxis 运营商。支持 eSIM 即买即用，8天无限流量，包邮送达或扫码激活。</p>
+        </div>
+        <div class="ticket-footer">
+          <div class="ticket-price">约 ¥35 - 55 /张</div>
+          <a href="https://www.ctrip.com" target="_blank" class="btn-ticket">预订流量卡 ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Hotels Section -->
   <section id="hotels" class="container">
     <div class="section-header">
@@ -1000,7 +1164,8 @@
           <li><input type="checkbox"> 打印北京/上海往返机票行程单 (英文)</li>
           <li><input type="checkbox"> 打印全程酒店预订单 (英文)</li>
           <li><input type="checkbox"> 下载 Grab App 并绑定支付方式</li>
-          <li><input type="checkbox"> 准备英标转换插头与防晒霜</li>
+          <li><input type="checkbox"> 预订双峰塔门票 & 美人鱼岛一日游</li>
+          <li><input type="checkbox"> 购买 4G/5G 高速 eSIM / 电话卡</li>
         </ul>
       </div>
 
@@ -1010,13 +1175,14 @@
         <input type="range" min="500" max="2500" value="1200" class="budget-slider" id="hotelSlider" oninput="updateBudget()">
         
         <div style="font-size:0.95rem; margin-top:12px;">
-          <div>机票开销：约 ¥7,500 (双人往返)</div>
+          <div>机票开销：约 ¥7,500 (北京/上海双人往返)</div>
           <div>酒店预估：约 ¥<span id="hotelVal">1200</span> × 7晚 = ¥<span id="hotelTotal">8400</span></div>
-          <div>餐饮与玩乐：约 ¥4,500 (双人)</div>
+          <div>门票与一日游：约 ¥1,800 (双塔+出海+萤火虫+神山)</div>
+          <div>餐饮与交通：约 ¥3,200 (双人)</div>
         </div>
 
         <div class="budget-total">
-          双人总预算约：¥<span id="grandTotal">20400</span>
+          双人总预算约：¥<span id="grandTotal">20900</span>
         </div>
       </div>
     </div>
@@ -1063,8 +1229,9 @@
       const sliderVal = parseInt(document.getElementById('hotelSlider').value);
       const hotelTotal = sliderVal * 7;
       const flightTotal = 7500;
-      const actTotal = 4500;
-      const grandTotal = flightTotal + hotelTotal + actTotal;
+      const ticketTotal = 1800;
+      const foodTotal = 3200;
+      const grandTotal = flightTotal + hotelTotal + ticketTotal + foodTotal;
 
       document.getElementById('hotelVal').textContent = sliderVal;
       document.getElementById('hotelTotal').textContent = hotelTotal.toLocaleString();
