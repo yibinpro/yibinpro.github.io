@@ -7,27 +7,27 @@
     <meta name="description" content="9.24 - 10.3 马来西亚三城旅行攻略">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         :root {
-            --bg: #0a0e1a;
-            --bg-2: #111827;
-            --card: rgba(255,255,255,0.04);
-            --card-hover: rgba(255,255,255,0.08);
-            --text: #f0f4f8;
-            --text-dim: #8896a8;
-            --accent-1: #ff6b35;
-            --accent-2: #f7c59f;
-            --accent-3: #4ecdc4;
-            --accent-4: #c490e4;
-            --accent-5: #ffd166;
-            --kl: #ff6b35;
-            --kk: #4ecdc4;
-            --pn: #c490e4;
-            --border: rgba(255,255,255,0.1);
+            --bg: #faf7f2;
+            --bg-2: #f3eee6;
+            --card: #ffffff;
+            --card-hover: #faf7f2;
+            --text: #24221d;
+            --text-dim: #8b8478;
+            --accent-1: #b0653e;
+            --accent-2: #d9b58f;
+            --accent-3: #6f8f7f;
+            --accent-4: #8d7fae;
+            --accent-5: #c9a24b;
+            --kl: #b0653e;
+            --kk: #6f8f7f;
+            --pn: #8d7fae;
+            --border: rgba(36,34,29,0.1);
         }
 
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -38,7 +38,7 @@
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.75;
+            line-height: 1.8;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -56,7 +56,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #0a0e1a 0%, #1a1e3a 30%, #2a1e3a 50%, #0a0e1a 100%);
+            background: linear-gradient(180deg, #fdfbf7 0%, #faf7f2 40%, #f3ede3 100%);
         }
 
         .hero::before {
@@ -65,10 +65,10 @@
             top: -50%; left: -50%;
             width: 200%; height: 200%;
             background:
-                radial-gradient(circle at 20% 30%, rgba(255,107,53,0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(78,205,196,0.15) 0%, transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(196,144,228,0.15) 0%, transparent 40%);
-            animation: drift 20s ease-in-out infinite;
+                radial-gradient(circle at 25% 30%, rgba(176,101,62,0.05) 0%, transparent 45%),
+                radial-gradient(circle at 75% 25%, rgba(111,143,127,0.05) 0%, transparent 45%),
+                radial-gradient(circle at 50% 80%, rgba(141,127,174,0.05) 0%, transparent 45%);
+            animation: drift 30s ease-in-out infinite;
         }
 
         @keyframes drift {
@@ -84,7 +84,7 @@
             font-size: 0.8rem;
             letter-spacing: 0.4em;
             text-transform: uppercase;
-            color: var(--accent-3);
+            color: var(--accent-1);
             margin-bottom: 1.5rem;
             opacity: 0;
             animation: fadeUp 1s 0.3s forwards;
@@ -92,34 +92,28 @@
 
         .hero h1 {
             font-family: 'Playfair Display', 'Noto Serif SC', serif;
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 900;
-            line-height: 1.05;
+            font-size: clamp(3rem, 10vw, 6.5rem);
+            font-weight: 600;
+            line-height: 1.08;
             margin-bottom: 1rem;
             opacity: 0;
             animation: fadeUp 1s 0.5s forwards;
         }
 
         .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-5), var(--accent-3));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text);
         }
 
         .hero h1 .it {
             display: inline-block;
             font-family: 'Noto Serif SC', serif;
             font-style: normal;
-            font-weight: 900;
+            font-weight: 700;
             font-size: 0.55em;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.18em;
             margin-top: 0.2em;
-            padding-left: 0.1em;
-            background: linear-gradient(135deg, var(--accent-5), var(--accent-3));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            padding-left: 0.18em;
+            color: var(--accent-1);
         }
 
         .hero-sub {
@@ -145,13 +139,13 @@
             align-items: center;
             padding: 1rem 2rem;
             border: 1px solid var(--border);
-            border-radius: 1rem;
+            border-radius: 1.2rem;
             background: var(--card);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
         }
 
         .hero-date .lbl { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.2em; text-transform: uppercase; }
-        .hero-date .val { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent-5); letter-spacing: 0.02em; }
+        .hero-date .val { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
         .hero-date .city { font-size: 0.85rem; color: var(--text-dim); }
 
         .hero-scroll {
@@ -194,10 +188,10 @@
 
         .section-title {
             font-family: 'Noto Serif SC', 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
             margin-bottom: 1rem;
-            line-height: 1.25;
+            line-height: 1.3;
             letter-spacing: 0.04em;
         }
 
@@ -227,12 +221,13 @@
             border-radius: 1.5rem;
             background: var(--card);
             border: 1px solid var(--border);
+            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
             transition: all 0.3s;
             min-width: 180px;
             position: relative;
         }
 
-        .route-city:hover { transform: translateY(-4px); background: var(--card-hover); }
+        .route-city:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(36,34,29,0.08); }
 
         .route-city .num {
             font-family: 'Playfair Display', serif;
@@ -244,7 +239,7 @@
         .route-city .name {
             font-family: 'Noto Serif SC', serif;
             font-size: 1.3rem;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 0.05em;
         }
 
@@ -264,7 +259,7 @@
         }
 
         .route-arrow .icon { font-size: 1.5rem; margin-bottom: 0.2rem; }
-        .route-arrow .type { color: var(--accent-5); font-weight: 600; }
+        .route-arrow .type { color: var(--accent-5); font-weight: 500; }
 
         /* ===== MAP ===== */
         #map {
@@ -301,7 +296,7 @@
         .legend-dot.pn { background: var(--pn); }
 
         /* ===== DAY CARDS ===== */
-        .day-section { background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02)); }
+        .day-section { background: linear-gradient(180deg, transparent, rgba(36,34,29,0.02)); }
 
         .day-card {
             display: grid;
@@ -312,10 +307,11 @@
             overflow: hidden;
             border: 1px solid var(--border);
             background: var(--card);
+            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
             transition: all 0.3s;
         }
 
-        .day-card:hover { background: var(--card-hover); transform: translateY(-2px); }
+        .day-card:hover { box-shadow: 0 10px 32px rgba(36,34,29,0.08); transform: translateY(-2px); }
 
         .day-side {
             padding: 2rem 1.5rem;
@@ -329,7 +325,7 @@
         .day-side .day-num {
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
-            font-weight: 900;
+            font-weight: 600;
             line-height: 1;
         }
 
@@ -343,28 +339,28 @@
 
         .day-side .day-city {
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 500;
             margin-top: 0.5rem;
             padding: 0.3rem 0.8rem;
             border-radius: 1rem;
         }
 
-        .day-side.kl { background: linear-gradient(135deg, rgba(255,107,53,0.12), rgba(255,107,53,0.04)); }
-        .day-side.kk { background: linear-gradient(135deg, rgba(78,205,196,0.12), rgba(78,205,196,0.04)); }
-        .day-side.pn { background: linear-gradient(135deg, rgba(196,144,228,0.12), rgba(196,144,228,0.04)); }
-        .day-side.tr { background: linear-gradient(135deg, rgba(255,209,102,0.12), rgba(255,209,102,0.04)); }
+        .day-side.kl { background: linear-gradient(135deg, rgba(176,101,62,0.07), rgba(176,101,62,0.02)); }
+        .day-side.kk { background: linear-gradient(135deg, rgba(111,143,127,0.07), rgba(111,143,127,0.02)); }
+        .day-side.pn { background: linear-gradient(135deg, rgba(141,127,174,0.07), rgba(141,127,174,0.02)); }
+        .day-side.tr { background: linear-gradient(135deg, rgba(201,162,75,0.07), rgba(201,162,75,0.02)); }
 
-        .day-side.kl .day-city { background: rgba(255,107,53,0.2); color: var(--kl); }
-        .day-side.kk .day-city { background: rgba(78,205,196,0.2); color: var(--kk); }
-        .day-side.pn .day-city { background: rgba(196,144,228,0.2); color: var(--pn); }
-        .day-side.tr .day-city { background: rgba(255,209,102,0.2); color: var(--accent-5); }
+        .day-side.kl .day-city { background: rgba(176,101,62,0.12); color: var(--kl); }
+        .day-side.kk .day-city { background: rgba(111,143,127,0.12); color: var(--kk); }
+        .day-side.pn .day-city { background: rgba(141,127,174,0.12); color: var(--pn); }
+        .day-side.tr .day-city { background: rgba(201,162,75,0.12); color: var(--accent-5); }
 
         .day-content { padding: 1.5rem 2rem; }
 
         .day-title {
             font-family: 'Noto Serif SC', 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 600;
             letter-spacing: 0.03em;
             margin-bottom: 1rem;
         }
@@ -375,7 +371,7 @@
             display: flex;
             gap: 1rem;
             padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(36,34,29,0.06);
         }
 
         .timeline-item:last-child { border-bottom: none; }
@@ -385,8 +381,8 @@
             width: 80px;
             font-family: 'Outfit', sans-serif;
             font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent-5);
+            font-weight: 500;
+            color: var(--accent-1);
             padding-top: 0.1rem;
         }
 
@@ -398,15 +394,16 @@
             font-size: 0.65rem;
             padding: 0.15rem 0.5rem;
             border-radius: 0.5rem;
-            background: rgba(255,107,53,0.15);
+            background: rgba(176,101,62,0.1);
             color: var(--accent-1);
             margin-left: 0.5rem;
             vertical-align: middle;
+            font-weight: 500;
         }
 
-        .timeline-tag.food { background: rgba(255,209,102,0.15); color: var(--accent-5); }
-        .timeline-tag.must { background: rgba(78,205,196,0.15); color: var(--accent-3); }
-        .timeline-tag.book { background: rgba(196,144,228,0.15); color: var(--accent-4); }
+        .timeline-tag.food { background: rgba(201,162,75,0.12); color: var(--accent-5); }
+        .timeline-tag.must { background: rgba(111,143,127,0.12); color: var(--accent-3); }
+        .timeline-tag.book { background: rgba(141,127,174,0.12); color: var(--accent-4); }
 
         /* ===== HOTELS ===== */
         .hotel-grid {
@@ -420,10 +417,11 @@
             overflow: hidden;
             border: 1px solid var(--border);
             background: var(--card);
+            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
             transition: all 0.3s;
         }
 
-        .hotel-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); }
+        .hotel-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(36,34,29,0.08); border-color: rgba(36,34,29,0.16); }
 
         .hotel-header {
             padding: 1.5rem;
@@ -436,23 +434,23 @@
         .hotel-header.kk { border-bottom: 3px solid var(--kk); }
         .hotel-header.pn { border-bottom: 3px solid var(--pn); }
 
-        .hotel-name { font-size: 1.1rem; font-weight: 700; }
+        .hotel-name { font-size: 1.1rem; font-weight: 600; }
         .hotel-type {
             font-size: 0.7rem;
             padding: 0.2rem 0.7rem;
             border-radius: 0.5rem;
-            font-weight: 600;
+            font-weight: 500;
         }
 
-        .hotel-type.luxury { background: rgba(255,107,53,0.15); color: var(--accent-1); }
-        .hotel-type.value { background: rgba(78,205,196,0.15); color: var(--accent-3); }
+        .hotel-type.luxury { background: rgba(176,101,62,0.1); color: var(--accent-1); }
+        .hotel-type.value { background: rgba(111,143,127,0.1); color: var(--accent-3); }
 
         .hotel-body { padding: 1.5rem; }
 
         .hotel-price {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
@@ -497,6 +495,7 @@
             border-radius: 1.5rem;
             border: 1px solid var(--border);
             background: var(--card);
+            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
         }
 
         .transport-from, .transport-to {
@@ -504,8 +503,9 @@
         }
 
         .transport-from .city, .transport-to .city {
+            font-family: 'Noto Serif SC', serif;
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .transport-from .time, .transport-to .time {
@@ -520,9 +520,9 @@
         }
 
         .transport-mid .icon { font-size: 2rem; }
-        .transport-mid .mode { font-size: 0.75rem; color: var(--accent-5); font-weight: 600; margin-top: 0.3rem; }
+        .transport-mid .mode { font-size: 0.75rem; color: var(--accent-5); font-weight: 500; margin-top: 0.3rem; }
         .transport-mid .duration { font-size: 0.7rem; color: var(--text-dim); }
-        .transport-mid .price { font-size: 0.85rem; color: var(--accent-3); font-weight: 700; margin-top: 0.3rem; }
+        .transport-mid .price { font-size: 0.85rem; color: var(--accent-3); font-weight: 600; margin-top: 0.3rem; }
 
         /* ===== CHECKLIST ===== */
         .checklist {
@@ -530,6 +530,7 @@
             border: 1px solid var(--border);
             border-radius: 1.5rem;
             padding: 2rem;
+            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
         }
 
         .checklist-grid {
@@ -540,7 +541,7 @@
 
         .checklist-group h4 {
             font-size: 1rem;
-            color: var(--accent-5);
+            color: var(--text);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--border);
@@ -575,10 +576,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--bg);
+            color: #fff;
             font-size: 0.7rem;
             height: 100%;
-            font-weight: 900;
+            font-weight: 600;
         }
 
         .checklist-item . urgency { color: var(--accent-1); font-weight: 600; }
@@ -588,9 +589,9 @@
             font-size: 0.6rem;
             padding: 0.1rem 0.4rem;
             border-radius: 0.3rem;
-            background: rgba(255,107,53,0.2);
+            background: rgba(176,101,62,0.12);
             color: var(--accent-1);
-            font-weight: 600;
+            font-weight: 500;
             margin-left: 0.3rem;
             vertical-align: middle;
         }
@@ -604,9 +605,10 @@
 
         .tip-card {
             padding: 1.5rem;
-            border-radius: 1rem;
+            border-radius: 1.2rem;
             border: 1px solid var(--border);
             background: var(--card);
+            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
         }
 
         .tip-card .tip-icon {
@@ -629,7 +631,7 @@
             text-align: center;
             padding: 4rem 2rem;
             border-top: 1px solid var(--border);
-            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02));
+            background: linear-gradient(180deg, transparent, rgba(36,34,29,0.02));
         }
 
         footer .heart {
@@ -658,17 +660,19 @@
             #map { height: 350px; }
         }
 
-        /* Leaflet dark theme */
-        .leaflet-container { background: #0a0e1a !important; }
+        /* Leaflet light theme */
+        .leaflet-container { background: #f3eee6 !important; }
         .leaflet-popup-content-wrapper {
-            background: rgba(17,24,39,0.95);
-            color: #f0f4f8;
+            background: #ffffff;
+            color: #24221d;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(36,34,29,0.1);
+            box-shadow: 0 8px 32px rgba(36,34,29,0.12);
         }
-        .leaflet-popup-tip { background: rgba(17,24,39,0.95); }
+        .leaflet-popup-tip { background: #ffffff; }
         .leaflet-popup-content { margin: 12px 16px; font-family: 'Noto Sans SC', sans-serif; font-size: 13px; }
-        .leaflet-control-zoom a { background: rgba(17,24,39,0.9) !important; color: #f0f4f8 !important; border-color: rgba(255,255,255,0.1) !important; }
+        .leaflet-control-zoom a { background: #ffffff !important; color: #24221d !important; border-color: rgba(36,34,29,0.12) !important; }
+        .leaflet-control-attribution { background: rgba(255,255,255,0.7) !important; color: #8b8478 !important; }
 
         /* fade in on scroll */
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
@@ -682,11 +686,12 @@
             z-index: 1000;
             display: flex;
             gap: 0.5rem;
-            background: rgba(10,14,26,0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(250,247,242,0.88);
+            backdrop-filter: blur(12px);
             padding: 0.5rem 1rem;
             border-radius: 2rem;
             border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(36,34,29,0.06);
         }
 
         .top-nav a {
@@ -1434,7 +1439,7 @@
     </div>
 
     <div style="margin-top: 2rem; padding: 1.5rem; background: var(--card); border-radius: 1rem; border: 1px solid var(--border);">
-        <h4 style="color: var(--accent-5); margin-bottom: 1rem;">⚠️ 机票购买 Tips</h4>
+        <h4 style="color: var(--accent-1); margin-bottom: 1rem;">⚠️ 机票购买 Tips</h4>
         <ul style="list-style:none; font-size:0.85rem; color:var(--text-dim); line-height:2;">
             <li>▸ 亚航 AirAsia 是马来国内段首选，提前 1-2 个月买最便宜</li>
             <li>▸ 行李额单独买（20kg 约 RM50-80），购票时一起买比现场买便宜</li>
@@ -1576,7 +1581,7 @@ const map = L.map('map', {
     zoomControl: true,
 });
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap & CARTO',
     subdomains: 'abcd',
     maxZoom: 19,
@@ -1586,15 +1591,15 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
 function makeMarker(color) {
     return L.divIcon({
         className: 'custom-marker',
-        html: `<div style="width:24px;height:24px;border-radius:50%;background:${color};border:3px solid #0a0e1a;box-shadow:0 0 12px ${color}aa;cursor:pointer;"></div>`,
-        iconSize: [24, 24],
-        iconAnchor: [12, 12],
+        html: `<div style="width:22px;height:22px;border-radius:50%;background:${color};border:3px solid #fff;box-shadow:0 2px 10px rgba(36,34,29,0.25);cursor:pointer;"></div>`,
+        iconSize: [22, 22],
+        iconAnchor: [11, 11],
     });
 }
 
-const klColor = '#ff6b35';
-const kkColor = '#4ecdc4';
-const pnColor = '#c490e4';
+const klColor = '#b0653e';
+const kkColor = '#6f8f7f';
+const pnColor = '#8d7fae';
 
 // KL Markers
 const klMarkers = [
@@ -1633,9 +1638,9 @@ const pnMarkers = [
 ];
 
 // Add markers
-klMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(klColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8896a8">${m.desc}</span>`));
-kkMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(kkColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8896a8">${m.desc}</span>`));
-pnMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(pnColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8896a8">${m.desc}</span>`));
+klMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(klColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8b8478">${m.desc}</span>`));
+kkMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(kkColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8b8478">${m.desc}</span>`));
+pnMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(pnColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8b8478">${m.desc}</span>`));
 
 // Flight routes (dashed lines)
 L.polyline([[3.1579, 101.7117], [5.9788, 116.0753]], { color: klColor, dashArray: '10, 10', weight: 2, opacity: 0.6 }).addTo(map);
@@ -1643,9 +1648,9 @@ L.polyline([[5.9788, 116.0753], [5.4141, 100.3288]], { color: kkColor, dashArray
 L.polyline([[5.4141, 100.3288], [3.1366, 101.6866]], { color: pnColor, dashArray: '10, 10', weight: 2, opacity: 0.6 }).addTo(map);
 
 // City labels
-L.marker([3.1579, 101.7117], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-size:14px;font-weight:700;color:#ff6b35;text-shadow:0 0 8px #000;white-space:nowrap;">吉隆坡 KL</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
-L.marker([5.9788, 116.0753], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-size:14px;font-weight:700;color:#4ecdc4;text-shadow:0 0 8px #000;white-space:nowrap;">亚庇 KK</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
-L.marker([5.4141, 100.3288], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-size:14px;font-weight:700;color:#c490e4;text-shadow:0 0 8px #000;white-space:nowrap;">槟城 Penang</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
+L.marker([3.1579, 101.7117], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-family:Noto Serif SC,serif;font-size:14px;font-weight:700;color:#b0653e;text-shadow:0 0 8px #fff,0 1px 2px rgba(36,34,29,0.15);white-space:nowrap;">吉隆坡 KL</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
+L.marker([5.9788, 116.0753], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-family:Noto Serif SC,serif;font-size:14px;font-weight:700;color:#6f8f7f;text-shadow:0 0 8px #fff,0 1px 2px rgba(36,34,29,0.15);white-space:nowrap;">亚庇 KK</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
+L.marker([5.4141, 100.3288], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-family:Noto Serif SC,serif;font-size:14px;font-weight:700;color:#8d7fae;text-shadow:0 0 8px #fff,0 1px 2px rgba(36,34,29,0.15);white-space:nowrap;">槟城 Penang</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
 
 // ===== Checkboxes =====
 document.querySelectorAll('.check-box').forEach(box => {
