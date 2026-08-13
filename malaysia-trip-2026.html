@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malaysia Trip 2026 · 吉隆坡 → 亚庇 → 槟城</title>
     <meta name="description" content="9.24 - 10.3 马来西亚三城旅行攻略">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script>window.L || document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');</script>
     <style>
         :root {
             --bg: #faf7f2;
@@ -675,8 +676,8 @@
         .leaflet-control-attribution { background: rgba(255,255,255,0.7) !important; color: #8b8478 !important; }
 
         /* fade in on scroll */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .js .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .js .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* nav */
         .top-nav {
@@ -1605,7 +1606,8 @@
 </footer>
 
 <script>
-// ===== MAP =====
+// ===== MAP (skipped gracefully if Leaflet failed to load) =====
+if (window.L) {
 const map = L.map('map', {
     center: [4.5, 105],
     zoom: 6,
@@ -1686,20 +1688,36 @@ L.marker([5.9788, 116.0753], { icon: L.divIcon({ className: 'city-label', html: 
 L.marker([5.4141, 100.3288], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-family:Noto Serif SC,serif;font-size:14px;font-weight:700;color:#8d7fae;text-shadow:0 0 8px #fff,0 1px 2px rgba(36,34,29,0.15);white-space:nowrap;">槟城 Penang</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
 
 // ===== Checkboxes =====
+// (moved to standalone script below)
+} // end if (window.L)
+</script>
+
+<script>
+// ===== Independent UI logic (runs even if map library fails) =====
+
+// Checkboxes
 document.querySelectorAll('.check-box').forEach(box => {
     box.addEventListener('click', () => box.classList.toggle('checked'));
 });
 
-// ===== Fade in on scroll =====
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-}, { threshold: 0.1 });
+// Fade in on scroll
+function revealAllFadeIn() {
+    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+}
+if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // Safety net: force everything visible after 3s no matter what
+    setTimeout(revealAllFadeIn, 3000);
+} else {
+    revealAllFadeIn();
+}
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// ===== Nav scroll spy =====
+// Nav scroll spy
 const navLinks = document.querySelectorAll('.top-nav a');
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id], header');
