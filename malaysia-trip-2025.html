@@ -7,7 +7,7 @@
     <meta name="description" content="9.24 - 10.3 马来西亚三城旅行攻略">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -35,11 +35,14 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Noto Sans SC', 'Outfit', sans-serif;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.75;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: 0.01em;
         }
 
         ::selection { background: var(--accent-1); color: #fff; }
@@ -88,10 +91,10 @@
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', 'Noto Serif SC', serif;
             font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 900;
-            line-height: 0.95;
+            line-height: 1.05;
             margin-bottom: 1rem;
             opacity: 0;
             animation: fadeUp 1s 0.5s forwards;
@@ -105,9 +108,18 @@
         }
 
         .hero h1 .it {
-            font-style: italic;
-            font-weight: 400;
-            color: var(--text-dim);
+            display: inline-block;
+            font-family: 'Noto Serif SC', serif;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 0.55em;
+            letter-spacing: 0.1em;
+            margin-top: 0.2em;
+            padding-left: 0.1em;
+            background: linear-gradient(135deg, var(--accent-5), var(--accent-3));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-sub {
@@ -139,7 +151,7 @@
         }
 
         .hero-date .lbl { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.2em; text-transform: uppercase; }
-        .hero-date .val { font-size: 1.1rem; font-weight: 700; color: var(--accent-5); }
+        .hero-date .val { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent-5); letter-spacing: 0.02em; }
         .hero-date .city { font-size: 0.85rem; color: var(--text-dim); }
 
         .hero-scroll {
@@ -181,16 +193,18 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
+            font-weight: 900;
             margin-bottom: 1rem;
-            line-height: 1.1;
+            line-height: 1.25;
+            letter-spacing: 0.04em;
         }
 
         .section-desc {
             color: var(--text-dim);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
             margin-bottom: 3rem;
             max-width: 600px;
         }
@@ -228,11 +242,13 @@
         }
 
         .route-city .name {
+            font-family: 'Noto Serif SC', serif;
             font-size: 1.3rem;
             font-weight: 700;
+            letter-spacing: 0.05em;
         }
 
-        .route-city .days { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.3rem; }
+        .route-city .days { font-family: 'Outfit', sans-serif; font-size: 0.8rem; color: var(--text-dim); margin-top: 0.3rem; letter-spacing: 0.02em; }
 
         .route-city.kl { border-top: 3px solid var(--kl); }
         .route-city.kk { border-top: 3px solid var(--kk); }
@@ -318,9 +334,11 @@
         }
 
         .day-side .day-date {
+            font-family: 'Outfit', sans-serif;
             font-size: 0.8rem;
             color: var(--text-dim);
             margin-top: 0.5rem;
+            letter-spacing: 0.03em;
         }
 
         .day-side .day-city {
@@ -344,9 +362,10 @@
         .day-content { padding: 1.5rem 2rem; }
 
         .day-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 700;
+            letter-spacing: 0.03em;
             margin-bottom: 1rem;
         }
 
@@ -371,7 +390,7 @@
             padding-top: 0.1rem;
         }
 
-        .timeline-desc { font-size: 0.9rem; color: var(--text); }
+        .timeline-desc { font-size: 0.92rem; color: var(--text); line-height: 1.7; }
         .timeline-desc .tip { display: block; font-size: 0.78rem; color: var(--text-dim); margin-top: 0.2rem; }
 
         .timeline-tag {
