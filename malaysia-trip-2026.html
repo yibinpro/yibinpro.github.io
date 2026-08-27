@@ -1,1739 +1,560 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malaysia Trip 2026 · 吉隆坡 → 亚庇 → 槟城</title>
-    <meta name="description" content="9.24 - 10.3 马来西亚三城旅行攻略">
-    <script>document.documentElement.classList.add('js');</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-    <script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script>window.L || document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');</script>
-    <style>
-        :root {
-            --bg: #faf7f2;
-            --bg-2: #f3eee6;
-            --card: #ffffff;
-            --card-hover: #faf7f2;
-            --text: #24221d;
-            --text-dim: #8b8478;
-            --accent-1: #b0653e;
-            --accent-2: #d9b58f;
-            --accent-3: #6f8f7f;
-            --accent-4: #8d7fae;
-            --accent-5: #c9a24b;
-            --kl: #b0653e;
-            --kk: #6f8f7f;
-            --pn: #8d7fae;
-            --border: rgba(36,34,29,0.1);
-        }
-
-        * { margin:0; padding:0; box-sizing:border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.8;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            letter-spacing: 0.01em;
-        }
-
-        ::selection { background: var(--accent-1); color: #fff; }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(180deg, #fdfbf7 0%, #faf7f2 40%, #f3ede3 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background:
-                radial-gradient(circle at 25% 30%, rgba(176,101,62,0.05) 0%, transparent 45%),
-                radial-gradient(circle at 75% 25%, rgba(111,143,127,0.05) 0%, transparent 45%),
-                radial-gradient(circle at 50% 80%, rgba(141,127,174,0.05) 0%, transparent 45%);
-            animation: drift 30s ease-in-out infinite;
-        }
-
-        @keyframes drift {
-            0%, 100% { transform: translate(0,0) rotate(0deg); }
-            33% { transform: translate(2%, -2%) rotate(2deg); }
-            66% { transform: translate(-2%, 2%) rotate(-2deg); }
-        }
-
-        .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 2rem; }
-
-        .hero-tag {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--accent-1);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 1s 0.3s forwards;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', 'Noto Serif SC', serif;
-            font-size: clamp(3rem, 10vw, 6.5rem);
-            font-weight: 600;
-            line-height: 1.08;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeUp 1s 0.5s forwards;
-        }
-
-        .hero h1 .gradient {
-            color: var(--text);
-        }
-
-        .hero h1 .it {
-            display: inline-block;
-            font-family: 'Noto Serif SC', serif;
-            font-style: normal;
-            font-weight: 700;
-            font-size: 0.55em;
-            letter-spacing: 0.18em;
-            margin-top: 0.2em;
-            padding-left: 0.18em;
-            color: var(--accent-1);
-        }
-
-        .hero-sub {
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            color: var(--text-dim);
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 1s 0.7s forwards;
-        }
-
-        .hero-dates {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeUp 1s 0.9s forwards;
-        }
-
-        .hero-date {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 2rem;
-            border: 1px solid var(--border);
-            border-radius: 1.2rem;
-            background: var(--card);
-            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
-        }
-
-        .hero-date .lbl { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.2em; text-transform: uppercase; }
-        .hero-date .val { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
-        .hero-date .city { font-size: 0.85rem; color: var(--text-dim); }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            letter-spacing: 0.2em;
-            opacity: 0;
-            animation: fadeUp 1s 1.2s forwards, bounce 2s 2s infinite;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-8px); }
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--accent-3);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif SC', 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-            letter-spacing: 0.04em;
-        }
-
-        .section-desc {
-            color: var(--text-dim);
-            font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 3rem;
-            max-width: 600px;
-        }
-
-        /* ===== ROUTE OVERVIEW ===== */
-        .route-overview {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin: 3rem 0;
-        }
-
-        .route-city {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.5rem 2.5rem;
-            border-radius: 1.5rem;
-            background: var(--card);
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
-            transition: all 0.3s;
-            min-width: 180px;
-            position: relative;
-        }
-
-        .route-city:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(36,34,29,0.08); }
-
-        .route-city .num {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.7rem;
-            color: var(--text-dim);
-            margin-bottom: 0.5rem;
-        }
-
-        .route-city .name {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .route-city .days { font-family: 'Outfit', sans-serif; font-size: 0.8rem; color: var(--text-dim); margin-top: 0.3rem; letter-spacing: 0.02em; }
-
-        .route-city.kl { border-top: 3px solid var(--kl); }
-        .route-city.kk { border-top: 3px solid var(--kk); }
-        .route-city.pn { border-top: 3px solid var(--pn); }
-
-        .route-arrow {
-            font-size: 1.5rem;
-            color: var(--text-dim);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.7rem;
-        }
-
-        .route-arrow .icon { font-size: 1.5rem; margin-bottom: 0.2rem; }
-        .route-arrow .type { color: var(--accent-5); font-weight: 500; }
-
-        /* ===== MAP ===== */
-        #map {
-            height: 500px;
-            border-radius: 1.5rem;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            margin-bottom: 2rem;
-            z-index: 1;
-        }
-
-        .map-legend {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .legend-dot {
-            width: 12px; height: 12px; border-radius: 50%;
-        }
-
-        .legend-dot.kl { background: var(--kl); }
-        .legend-dot.kk { background: var(--kk); }
-        .legend-dot.pn { background: var(--pn); }
-
-        /* ===== DAY CARDS ===== */
-        .day-section { background: linear-gradient(180deg, transparent, rgba(36,34,29,0.02)); }
-
-        .day-card {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 0;
-            margin-bottom: 1.5rem;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--card);
-            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
-            transition: all 0.3s;
-        }
-
-        .day-card:hover { box-shadow: 0 10px 32px rgba(36,34,29,0.08); transform: translateY(-2px); }
-
-        .day-side {
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .day-side .day-num {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 600;
-            line-height: 1;
-        }
-
-        .day-side .day-date {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-top: 0.5rem;
-            letter-spacing: 0.03em;
-        }
-
-        .day-side .day-city {
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-top: 0.5rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 1rem;
-        }
-
-        .day-side.kl { background: linear-gradient(135deg, rgba(176,101,62,0.07), rgba(176,101,62,0.02)); }
-        .day-side.kk { background: linear-gradient(135deg, rgba(111,143,127,0.07), rgba(111,143,127,0.02)); }
-        .day-side.pn { background: linear-gradient(135deg, rgba(141,127,174,0.07), rgba(141,127,174,0.02)); }
-        .day-side.tr { background: linear-gradient(135deg, rgba(201,162,75,0.07), rgba(201,162,75,0.02)); }
-
-        .day-side.kl .day-city { background: rgba(176,101,62,0.12); color: var(--kl); }
-        .day-side.kk .day-city { background: rgba(111,143,127,0.12); color: var(--kk); }
-        .day-side.pn .day-city { background: rgba(141,127,174,0.12); color: var(--pn); }
-        .day-side.tr .day-city { background: rgba(201,162,75,0.12); color: var(--accent-5); }
-
-        .day-content { padding: 1.5rem 2rem; }
-
-        .day-title {
-            font-family: 'Noto Serif SC', 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            margin-bottom: 1rem;
-        }
-
-        .timeline { list-style: none; }
-
-        .timeline-item {
-            display: flex;
-            gap: 1rem;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(36,34,29,0.06);
-        }
-
-        .timeline-item:last-child { border-bottom: none; }
-
-        .timeline-time {
-            flex-shrink: 0;
-            width: 80px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--accent-1);
-            padding-top: 0.1rem;
-        }
-
-        .timeline-desc { font-size: 0.92rem; color: var(--text); line-height: 1.7; }
-        .timeline-desc .tip { display: block; font-size: 0.78rem; color: var(--text-dim); margin-top: 0.2rem; }
-
-        .timeline-tag {
-            display: inline-block;
-            font-size: 0.65rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 0.5rem;
-            background: rgba(176,101,62,0.1);
-            color: var(--accent-1);
-            margin-left: 0.5rem;
-            vertical-align: middle;
-            font-weight: 500;
-        }
-
-        .timeline-tag.food { background: rgba(201,162,75,0.12); color: var(--accent-5); }
-        .timeline-tag.must { background: rgba(111,143,127,0.12); color: var(--accent-3); }
-        .timeline-tag.book { background: rgba(141,127,174,0.12); color: var(--accent-4); }
-
-        /* ===== HOTELS ===== */
-        .hotel-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .hotel-card {
-            border-radius: 1.5rem;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--card);
-            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
-            transition: all 0.3s;
-        }
-
-        .hotel-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(36,34,29,0.08); border-color: rgba(36,34,29,0.16); }
-
-        .hotel-header {
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .hotel-header.kl { border-bottom: 3px solid var(--kl); }
-        .hotel-header.kk { border-bottom: 3px solid var(--kk); }
-        .hotel-header.pn { border-bottom: 3px solid var(--pn); }
-
-        .hotel-name { font-size: 1.1rem; font-weight: 600; }
-        .hotel-type {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.7rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-        }
-
-        .hotel-type.luxury { background: rgba(176,101,62,0.1); color: var(--accent-1); }
-        .hotel-type.value { background: rgba(111,143,127,0.1); color: var(--accent-3); }
-
-        .hotel-body { padding: 1.5rem; }
-
-        .hotel-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .hotel-price .unit { font-size: 0.85rem; color: var(--text-dim); font-family: 'Noto Sans SC', sans-serif; }
-
-        .hotel-features { list-style: none; margin: 1rem 0; }
-        .hotel-features li {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            padding: 0.25rem 0;
-            padding-left: 1.2rem;
-            position: relative;
-        }
-        .hotel-features li::before {
-            content: '◆';
-            position: absolute;
-            left: 0;
-            color: var(--accent-5);
-            font-size: 0.7rem;
-        }
-
-        .hotel-note {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            font-style: italic;
-            margin-top: 0.5rem;
-        }
-
-        /* ===== TRANSPORT ===== */
-        .transport-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .transport-card {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem 2rem;
-            border-radius: 1.5rem;
-            border: 1px solid var(--border);
-            background: var(--card);
-            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
-        }
-
-        .transport-from, .transport-to {
-            text-align: center;
-        }
-
-        .transport-from .city, .transport-to .city {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .transport-from .time, .transport-to .time {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-top: 0.3rem;
-        }
-
-        .transport-mid {
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        .transport-mid .icon { font-size: 2rem; }
-        .transport-mid .mode { font-size: 0.75rem; color: var(--accent-5); font-weight: 500; margin-top: 0.3rem; }
-        .transport-mid .duration { font-size: 0.7rem; color: var(--text-dim); }
-        .transport-mid .price { font-size: 0.85rem; color: var(--accent-3); font-weight: 600; margin-top: 0.3rem; }
-
-        /* ===== CHECKLIST ===== */
-        .checklist {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
-        }
-
-        .checklist-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .checklist-group h4 {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
-            padding: 0.4rem 0;
-            font-size: 0.85rem;
-            color: var(--text);
-        }
-
-        .check-box {
-            flex-shrink: 0;
-            width: 18px; height: 18px;
-            border: 2px solid var(--text-dim);
-            border-radius: 4px;
-            margin-top: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .check-box.checked {
-            background: var(--accent-3);
-            border-color: var(--accent-3);
-        }
-
-        .check-box.checked::after {
-            content: '✓';
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.7rem;
-            height: 100%;
-            font-weight: 600;
-        }
-
-        .checklist-item . urgency { color: var(--accent-1); font-weight: 600; }
-
-        .badge-urgent {
-            display: inline-block;
-            font-size: 0.6rem;
-            padding: 0.1rem 0.4rem;
-            border-radius: 0.3rem;
-            background: rgba(176,101,62,0.12);
-            color: var(--accent-1);
-            font-weight: 500;
-            margin-left: 0.3rem;
-            vertical-align: middle;
-        }
-
-        /* ===== TIPS ===== */
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
-        }
-
-        .tip-card {
-            padding: 1.5rem;
-            border-radius: 1.2rem;
-            border: 1px solid var(--border);
-            background: var(--card);
-            box-shadow: 0 4px 24px rgba(36,34,29,0.04);
-        }
-
-        .tip-card .tip-icon {
-            font-size: 2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .tip-card h4 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tip-card p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            border-top: 1px solid var(--border);
-            background: linear-gradient(180deg, transparent, rgba(36,34,29,0.02));
-        }
-
-        footer .heart {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--text-dim);
-            margin-bottom: 1rem;
-        }
-
-        footer .meta {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-
-        /* ===== MOBILE ===== */
-        @media (max-width: 768px) {
-            section { padding: 4rem 1rem; }
-            .day-card { grid-template-columns: 1fr; }
-            .day-side { padding: 1.5rem; flex-direction: row; justify-content: flex-start; gap: 1rem; }
-            .day-side .day-num { font-size: 2rem; }
-            .transport-card { grid-template-columns: 1fr; text-align: center; }
-            .timeline-time { width: 60px; font-size: 0.75rem; }
-            .hero-dates { gap: 0.5rem; }
-            .hero-date { padding: 0.8rem 1.2rem; }
-            #map { height: 350px; }
-        }
-
-        /* Leaflet light theme */
-        .leaflet-container { background: #f3eee6 !important; }
-        .leaflet-popup-content-wrapper {
-            background: #ffffff;
-            color: #24221d;
-            border-radius: 12px;
-            border: 1px solid rgba(36,34,29,0.1);
-            box-shadow: 0 8px 32px rgba(36,34,29,0.12);
-        }
-        .leaflet-popup-tip { background: #ffffff; }
-        .leaflet-popup-content { margin: 12px 16px; font-family: 'Noto Sans SC', sans-serif; font-size: 13px; }
-        .leaflet-control-zoom a { background: #ffffff !important; color: #24221d !important; border-color: rgba(36,34,29,0.12) !important; }
-        .leaflet-control-attribution { background: rgba(255,255,255,0.7) !important; color: #8b8478 !important; }
-
-        /* fade in on scroll */
-        .js .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-        .js .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* nav */
-        .top-nav {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1000;
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(250,247,242,0.88);
-            backdrop-filter: blur(12px);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(36,34,29,0.06);
-        }
-
-        .top-nav a {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            text-decoration: none;
-            padding: 0.3rem 0.8rem;
-            border-radius: 1rem;
-            transition: all 0.2s;
-        }
-
-        .top-nav a:hover { color: var(--text); background: var(--card-hover); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>马来西亚十日游 · 2026 国庆</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #cc0001;
+  --primary-light: #e63946;
+  --accent: #fcd116;
+  --secondary: #010066;
+  --blue: #1e40af;
+  --green: #166534;
+  --pink: #be185d;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --bg: #faf7f2;
+  --card: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.10);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, #cc0001 0%, #e63946 35%, #f97316 75%, #fcd116 100%);
+  color: white;
+  padding: 60px 20px 110px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 18% 25%, rgba(255,255,255,0.18), transparent 40%),
+    radial-gradient(circle at 82% 70%, rgba(255,255,255,0.12), transparent 40%);
+}
+.flag-stripe {
+  position: absolute; left: 0; right: 0; top: 0; height: 8px;
+  background:
+    repeating-linear-gradient(90deg,
+      #cc0001 0 14px,
+      #ffffff 14px 28px,
+      #cc0001 28px 42px,
+      #fcd116 42px 56px);
+  opacity: 0.85;
+}
+.hero-content { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+.hero h1 { font-size: 2.6rem; letter-spacing: 6px; margin-bottom: 14px; text-shadow: 0 2px 12px rgba(0,0,0,0.20); font-weight: 800; }
+.hero .subtitle { font-size: 1.1rem; opacity: 0.95; margin-bottom: 24px; }
+.city-chips { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.chip {
+  background: rgba(255,255,255,0.20);
+  border: 1px solid rgba(255,255,255,0.30);
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ===== Summary ===== */
+.summary-wrap { max-width: 980px; margin: -60px auto 36px; padding: 0 20px; position: relative; z-index: 2; }
+.summary {
+  background: white;
+  border-radius: 22px;
+  padding: 22px 28px;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.stat { text-align: center; padding: 4px 0; }
+.stat .num { font-size: 1.9rem; font-weight: 800; color: var(--primary); line-height: 1.15; }
+.stat .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+
+/* ===== Section title ===== */
+.section-title {
+  max-width: 980px; margin: 0 auto 18px; padding: 0 20px;
+  font-size: 1.25rem; color: var(--secondary);
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700;
+}
+.section-title::before { content: ''; width: 4px; height: 22px; background: var(--primary); border-radius: 2px; }
+
+/* ===== Timeline ===== */
+.timeline { max-width: 980px; margin: 0 auto 80px; padding: 0 20px; }
+.day-card {
+  background: white;
+  border-radius: 18px;
+  margin-bottom: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.day-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.day-header {
+  background: linear-gradient(120deg, #1e3a8a, #1e40af);
+  color: white;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.day-header.tone-pink { background: linear-gradient(120deg, #9d174d, #be185d); }
+.day-header.tone-orange { background: linear-gradient(120deg, #7c2d12, #c2410c); }
+.date-box {
+  background: rgba(255,255,255,0.16);
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 76px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.date-box .day-num { font-size: 1.8rem; font-weight: 800; line-height: 1; }
+.date-box .day-month { font-size: 0.7rem; opacity: 0.85; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+.day-title h3 { font-size: 1.1rem; margin-bottom: 4px; font-weight: 700; }
+.day-title .meta { font-size: 0.82rem; opacity: 0.88; }
+.day-body { padding: 22px; }
+.segment { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+.segment:last-child { border-bottom: none; padding-bottom: 0; }
+.segment:first-child { padding-top: 0; }
+.icon-box {
+  flex-shrink: 0;
+  width: 46px; height: 46px;
+  border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.icon-box.flight { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: var(--blue); }
+.icon-box.hotel  { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: var(--pink); }
+.icon-box.train  { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: var(--green); }
+.segment-body { flex: 1; min-width: 0; }
+.segment-title { font-weight: 700; margin-bottom: 6px; font-size: 1.02rem; color: var(--text); }
+
+.flight-route {
+  display: flex; align-items: center; gap: 10px;
+  margin: 10px 0;
+  padding: 12px 14px;
+  background: linear-gradient(90deg, #f0f9ff, #e0f2fe);
+  border-radius: 12px;
+}
+.flight-route .airport { flex: 1; min-width: 0; }
+.flight-route .time { font-size: 1.15rem; font-weight: 700; color: var(--secondary); }
+.flight-route .code { font-size: 0.85rem; font-weight: 700; color: var(--text); margin-top: 4px; }
+.flight-route .name { font-size: 0.74rem; color: var(--text-light); margin-top: 2px; }
+.flight-route .arrow { text-align: center; font-size: 1.3rem; color: var(--primary); flex-shrink: 0; }
+.flight-route .duration { font-size: 0.7rem; color: var(--text-light); margin-top: 2px; }
+
+.detail-line { font-size: 0.9rem; color: var(--text-light); margin: 4px 0; }
+.detail-line strong { color: var(--text); }
+.tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  display: inline-block; padding: 3px 10px;
+  background: #f3f4f6; color: var(--text-light);
+  border-radius: 10px; font-size: 0.72rem;
+}
+.tag.flag { background: #dbeafe; color: var(--blue); }
+.tag.note { background: #fef3c7; color: #92400e; }
+
+.hotel-box {
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+  border-radius: 12px;
+  border-left: 4px solid var(--pink);
+}
+.hotel-box .name { font-weight: 700; color: #831843; margin-bottom: 6px; font-size: 1rem; }
+.hotel-box .info { font-size: 0.86rem; color: #6b21a8; line-height: 1.7; }
+.hotel-box .info small { color: var(--text-light); }
+.hotel-box .warn { color: #b91c1c; font-weight: 700; }
+
+/* ===== Notes & Footer ===== */
+.notes { max-width: 980px; margin: 0 auto 60px; padding: 0 20px; }
+.notes-card {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 14px;
+  padding: 20px 24px;
+  font-size: 0.9rem;
+  color: #78350f;
+}
+.notes-card h4 { font-size: 1rem; margin-bottom: 10px; color: #92400e; font-weight: 700; }
+.notes-card ul { padding-left: 20px; }
+.notes-card li { margin-bottom: 6px; }
+.notes-card li:last-child { margin-bottom: 0; }
+
+footer {
+  text-align: center;
+  padding: 30px 20px 50px;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  background: white;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 720px) {
+  .hero { padding: 50px 16px 90px; }
+  .hero h1 { font-size: 1.8rem; letter-spacing: 3px; }
+  .hero .subtitle { font-size: 0.95rem; }
+  .chip { font-size: 0.82rem; padding: 5px 12px; }
+  .summary { grid-template-columns: repeat(2, 1fr); padding: 18px 14px; gap: 12px; }
+  .stat .num { font-size: 1.5rem; }
+  .day-header { padding: 14px 16px; gap: 12px; flex-wrap: wrap; }
+  .date-box { min-width: 60px; padding: 6px 10px; }
+  .date-box .day-num { font-size: 1.5rem; }
+  .day-body { padding: 16px; }
+  .flight-route { padding: 10px; gap: 6px; }
+  .flight-route .time { font-size: 1rem; }
+  .flight-route .code { font-size: 0.78rem; }
+  .flight-route .name { font-size: 0.7rem; }
+  .segment { gap: 10px; }
+  .icon-box { width: 40px; height: 40px; font-size: 1.2rem; border-radius: 11px; }
+  .notes-card { padding: 16px 18px; }
+}
+</style>
 </head>
 <body>
 
-<nav class="top-nav">
-    <a href="#route">路线</a>
-    <a href="#map-section">地图</a>
-    <a href="#itinerary">行程</a>
-    <a href="#hotels">住宿</a>
-    <a href="#transport">交通</a>
-    <a href="#checklist">清单</a>
-    <a href="#tips">贴士</a>
-</nav>
-
-<!-- ===== HERO ===== -->
-<header class="hero">
-    <div class="hero-content">
-        <div class="hero-tag">Malaysia · 9.24 — 10.3 · 2026</div>
-        <h1><span class="gradient">Malaysia</span><br><span class="it">三城记</span></h1>
-        <p class="hero-sub">吉隆坡的灯火 &nbsp;→&nbsp; 亚庇的落日 &nbsp;→&nbsp; 槟城的南洋旧梦</p>
-        <div class="hero-dates">
-            <div class="hero-date">
-                <span class="lbl">到达</span>
-                <span class="val">9.24 Thu</span>
-                <span class="city">吉隆坡 17:00 落地</span>
-            </div>
-            <div class="hero-date">
-                <span class="lbl">离开</span>
-                <span class="val">10.3 Sat</span>
-                <span class="city">吉隆坡 14:00 起飞</span>
-            </div>
-            <div class="hero-date">
-                <span class="lbl">天数</span>
-                <span class="val">10 Days</span>
-                <span class="city">9 Nights · 3 Cities</span>
-            </div>
-        </div>
+<section class="hero">
+  <div class="flag-stripe"></div>
+  <div class="hero-content">
+    <h1>马来西亚十日游</h1>
+    <p class="subtitle">2026 国庆假期 · 9月24日 → 10月3日 · 共 10 天 9 晚</p>
+    <div class="city-chips">
+      <span class="chip">吉隆坡 Kuala Lumpur</span>
+      <span class="chip">哥打京那巴鲁 Kota Kinabalu</span>
+      <span class="chip">槟城 Penang</span>
     </div>
-    <div class="hero-scroll">SCROLL ↓</div>
-</header>
-
-<!-- ===== ROUTE OVERVIEW ===== -->
-<section id="route" class="fade-in">
-    <div class="section-label">Route Overview</div>
-    <h2 class="section-title">三城路线</h2>
-    <p class="section-desc">10天9晚，从西马都市到东马海岛，再回到南洋古城。每段城际交通都已规划好最优方案。</p>
-
-    <div class="route-overview">
-        <div class="route-city kl">
-            <span class="num">01</span>
-            <span class="name">吉隆坡</span>
-            <span class="days">9.24 - 9.26 · 2晚</span>
-        </div>
-        <div class="route-arrow">
-            <span class="icon">✈</span>
-            <span class="type">Flight</span>
-            <span>2h35m</span>
-        </div>
-        <div class="route-city kk">
-            <span class="num">02</span>
-            <span class="name">亚庇</span>
-            <span class="days">9.26 - 9.30 · 4晚</span>
-        </div>
-        <div class="route-arrow">
-            <span class="icon">✈</span>
-            <span class="type">Flight</span>
-            <span>2h40m</span>
-        </div>
-        <div class="route-city pn">
-            <span class="num">03</span>
-            <span class="name">槟城</span>
-            <span class="days">9.30 - 10.2 · 2晚</span>
-        </div>
-        <div class="route-arrow">
-            <span class="icon">🚄</span>
-            <span class="type">ETS Train</span>
-            <span>~4h</span>
-        </div>
-        <div class="route-city kl">
-            <span class="num">04</span>
-            <span class="name">吉隆坡</span>
-            <span class="days">10.2 - 10.3 · 1晚</span>
-        </div>
-    </div>
+  </div>
 </section>
 
-<!-- ===== MAP ===== -->
-<section id="map-section" class="fade-in">
-    <div class="section-label">Interactive Map</div>
-    <h2 class="section-title">旅行地图</h2>
-    <p class="section-desc">三个城市的所有打卡点、酒店、交通枢纽一览。点击标记查看详情。</p>
+<div class="summary-wrap">
+  <div class="summary">
+    <div class="stat"><div class="num">9</div><div class="label">总晚数</div></div>
+    <div class="stat"><div class="num">5</div><div class="label">家酒店</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">段航程</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">座城市</div></div>
+  </div>
+</div>
 
-    <div id="map"></div>
+<h2 class="section-title">📍 行程时间线</h2>
 
-    <div class="map-legend">
-        <div class="legend-item"><span class="legend-dot kl"></span> 吉隆坡 Kuala Lumpur</div>
-        <div class="legend-item"><span class="legend-dot kk"></span> 亚庇 Kota Kinabalu</div>
-        <div class="legend-item"><span class="legend-dot pn"></span> 槟城 Penang</div>
+<div class="timeline">
+
+<!-- ===== Day 1: 9/24 北京 -> 吉隆坡 ===== -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="date-box"><div class="day-num">24</div><div class="day-month">SEP</div></div>
+    <div class="day-title"><h3>Day 1 · 北京 → 吉隆坡</h3><div class="meta">周四 · 启程日</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box flight">✈️</div>
+      <div class="segment-body">
+        <div class="segment-title">去程 · 北京大兴 → 吉隆坡</div>
+        <div class="flight-route">
+          <div class="airport"><div class="time">10:00</div><div class="code">PKX</div><div class="name">北京大兴</div></div>
+          <div class="arrow">✈️<div class="duration">6h 30m</div></div>
+          <div class="airport"><div class="time">16:30</div><div class="code">KUL T1</div><div class="name">吉隆坡国际机场</div></div>
+        </div>
+        <div class="detail-line"><strong>马来西亚航空 MH319</strong> · 预订号 <strong>EBAT8S</strong></div>
+        <div class="tags"><span class="tag flag">已出票</span><span class="tag">GENG/YIBIN</span></div>
+      </div>
     </div>
-</section>
-
-<!-- ===== ITINERARY ===== -->
-<section id="itinerary" class="day-section fade-in">
-    <div class="section-label">Day by Day</div>
-    <h2 class="section-title">每日行程</h2>
-    <p class="section-desc">不废话，直接上干货。每天早到晚安排到位，吃的玩的看的都在这。</p>
-
-    <!-- Day 1 -->
-    <div class="day-card">
-        <div class="day-side kl">
-            <div class="day-num">01</div>
-            <div class="day-date">9.24 Thu</div>
-            <div class="day-city">吉隆坡</div>
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">入住 · 吉隆坡市中心皇冠假日酒店</div>
+        <div class="hotel-box">
+          <div class="name">吉隆坡市中心皇冠假日酒店（洲际酒店集团旗下）</div>
+          <div class="info"><strong>标准双床房 · 1 间</strong><br>
+            入住 <strong>09/24</strong> → 离店 <strong>09/26</strong> · 2 晚<br>
+            <small>📍 No 22, Menara 8, Malaysia</small>
+          </div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">落地 KL · 初见双塔</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">17:00</span>
-                    <span class="timeline-desc">KLIA 机场落地，入境后Grab/ KLIA Ekspres 进城<span class="tip">KLIA Ekspres 28分钟到 KL Sentral，RM55；Grab 约 RM80-100</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">18:30</span>
-                    <span class="timeline-desc">酒店 Check-in，放行李休整</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:30</span>
-                    <span class="timeline-desc">KLCC 公园散步，双子塔夜景<span class="tip">免费喷泉秀 20:00/21:00，最佳拍摄点在 KLCC Park 湖边</span><span class="timeline-tag must">必打卡</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">20:30</span>
-                    <span class="timeline-desc">Jalan Alor 阿罗街夜市晚餐<span class="tip">推荐：黄亚华烤鸡翅、烧鱼、炒福建面、罗汉果水</span><span class="timeline-tag food">美食</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">22:00</span>
-                    <span class="timeline-desc">回酒店休息 / 双子塔观景台夜场（如开放）</span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Day 2 -->
-    <div class="day-card">
-        <div class="day-side kl">
-            <div class="day-num">02</div>
-            <div class="day-date">9.25 Fri</div>
-            <div class="day-city">吉隆坡</div>
+<!-- ===== Day 2: 9/25 吉隆坡 ===== -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="date-box"><div class="day-num">25</div><div class="day-month">SEP</div></div>
+    <div class="day-title"><h3>Day 2 · 吉隆坡</h3><div class="meta">周五 · 自由活动</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">皇冠假日 · 第 2 晚</div>
+        <div class="hotel-box">
+          <div class="info">双子塔 · 独立广场 · 茨厂街 · 武吉免登 · 阿罗街夜市</div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">吉隆坡精华一日 · 黑风洞 + 双子塔</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">08:00</span>
-                    <span class="timeline-desc">黑风洞 Batu Caves<span class="tip">Grab 约 30min/ RM25；272 级彩虹阶梯，早上人少不热，注意猴子别带食物</span><span class="timeline-tag must">必去</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">11:00</span>
-                    <span class="timeline-desc">独立广场 Merdeka Square + 苏丹阿都沙末大厦<span class="tip">经典摩尔式建筑群，免费拍照</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">12:00</span>
-                    <span class="timeline-desc">中央市场 Central Market 午餐 + 逛手工艺品<span class="tip">二楼 Madras Lane 有平价本地小吃</span><span class="timeline-tag food">美食</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:00</span>
-                    <span class="timeline-desc">茨厂街 Petaling Street + 鬼仔巷 Kwai Chai Hong<span class="tip">唐人街逛吃 + 小巷复古涂鸦墙，超出片</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">15:30</span>
-                    <span class="timeline-desc">双子塔登顶 Petronas Twin Towers Skybridge + Observation Deck<span class="tip">门票 RM98（外国人）！只能官网 eticket.petronastwintowers.com.my 线上买票，现场无售票窗，提前 1-2 周订 16:00 场次（周五祈祷时段 13-14 点关闭）<span class="timeline-tag book">提前购票</span></span><span class="timeline-tag must">必打卡</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">18:00</span>
-                    <span class="timeline-desc">KLCC Park 湖边看日落金光打在双塔上<span class="tip">最佳拍摄点在公园喷泉湖边</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:30</span>
-                    <span class="timeline-desc">Jalan Alor 阿罗街夜市晚餐<span class="tip">推荐：黄亚华烤鸡翅、烧鱼、炒福建面、罗汉果水</span><span class="timeline-tag food">美食</span></span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Day 3 -->
-    <div class="day-card">
-        <div class="day-side tr">
-            <div class="day-num">03</div>
-            <div class="day-date">9.26 Sat</div>
-            <div class="day-city">KL→KK</div>
+<!-- ===== Day 3: 9/26 吉隆坡 -> 亚庇 ===== -->
+<div class="day-card">
+  <div class="day-header tone-pink">
+    <div class="date-box"><div class="day-num">26</div><div class="day-month">SEP</div></div>
+    <div class="day-title"><h3>Day 3 · 吉隆坡 → 哥打京那巴鲁</h3><div class="meta">周六 · 飞往沙巴亚庇</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box flight">✈️</div>
+      <div class="segment-body">
+        <div class="segment-title">国内段 · 吉隆坡 → 亚庇</div>
+        <div class="flight-route">
+          <div class="airport"><div class="time">12:05</div><div class="code">KUL T2</div><div class="name">吉隆坡国际机场</div></div>
+          <div class="arrow">✈️<div class="duration">2h 35m</div></div>
+          <div class="airport"><div class="time">14:40</div><div class="code">BKI T1</div><div class="name">哥打京那巴鲁</div></div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">飞往亚庇 · 落地休整</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">09:00</span>
-                    <span class="timeline-desc">国家清真寺 Masjid Negara<span class="tip">免费，需穿长袍（入口处借），非穆斯林开放 9:00-12:00 / 15:00-16:00，赶 9 点第一波</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">10:30</span>
-                    <span class="timeline-desc">回酒店收拾行李、Check-out</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">11:45</span>
-                    <span class="timeline-desc">出发去 KLIA2 机场（Grab 约 1h / RM80-100）<span class="tip">亚航在 KLIA2，国内航班提前 1 小时到就够</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:05</span>
-                    <span class="timeline-desc">AK5116（AirAsia）起飞飞往亚庇<span class="tip">每日多班直飞，这班下午班次最从容；飞行 2h40m<span class="timeline-tag book">提前买票</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">16:45</span>
-                    <span class="timeline-desc">抵达亚庇机场 BKI，Grab 去市区酒店（约 20 分钟 / RM25-35）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">17:30</span>
-                    <span class="timeline-desc">酒店 Check-in，换身衣服、休整<span class="tip">不用赶，日落明天从容看（见 Day 4）</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">18:30</span>
-                    <span class="timeline-desc">菲律宾市场 Filipino Market 海鲜晚餐<span class="tip">大茄来海鲜楼：奶油老虎虾、黑胡椒蟹、咸蛋黄炒蟹</span><span class="timeline-tag food">海鲜大餐</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">20:30</span>
-                    <span class="timeline-desc">加雅街夜市散步 / 回酒店早点休息<span class="tip">明天跳岛+日落是重头戏，养精蓄锐</span></span>
-                </li>
-            </ul>
-        </div>
+        <div class="detail-line"><strong>亚洲航空 AK5140</strong> · 空客 321(中) · 经济舱 · 无餐食</div>
+        <div class="tags"><span class="tag flag">已出票</span><span class="tag note">⚠ 无免费托运行李</span></div>
+      </div>
     </div>
-
-    <!-- Day 4 -->
-    <div class="day-card">
-        <div class="day-side kk">
-            <div class="day-num">04</div>
-            <div class="day-date">9.27 Sun</div>
-            <div class="day-city">亚庇</div>
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">入住 · The Cara Hotel</div>
+        <div class="hotel-box">
+          <div class="name">The Cara Hotel · 海岸 Shore</div>
+          <div class="info"><strong>1 间 · 2 晚</strong><br>
+            入住 <strong>09/26</strong> → 离店 <strong>09/28</strong> · 房费 <strong>¥2,311.26</strong><br>
+            <small>📍 Kota Kinabalu, Sabah</small>
+          </div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">周日市集 + 跳岛浮潜 + 丹绒亚路日落</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">06:30</span>
-                    <span class="timeline-desc">加雅街周日市集 Gaya Street Sunday Market<span class="tip">仅周日 6:00-14:00！手工艺品、水果、小吃、宠物摊，超热闹。今天正好是周日，一定要早起去</span><span class="timeline-tag must">限定</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">08:30</span>
-                    <span class="timeline-desc">市集早餐：祥记茶室经济米粉、发芽咖啡店</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">09:30</span>
-                    <span class="timeline-desc">哲斯敦港码头 → 东姑阿都拉曼群岛跳岛<span class="tip">Sapi Island / Manukan Island，码头现场买往返船票约 RM45/人（可讲价），上岛费另计约 RM25<span class="timeline-tag book">现场买即可</span></span><span class="timeline-tag must">浮潜</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">10:00</span>
-                    <span class="timeline-desc">沙比岛 Sapi Island 浮潜 + 沙滩放松<span class="tip">海水清澈见底，浮潜装备可在码头租 RM15-25</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">13:00</span>
-                    <span class="timeline-desc">岛上午餐（简餐 / 自带干粮）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:30</span>
-                    <span class="timeline-desc">转马奴干岛 Manukan Island 或继续沙比岛</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">16:00</span>
-                    <span class="timeline-desc">返回哲斯敦码头，回酒店冲个澡换衣服<span class="tip">跳岛穿泳衣吹了一下午海风，冲个热水澡再去追日落，舒服</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">17:00</span>
-                    <span class="timeline-desc">丹绒亚路海滩 Tanjung Aru Beach 占位<span class="tip">世界三大最美日落观赏地之一！9 月底日落约 18:15，提前 1 小时到，找个好位置点杯饮料慢慢等<span class="timeline-tag must">绝美日落</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">18:15</span>
-                    <span class="timeline-desc">日落全程 · 天空从金黄到粉紫<span class="tip">带相机+三脚架，日落后 20 分钟天空变色最美，别急着走</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:30</span>
-                    <span class="timeline-desc">晚餐：加雅街附近茶室 / 菲律宾市场海鲜<span class="tip">看完日落慢慢晃回市区吃，不用赶</span></span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Day 5 -->
-    <div class="day-card">
-        <div class="day-side kk">
-            <div class="day-num">05</div>
-            <div class="day-date">9.28 Mon</div>
-            <div class="day-city">亚庇</div>
+<!-- ===== Day 4: 9/27 亚庇 ===== -->
+<div class="day-card">
+  <div class="day-header tone-pink">
+    <div class="date-box"><div class="day-num">27</div><div class="day-month">SEP</div></div>
+    <div class="day-title"><h3>Day 4 · 哥打京那巴鲁</h3><div class="meta">周日 · 沙巴自由活动</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">The Cara Hotel · 第 2 晚</div>
+        <div class="hotel-box">
+          <div class="info">东姑阿都拉曼海洋公园跳岛 · 亚庇市 · 富丽堂海边日落</div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">美人鱼岛一日游 · 玻璃海浮潜</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">06:30</span>
-                    <span class="timeline-desc">酒店出发，美人鱼岛一日游拼团含接送<span class="tip">Klook/KKday 提前 2-3 天订，约 RM350-450/人（含接送+浮潜+BBQ午餐+上岛费）。集合超早，前一晚早点睡<span class="timeline-tag book">提前预订</span></span><span class="timeline-tag must">出海</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">08:15</span>
-                    <span class="timeline-desc">哥打毛律码头登船，快艇约 45 分钟驶向美人鱼岛<span class="tip">车程 1.5-2h，风浪大容易晕船，晕船药提前 30 分钟吃</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">09:30</span>
-                    <span class="timeline-desc">抵达美人鱼岛 Mantanani Island<span class="tip">沙巴最出名的离岛，tiffany 蓝玻璃海，白沙滩又细又软<span class="timeline-tag must">玻璃海</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">10:00</span>
-                    <span class="timeline-desc">第一站浮潜点浮潜<span class="tip">珊瑚花园水清见底，救生衣+面镜船家提供；10 点前浮潜能见度最高</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">12:00</span>
-                    <span class="timeline-desc">岛上 BBQ 午餐<span class="tip">烧鱼、烤虾、沙爹，管饱；岛上只收现金，备好马币</span><span class="timeline-tag food">美食</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">13:30</span>
-                    <span class="timeline-desc">第二站浮潜点 + 沙滩自由拍照<span class="tip">9-10 月是蓝眼泪季节，傍晚沙滩有可能看到发光浮游生物（需住岛）</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">15:00</span>
-                    <span class="timeline-desc">返程快艇</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">17:30</span>
-                    <span class="timeline-desc">回到市区酒店，洗洗休息</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:00</span>
-                    <span class="timeline-desc">晚餐：大茄来海鲜楼再来一顿<span class="tip">奶油老虎虾、咸蛋黄炒蟹、椰子布丁是招牌</span><span class="timeline-tag food">海鲜</span></span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Day 6 -->
-    <div class="day-card">
-        <div class="day-side kk">
-            <div class="day-num">06</div>
-            <div class="day-date">9.29 Tue</div>
-            <div class="day-city">亚庇</div>
+<!-- ===== Day 5: 9/28 亚庇 换酒店 ===== -->
+<div class="day-card">
+  <div class="day-header tone-pink">
+    <div class="date-box"><div class="day-num">28</div><div class="day-month">SEP</div></div>
+    <div class="day-title"><h3>Day 5 · 哥打京那巴鲁</h3><div class="meta">周一 · 换酒店 · 升级海景房</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">换酒店 · 哥打京那巴鲁喜来登酒店</div>
+        <div class="hotel-box">
+          <div class="name">Sheraton Kota Kinabalu</div>
+          <div class="info"><strong>豪华双人床海景房 · 两张双人大床 · 1 间</strong><br>
+            入住 <strong>09/28</strong> → 离店 <strong>09/30</strong> · 2 晚 · 房费 <strong>¥2,132.02</strong>
+          </div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">粉红清真寺 + 红树林萤火虫</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">08:30</span>
-                    <span class="timeline-desc">沙巴大学 University Malaysia Sabah<span class="tip">粉红清真寺就在校内！粉粉的超少女心，校园免费进入</span><span class="timeline-tag must">拍照圣地</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">10:30</span>
-                    <span class="timeline-desc">水上清真寺 City Mosque<span class="tip">白色建筑倒映水面，超出片。Grab 约 RM15</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">12:30</span>
-                    <span class="timeline-desc">午餐：源茶室 / 旧街场白咖啡</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:00</span>
-                    <span class="timeline-desc">回酒店休息 / 逛 Handicraft Market 手工艺品市场买伴手礼</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:00</span>
-                    <span class="timeline-desc">出发前往 Kawa Kawa 红树林<span class="tip">半日游套餐 RM200-350/人，含接送+长鼻猴+天空之镜+萤火虫+晚餐。提前 1-2 天在 Klook 订<span class="timeline-tag book">提前预订</span></span><span class="timeline-tag must">萤火虫</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">16:00</span>
-                    <span class="timeline-desc">抵达 Kawa Kawa 码头，坐船寻找长鼻猴 Proboscis Monkey<span class="tip">车程约 1.5-2h；长鼻猴黄昏觅食最活跃，婆罗洲独有</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">17:30</span>
-                    <span class="timeline-desc">Kawa 天空之镜 + 滩涂日落<span class="tip">水面如镜倒映天空，拍照黄金时段；9 月仍是萤火虫旺季尾巴</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:00</span>
-                    <span class="timeline-desc">河边晚餐（简餐，管饱）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:45</span>
-                    <span class="timeline-desc">夜幕降临 · 萤火虫漫天飞舞<span class="tip">成千上万萤火虫像圣诞树一样闪烁，超梦幻。不要开闪光灯，不要喷驱蚊液上船</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">21:30</span>
-                    <span class="timeline-desc">返回市区酒店<span class="tip">回到市区约 21:30-22:00，今天早点休息</span></span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Day 7 -->
-    <div class="day-card">
-        <div class="day-side tr">
-            <div class="day-num">07</div>
-            <div class="day-date">9.30 Wed</div>
-            <div class="day-city">KK→PN</div>
+<!-- ===== Day 6: 9/29 亚庇 ===== -->
+<div class="day-card">
+  <div class="day-header tone-pink">
+    <div class="date-box"><div class="day-num">29</div><div class="day-month">SEP</div></div>
+    <div class="day-title"><h3>Day 6 · 哥打京那巴鲁</h3><div class="meta">周二 · 沙巴自由活动</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">喜来登 · 第 2 晚</div>
+        <div class="hotel-box">
+          <div class="info">京那巴鲁山（神山）· 海鲜大排档 · 丹绒亚路海滩日落</div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">告别亚庇 · 飞抵槟城</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">09:00</span>
-                    <span class="timeline-desc">睡到自然醒，酒店泳池/海滩最后泡一泡</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">10:30</span>
-                    <span class="timeline-desc">买手信：白咖啡、沙巴茶、榴莲干<span class="tip">Handicraft Market 或市区超市，比机场便宜</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">11:30</span>
-                    <span class="timeline-desc">Check-out + 午餐（发记鱼杂粉 / 怡丰茶室）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:00</span>
-                    <span class="timeline-desc">出发去机场（Grab 约 RM20 / 15min）<span class="tip">亚庇机场离市区超近，下午航班不用赶</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">16:50</span>
-                    <span class="timeline-desc">AK5325（AirAsia）起飞飞往槟城<span class="tip">这条线每天仅 1-2 班直飞！16:50 是当天最后一班，别误机；飞行 2h40m<span class="timeline-tag book">提前买票</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:30</span>
-                    <span class="timeline-desc">抵达槟城机场 PEN，Grab 到乔治市酒店（约 RM45 / 30min）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">20:30</span>
-                    <span class="timeline-desc">Check-in + 放下行李</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">21:00</span>
-                    <span class="timeline-desc">汕头街美食宵夜<span class="tip">粿条汤、四果汤、炭烤沙爹、鸭粥粿汁——乔治市的深夜食堂<span class="timeline-tag food">美食</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">22:00</span>
-                    <span class="timeline-desc">爱情巷 Love Lane 夜逛<span class="tip">深夜的乔治市安静又迷人，明早开始正式暴走</span></span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Day 8 -->
-    <div class="day-card">
-        <div class="day-side pn">
-            <div class="day-num">08</div>
-            <div class="day-date">10.1 Thu</div>
-            <div class="day-city">槟城</div>
+<!-- ===== Day 7: 9/30 亚庇 -> 槟城 ===== -->
+<div class="day-card">
+  <div class="day-header tone-pink">
+    <div class="date-box"><div class="day-num">30</div><div class="day-month">SEP</div></div>
+    <div class="day-title"><h3>Day 7 · 哥打京那巴鲁 → 槟城</h3><div class="meta">周三 · 红眼航班飞槟城</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box flight">✈️</div>
+      <div class="segment-body">
+        <div class="segment-title">国内段 · 亚庇 → 槟城</div>
+        <div class="flight-route">
+          <div class="airport"><div class="time">21:15</div><div class="code">BKI T1</div><div class="name">哥打京那巴鲁</div></div>
+          <div class="arrow">✈️<div class="duration">2h 40m</div></div>
+          <div class="airport"><div class="time">23:55</div><div class="code">PEN</div><div class="name">槟城机场</div></div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">乔治市暴走日 · 壁画+极乐寺+升旗山</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">07:30</span>
-                    <span class="timeline-desc">壁画街 Wall Art Walk 晨拍<span class="tip">清晨人少光线好！从 Armenian Street 开始找壁画：骑自行车的姐弟、功夫女孩、小孩在窗上——全程步行约 1.5h<span class="timeline-tag must">必打卡</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">09:30</span>
-                    <span class="timeline-desc">侨生博物馆 Pinang Peranakan Mansion<span class="tip">门票 RM25，金碧辉煌的娘惹文化博物馆，10 点后人开始多，赶早场<span class="timeline-tag must">必去</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">11:00</span>
-                    <span class="timeline-desc">蓝屋 Cheong Fatt Tze Mansion 导览<span class="tip">靛蓝色百年大宅，11:00 有英文导览团（RM25），外观拍照免费</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">12:30</span>
-                    <span class="timeline-desc">午餐：汕头街 / 多春茶室<span class="tip">炒粿条、福建虾面、碳烧面包配半熟蛋</span><span class="timeline-tag food">美食</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">13:30</span>
-                    <span class="timeline-desc">Grab 前往亚依淡（约 25min）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:00</span>
-                    <span class="timeline-desc">极乐寺 Kek Lok Si Temple<span class="tip">东南亚最大佛寺，巨型观音像+万佛塔，缆车上塔 RM6。极乐寺和升旗山紧邻，顺路一起玩<span class="timeline-tag must">必去</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">15:30</span>
-                    <span class="timeline-desc">升旗山 Penang Hill<span class="tip">缆车 RM30（外国人），山顶俯瞰乔治市全景，气温凉爽，日落前光线最美<span class="timeline-tag must">观景</span></span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">17:30</span>
-                    <span class="timeline-desc">下山，返回乔治市</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">19:00</span>
-                    <span class="timeline-desc">汕头街美食暴走<span class="tip">炒粿条、四果汤、炭烤沙爹、鸭肉粿条汤、红豆冰</span><span class="timeline-tag food">美食暴走</span></span>
-                </li>
-            </ul>
-        </div>
+        <div class="detail-line"><strong>亚洲航空 AK5325</strong> · 空客 320(中) · 经济舱 · 无餐食</div>
+        <div class="tags"><span class="tag flag">已出票</span><span class="tag note">⚠ 无免费托运行李</span></div>
+      </div>
     </div>
-
-    <!-- Day 9 -->
-    <div class="day-card">
-        <div class="day-side tr">
-            <div class="day-num">09</div>
-            <div class="day-date">10.2 Fri</div>
-            <div class="day-city">PN→KL</div>
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">入住 · 辉盛凯贝丽槟城酒店</div>
+        <div class="hotel-box">
+          <div class="name">Fraser Place Penang（辉盛凯贝丽槟城）</div>
+          <div class="info"><strong>尊贵双床房 · 1 间</strong><br>
+            入住 <strong>09/30</strong> → 离店 <strong>10/02</strong> · 2 晚 · 房费 <strong>¥1,563.08</strong>
+          </div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">姓氏桥晨拍 → ETS火车回KL</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">07:00</span>
-                    <span class="timeline-desc">姓氏桥 Clan Jetties 晨拍<span class="tip">海上木屋群清晨光线最好，渔民已经开始劳作，比日落更有人情味。走姓周桥/姓陈桥，免费</span><span class="timeline-tag must">打卡</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">08:00</span>
-                    <span class="timeline-desc">早餐：多春茶室<span class="tip">炭烧面包+半熟蛋+海南咖啡，9 点前排得到队</span><span class="timeline-tag food">美食</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">09:00</span>
-                    <span class="timeline-desc">最后买伴手礼<span class="tip">白咖啡、豆蔻、娘惹糕、榴莲制品，乔治市街边店比机场便宜</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">10:15</span>
-                    <span class="timeline-desc">Check-out，Grab 到 Pengkalan Weld 码头（5min）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">10:30</span>
-                    <span class="timeline-desc">乘轮渡到 Butterworth 北海<span class="tip">渡轮 RM2，航行约 15 分钟，下船按指示牌步行 5 分钟到 KTM 车站</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">11:20</span>
-                    <span class="timeline-desc">Butterworth KTM 车站，乘 ETS 火车到 KL Sentral<span class="tip">ETS Gold/Platinum 约 4 小时，票价 RM35-80 视等级；务必提前在 KTMB App（KITS）购票！1 月起全线无现金购票<span class="timeline-tag book">提前购票</span></span><span class="timeline-tag must">火车</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">15:25</span>
-                    <span class="timeline-desc">抵达 KL Sentral，Check-in 酒店（住 KL Sentral 附近方便明天去机场）</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">17:30</span>
-                    <span class="timeline-desc">最后的吉隆坡晚餐：阿罗街 / Pavilion 美食街收尾<span class="tip">黄亚华烤翅、沙爹串，最后一顿大马味</span><span class="timeline-tag food">美食</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">20:00</span>
-                    <span class="timeline-desc">收拾行李 + 早点休息</span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Day 10 -->
-    <div class="day-card">
-        <div class="day-side kl">
-            <div class="day-num">10</div>
-            <div class="day-date">10.3 Sat</div>
-            <div class="day-city">吉隆坡</div>
+<!-- ===== Day 8: 10/01 槟城 ===== -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="date-box"><div class="day-num">01</div><div class="day-month">OCT</div></div>
+    <div class="day-title"><h3>Day 8 · 槟城</h3><div class="meta">周四 · 槟城自由活动</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">辉盛凯贝丽 · 第 2 晚</div>
+        <div class="hotel-box">
+          <div class="info">乔治市 · 壁画街 · 升旗山 · 极乐寺 · 槟城美食（叻沙、炒粿条、福建虾面）</div>
         </div>
-        <div class="day-content">
-            <h3 class="day-title">最后的早晨 · 启程回家</h3>
-            <ul class="timeline">
-                <li class="timeline-item">
-                    <span class="timeline-time">08:00</span>
-                    <span class="timeline-desc">早餐：酒店早餐 / 附近吃碗椰浆饭 Nasi Lemak</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">09:00</span>
-                    <span class="timeline-desc">最后购物：Pavilion / Suria KLCC 买白咖啡、巧克力、肉骨茶包</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">11:00</span>
-                    <span class="timeline-desc">回酒店收拾行李，Check-out</span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">11:30</span>
-                    <span class="timeline-desc">KL Sentral → KLIA Ekspres → 机场<span class="tip">KLIA Ekspres 28 分钟，RM55；建议提前 2.5 小时到机场</span></span>
-                </li>
-                <li class="timeline-item">
-                    <span class="timeline-time">14:00</span>
-                    <span class="timeline-desc">吉隆坡起飞回家 🛫<span class="tip">Selamat Jalan Malaysia! 再见马来西亚！</span></span>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
-</section>
+  </div>
+</div>
 
-<!-- ===== HOTELS ===== -->
-<section id="hotels" class="fade-in">
-    <div class="section-label">Where to Stay</div>
-    <h2 class="section-title">酒店推荐</h2>
-    <p class="section-desc">每个城市精选 2 家：一家有品质的 fancy 之选，一家高性价比的 value 之选。</p>
-
-    <div class="hotel-grid">
-        <!-- KL Hotels -->
-        <div class="hotel-card">
-            <div class="hotel-header kl">
-                <span class="hotel-name">The RuMa Hotel</span>
-                <span class="hotel-type luxury">品质之选</span>
-            </div>
-            <div class="hotel-body">
-                <div class="hotel-price">¥800-1100<span class="unit">/晚</span></div>
-                <ul class="hotel-features">
-                    <li>KLCC 区域，步行7分钟到双子塔</li>
-                    <li>米其林指南推荐酒店</li>
-                    <li>精品设计酒店，本地元素+现代极简</li>
-                    <li>天台酒吧，城市景观超赞</li>
-                    <li>适合情侣，安静私密</li>
-                </ul>
-                <p class="hotel-note">住厌了千篇一律商务酒店？这家给你惊喜。</p>
-            </div>
+<!-- ===== Day 9: 10/02 槟城 → 吉隆坡 ===== -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="date-box"><div class="day-num">02</div><div class="day-month">OCT</div></div>
+    <div class="day-title"><h3>Day 9 · 槟城 → 吉隆坡</h3><div class="meta">周五 · ETS 火车 + 唐人街福朋</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box train">🚆</div>
+      <div class="segment-body">
+        <div class="segment-title">马来西亚铁路 ETS · 北海 → 吉隆坡中央车站</div>
+        <div class="flight-route">
+          <div class="airport"><div class="time">13:05</div><div class="code">BUTTERWORTH</div><div class="name">北海（槟城对岸）</div></div>
+          <div class="arrow">🚆<div class="duration">3h 35m</div></div>
+          <div class="airport"><div class="time">16:40</div><div class="code">KL SENTRAL</div><div class="name">吉隆坡中央车站</div></div>
         </div>
-
-        <div class="hotel-card">
-            <div class="hotel-header kl">
-                <span class="hotel-name">The Face Suites</span>
-                <span class="hotel-type value">性价比王</span>
-            </div>
-            <div class="hotel-body">
-                <div class="hotel-price">¥350-700<span class="unit">/晚</span></div>
-                <ul class="hotel-features">
-                    <li>距双子塔约 800 米</li>
-                    <li>51 楼 L 型无边泳池！正对双塔</li>
-                    <li>公寓式，带厨房+洗衣机</li>
-                    <li>早 8 点前/晚 10 点后人最少</li>
-                    <li>长住超方便，出片率极高</li>
-                </ul>
-                <p class="hotel-note">无边泳池拍双子塔，全网最火的平价机位。</p>
-            </div>
-        </div>
-
-        <!-- KK Hotels -->
-        <div class="hotel-card">
-            <div class="hotel-header kk">
-                <span class="hotel-name">Le Meridien KK</span>
-                <span class="hotel-type luxury">品质之选</span>
-            </div>
-            <div class="hotel-body">
-                <div class="hotel-price">¥600-900<span class="unit">/晚</span></div>
-                <ul class="hotel-features">
-                    <li>艾美酒店，万豪旗下 5 星</li>
-                    <li>市中心，距码头 1.8km，机场 15 分钟</li>
-                    <li>海景房直接看"世界最美日落"</li>
-                    <li>顶层泳池 + SPA + 多间餐厅</li>
-                    <li>本次住 4 晚，是行程的大本营</li>
-                </ul>
-                <p class="hotel-note">亚庇住 4 晚是这趟的重头戏，海景房值得加钱。</p>
-            </div>
-        </div>
-
-        <div class="hotel-card">
-            <div class="hotel-header kk">
-                <span class="hotel-name">Hilton Kota Kinabalu</span>
-                <span class="hotel-type value">性价比之选</span>
-            </div>
-            <div class="hotel-body">
-                <div class="hotel-price">¥400-600<span class="unit">/晚</span></div>
-                <ul class="hotel-features">
-                    <li>5 星希尔顿，起价仅 ¥746</li>
-                    <li>市中心 Asia City，步行到码头</li>
-                    <li>户外泳池 + 池边酒吧</li>
-                    <li>24h 前台 + 代客泊车</li>
-                    <li>大床/双床/套房多种选择</li>
-                </ul>
-                <p class="hotel-note">五星级体验，三星级价格，位置无敌。</p>
-            </div>
-        </div>
-
-        <!-- Penang Hotels -->
-        <div class="hotel-card">
-            <div class="hotel-header pn">
-                <span class="hotel-name">The Edison George Town</span>
-                <span class="hotel-type luxury">品质之选</span>
-            </div>
-            <div class="hotel-body">
-                <div class="hotel-price">¥600-900<span class="unit">/晚</span></div>
-                <ul class="hotel-features">
-                    <li>殖民风格大宅改造精品酒店</li>
-                    <li>中庭泳池，步行壁画街5分钟</li>
-                    <li>世界文化遗产区核心</li>
-                    <li>复古南洋风，氛围感拉满</li>
-                    <li>适合情侣蜜月、文化爱好者</li>
-                </ul>
-                <p class="hotel-note">住在两百年老宅里，比任何酒店都有故事感。</p>
-            </div>
-        </div>
-
-        <div class="hotel-card">
-            <div class="hotel-header pn">
-                <span class="hotel-name">23 Love Lane Hotel</span>
-                <span class="hotel-type value">浪漫之选</span>
-            </div>
-            <div class="hotel-body">
-                <div class="hotel-price">¥430-600<span class="unit">/晚</span></div>
-                <ul class="hotel-features">
-                    <li>爱情巷核心位置！名字就浪漫</li>
-                    <li>复古南洋风情设计师酒店</li>
-                    <li>有花园、长满花的楼梯、泡池</li>
-                    <li>免费下午茶 + 精选早餐</li>
-                    <li>酒店还有两只猫猫！</li>
-                </ul>
-                <p class="hotel-note">爱情巷住爱情巷，这名字就是天注定的。</p>
-            </div>
-        </div>
-
-        <!-- Budget Penang -->
-        <div class="hotel-card">
-            <div class="hotel-header pn">
-                <span class="hotel-name">Le Dream Boutique Hotel</span>
-                <span class="hotel-type value">超值之选</span>
-            </div>
-            <div class="hotel-body">
-                <div class="hotel-price">¥250-340<span class="unit">/晚</span></div>
-                <ul class="hotel-features">
-                    <li>乔治市中心，位置评分 9.3/10</li>
-                    <li>距 Komtar 700m，近小吃街</li>
-                    <li>现代化装修，干净舒适</li>
-                    <li>24h 前台 + 免费WiFi</li>
-                    <li>步行可达所有壁画和景点</li>
-                </ul>
-                <p class="hotel-note">位置位置位置！省钱还能走遍乔治市。</p>
-            </div>
-        </div>
+        <div class="detail-line"><strong>ETS EX9109 Express</strong> · 预订号 <strong>T260839464905</strong> · 票价 <strong>MYR 114.00</strong></div>
+        <div class="tags"><span class="tag flag">成人票</span><span class="tag">Coach B · Seat 14C</span><span class="tag">GENG YIBIN</span></div>
+      </div>
     </div>
-</section>
-
-<!-- ===== TRANSPORT ===== -->
-<section id="transport" class="fade-in">
-    <div class="section-label">Getting Around</div>
-    <h2 class="section-title">城际交通</h2>
-    <p class="section-desc">三段城际交通，提前买票是省钱的关键。以下是推荐方案。</p>
-
-    <div class="transport-grid">
-        <div class="transport-card">
-            <div class="transport-from">
-                <div class="city">吉隆坡 KLIA2</div>
-                <div class="time">9.26 · AK5116 14:05 出发</div>
-            </div>
-            <div class="transport-mid">
-                <div class="icon">✈</div>
-                <div class="mode">AirAsia 直飞</div>
-                <div class="duration">2h40m · 每日12+班</div>
-                <div class="price">≈ RM200-350</div>
-            </div>
-            <div class="transport-to">
-                <div class="city">亚庇 BKI</div>
-                <div class="time">16:45 到达</div>
-            </div>
+    <div class="segment">
+      <div class="icon-box hotel">🏨</div>
+      <div class="segment-body">
+        <div class="segment-title">入住 · 吉隆坡唐人街福朋喜来登酒店</div>
+        <div class="hotel-box">
+          <div class="name">吉隆坡唐人街福朋喜来登酒店</div>
+          <div class="info"><strong>豪华双床房 · 1 间</strong><br>
+            入住 <strong>10/02</strong> → 离店 <strong>10/03</strong> · 1 晚 · 房费 <strong>¥1,615.94</strong><br>
+            <small class="warn">⚠ 状态：等待确认</small>
+          </div>
         </div>
-
-        <div class="transport-card">
-            <div class="transport-from">
-                <div class="city">亚庇 BKI</div>
-                <div class="time">9.30 · AK5325 16:50 出发</div>
-            </div>
-            <div class="transport-mid">
-                <div class="icon">✈</div>
-                <div class="mode">AirAsia 直飞 · 每天仅1-2班</div>
-                <div class="duration">2h40m</div>
-                <div class="price">≈ RM150-300</div>
-            </div>
-            <div class="transport-to">
-                <div class="city">槟城 PEN</div>
-                <div class="time">19:30 到达</div>
-            </div>
-        </div>
-
-        <div class="transport-card">
-            <div class="transport-from">
-                <div class="city">槟城岛</div>
-                <div class="time">10.2 · 轮渡 10:30</div>
-            </div>
-            <div class="transport-mid">
-                <div class="icon">🚢🚄</div>
-                <div class="mode">轮渡 + ETS Gold</div>
-                <div class="duration">轮渡15min + 火车4h</div>
-                <div class="price">RM2 + RM35-80</div>
-            </div>
-            <div class="transport-to">
-                <div class="city">KL Sentral</div>
-                <div class="time">11:20 发车 · 15:25 到达</div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--card); border-radius: 1rem; border: 1px solid var(--border);">
-        <h4 style="color: var(--accent-1); margin-bottom: 1rem;">⚠️ 机票购买 Tips</h4>
-        <ul style="list-style:none; font-size:0.85rem; color:var(--text-dim); line-height:2;">
-            <li>▸ 亚航 AirAsia 是马来国内段首选，提前 1-2 个月买最便宜</li>
-            <li>▸ ⚠️ 亚庇→槟城直飞每天仅 1-2 班（AK5325 16:50 是当天最后一班），务必按点起飞；FireFly 已于 2025 年停飞此线，认准亚航/马航</li>
-            <li>▸ 行李额单独买（20kg 约 RM50-80），购票时一起买比现场买便宜</li>
-            <li>▸ 亚航从 KLIA2 出发，和 KLIA 不同航站楼，别走错</li>
-            <li>▸ ETS 火车票通过 KTM Mobile App (KITS) 购买，旺季提前 1-2 周订</li>
-            <li>▸ ETS 票价分 Platinum（最快）/ Gold / Silver，推荐 Gold 性价比最好</li>
-            <li>▸ 槟城轮渡：从 Pengkalan Weld 码头出发到 Butterworth，RM2/人，航行 15 分钟</li>
-        </ul>
+<!-- ===== Day 10: 10/03 吉隆坡 -> 上海 -> 北京 ===== -->
+<div class="day-card">
+  <div class="day-header tone-orange">
+    <div class="date-box"><div class="day-num">03</div><div class="day-month">OCT</div></div>
+    <div class="day-title"><h3>Day 10 · 吉隆坡 → 上海 → 北京</h3><div class="meta">周六 · 国庆假期最后一天 · 回程</div></div>
+  </div>
+  <div class="day-body">
+    <div class="segment">
+      <div class="icon-box flight">✈️</div>
+      <div class="segment-body">
+        <div class="segment-title">返程第一程 · 吉隆坡 → 上海浦东</div>
+        <div class="flight-route">
+          <div class="airport"><div class="time">14:00</div><div class="code">KUL T1</div><div class="name">吉隆坡国际机场</div></div>
+          <div class="arrow">✈️<div class="duration">5h 20m</div></div>
+          <div class="airport"><div class="time">19:20</div><div class="code">PVG T1</div><div class="name">上海浦东国际机场</div></div>
+        </div>
+        <div class="detail-line"><strong>上海航空 FM7222</strong> · 预订号 <strong>PERKOR</strong></div>
+        <div class="tags"><span class="tag flag">已出票</span><span class="tag">GENG/YIBIN</span></div>
+      </div>
     </div>
-</section>
-
-<!-- ===== CHECKLIST ===== -->
-<section id="checklist" class="fade-in">
-    <div class="section-label">Pre-Trip Checklist</div>
-    <h2 class="section-title">出发前必做清单</h2>
-    <p class="section-desc">点击方框打勾，逐项搞定。带 <span class="badge-urgent">紧急</span> 标记的优先处理。</p>
-
-    <div class="checklist">
-        <div class="checklist-grid">
-            <div class="checklist-group">
-                <h4>📋 证件 & 入境</h4>
-                <div class="checklist-item"><div class="check-box"></div><div>护照有效期 6 个月以上</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>填写 MDAC 马来西亚电子入境卡<span class="badge-urgent">入境前3天</span></div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>打印返程机票行程单</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>打印酒店预订单（备查）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>下载 Grab App 注册好</div></div>
-            </div>
-
-            <div class="checklist-group">
-                <h4>✈️ 交通提前买</h4>
-                <div class="checklist-item"><div class="check-box"></div><div>9.26 KL→KK 机票（AK5116 14:05）<span class="badge-urgent">提前1-2月</span></div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>9.30 KK→Penang 机票（AK5325 16:50，每天仅1-2班直飞）<span class="badge-urgent">提前1-2月</span></div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>10.2 ETS 火车票 Butterworth→KL（11:20 班次）<span class="badge-urgent">提前2周</span></div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>国内段行李额（每程 20kg）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>10.3 返程国际机票确认（当天是周六，机场人多）</div></div>
-            </div>
-
-            <div class="checklist-group">
-                <h4>🏨 酒店预订</h4>
-                <div class="checklist-item"><div class="check-box"></div><div>9.24-26 吉隆坡酒店（2晚）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>9.26-30 亚庇酒店（4晚，海景房！）<span class="badge-urgent">重点订</span></div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>9.30-10.2 槟城酒店（2晚）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>10.2-10.3 吉隆坡酒店（1晚，KL Sentral 附近方便去机场）</div></div>
-            </div>
-
-            <div class="checklist-group">
-                <h4>🎫 门票 & 活动</h4>
-                <div class="checklist-item"><div class="check-box"></div><div>双子塔观景台门票<span class="badge-urgent">提前官网购</span></div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>KK 美人鱼岛一日游（RM350-450/人）<span class="badge-urgent">提前2-3天订</span></div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>KK 红树林萤火虫半日游（RM200-350/人）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>KK 跳岛船票（哲斯顿码头现场买，可讲价）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>槟城升旗山缆车票（RM30）</div></div>
-            </div>
-
-            <div class="checklist-group">
-                <h4>📱 通讯 & 支付</h4>
-                <div class="checklist-item"><div class="check-box"></div><div>买 eSIM 或实体 SIM 卡 (Digi/Hotlink)</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>下载 KTM Mobile (KITS) App</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>下载 Google Maps 离线地图</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>兑换马币 RM（机场/市区换汇所）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>Visa/Master 信用卡</div></div>
-            </div>
-
-            <div class="checklist-group">
-                <h4>🎒 物品准备</h4>
-                <div class="checklist-item"><div class="check-box"></div><div>防晒霜 SPF50+ + 墨镜帽子</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>薄外套（商场/影院冷气足）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>泳衣（酒店泳池+海岛浮潜）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>驱蚊水（红树林必备）</div></div>
-                <div class="checklist-item"><div class="check-box"></div><div>转换插头（英标三脚）</div></div>
-            </div>
+    <div class="segment">
+      <div class="icon-box flight">✈️</div>
+      <div class="segment-body">
+        <div class="segment-title">返程第二程 · 上海浦东 → 北京大兴</div>
+        <div class="flight-route">
+          <div class="airport"><div class="time">21:35</div><div class="code">PVG T1</div><div class="name">上海浦东</div></div>
+          <div class="arrow">✈️<div class="duration">2h 15m</div></div>
+          <div class="airport"><div class="time">23:50</div><div class="code">PKX</div><div class="name">北京大兴</div></div>
         </div>
+        <div class="detail-line"><strong>东方航空 MU5165</strong> · 预订号 <strong>PERKOR</strong></div>
+        <div class="tags"><span class="tag flag">已出票</span><span class="tag">GENG/YIBIN</span></div>
+      </div>
     </div>
-</section>
+  </div>
+</div>
 
-<!-- ===== TIPS ===== -->
-<section id="tips" class="fade-in">
-    <div class="section-label">Travel Tips</div>
-    <h2 class="section-title">实用贴士</h2>
-    <p class="section-desc">来自真人分享的实战经验，避坑指南。</p>
+</div><!-- /timeline -->
 
-    <div class="tips-grid">
-        <div class="tip-card">
-            <div class="tip-icon">💰</div>
-            <h4>现金为王</h4>
-            <p>夜市、小摊贩只收马币。建议在市区换汇所换（比机场汇率好），备 RM500-800 现金。大商场和连锁店可刷卡。</p>
-        </div>
-        <div class="tip-card">
-            <div class="tip-icon">📱</div>
-            <h4>Grab 打车</h4>
-            <p>东南亚版滴滴，比出租便宜 50%。吉隆坡和亚庇都有，槟城也有但等待时间稍长。高峰期（17:00-19:30）避开塞车。</p>
-        </div>
-        <div class="tip-card">
-            <div class="tip-icon">🌅</div>
-            <h4>日落要趁早</h4>
-            <p>亚庇日落提前 1 小时占位！丹绒亚路海滩人最多的时段是 17:00-18:30，带好相机和三脚架。</p>
-        </div>
-        <div class="tip-card">
-            <div class="tip-icon">🍜</div>
-            <h4>槟城美食地图</h4>
-            <p>不要去游客餐厅！汕头街、牛干冬街、新关仔角夜市是三大美食集中地。排队越长的越正宗。</p>
-        </div>
-        <div class="tip-card">
-            <div class="tip-icon">🐒</div>
-            <h4>黑风洞防猴</h4>
-            <p>千万别带食物上山！猴子会抢包。穿运动鞋，272 级台阶别穿拖鞋。早上 8 点去人最少。</p>
-        </div>
-        <div class="tip-card">
-            <div class="tip-icon">🕌</div>
-            <h4>清真寺着装</h4>
-            <p>长袖长裤，入口处免费借长袍和头巾。非穆斯林注意开放时间，避开祈祷时间。</p>
-        </div>
-        <div class="tip-card">
-            <div class="tip-icon">🧴</div>
-            <h4>防晒防蚊</h4>
-            <p>赤道紫外线超强，SPF50 起步。亚庇红树林萤火虫必带驱蚊水，穿长裤长袖。</p>
-        </div>
-        <div class="tip-card">
-            <div class="tip-icon">⚡</div>
-            <h4>英标插头</h4>
-            <p>马来西亚用英标三脚方插头，和香港一样。带转换器或万能适配器。</p>
-        </div>
-    </div>
-</section>
+<div class="notes">
+  <div class="notes-card">
+    <h4>📋 出行贴士</h4>
+    <ul>
+      <li>亚航两段（<strong>AK5140</strong>、<strong>AK5325</strong>）<strong>无免费托运行李</strong>，需提前在亚航官网购买或机场柜台加购。</li>
+      <li>ETS 火车 <strong>出发前 5 分钟关闭闸口</strong>，Butterworth 站建议提前 30 分钟抵达；不可携带任何类型自行车上车。</li>
+      <li>吉隆坡唐人街福朋喜来登酒店尚处 <span class="warn">等待确认</span> 状态，关注订单更新。</li>
+      <li>护照号 <strong>ER9058213</strong>；出发前请确认有效期 ≥ 6 个月。</li>
+      <li>所有航班的乘机人均为 <strong>GENG/YIBIN</strong>，记得提前 24h 办理网上值机。</li>
+    </ul>
+  </div>
+</div>
 
-<!-- ===== FOOTER ===== -->
 <footer>
-    <p class="heart">Selamat Jalan, Malaysia ✨</p>
-    <p class="meta">Made with ❤️ for an unforgettable journey · 9.24 - 10.3, 2026<br>吉隆坡 · 亚庇 · 槟城 · 10天9晚</p>
+  <p>马来西亚十日游 · 行程时间线 · 整理于 2026 年 8 月</p>
 </footer>
 
-<script>
-// ===== MAP (skipped gracefully if Leaflet failed to load) =====
-if (window.L) {
-const map = L.map('map', {
-    center: [4.5, 105],
-    zoom: 6,
-    scrollWheelZoom: false,
-    zoomControl: true,
-});
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap & CARTO',
-    subdomains: 'abcd',
-    maxZoom: 19,
-}).addTo(map);
-
-// Custom marker colors
-function makeMarker(color) {
-    return L.divIcon({
-        className: 'custom-marker',
-        html: `<div style="width:22px;height:22px;border-radius:50%;background:${color};border:3px solid #fff;box-shadow:0 2px 10px rgba(36,34,29,0.25);cursor:pointer;"></div>`,
-        iconSize: [22, 22],
-        iconAnchor: [11, 11],
-    });
-}
-
-const klColor = '#b0653e';
-const kkColor = '#6f8f7f';
-const pnColor = '#8d7fae';
-
-// KL Markers
-const klMarkers = [
-    { coords: [3.1579, 101.7117], name: '双子塔 Petronas Twin Towers', city: 'KL', desc: '吉隆坡地标，登顶 RM98（官网购票）' },
-    { coords: [3.2379, 101.6840], name: '黑风洞 Batu Caves', city: 'KL', desc: '272级彩虹阶梯，印度教圣地' },
-    { coords: [3.1470, 101.6945], name: '独立广场 Merdeka Square', city: 'KL', desc: '摩尔式建筑群，免费' },
-    { coords: [3.1438, 101.6966], name: '中央市场 Central Market', city: 'KL', desc: '手工艺品+二楼平价美食' },
-    { coords: [3.1443, 101.6967], name: '茨厂街 Petaling Street', city: 'KL', desc: '唐人街，逛吃逛吃' },
-    { coords: [3.1478, 101.7044], name: '阿罗街 Jalan Alor', city: 'KL', desc: '夜市美食街，黄亚华烤翅' },
-    { coords: [3.1528, 101.7036], name: '吉隆坡塔 KL Tower', city: 'KL', desc: '观景台看日落 RM55' },
-    { coords: [2.7456, 101.7099], name: 'KLIA 机场', city: 'KL', desc: 'KLIA Ekspres 28分钟到 KL Sentral' },
-];
-
-// KK Markers
-const kkMarkers = [
-    { coords: [5.9612, 116.0473], name: '丹绒亚路海滩 Tanjung Aru', city: 'KK', desc: '世界三大最美日落！' },
-    { coords: [5.9827, 116.0753], name: '加雅街 Gaya Street', city: 'KK', desc: '周日市集 6:00-14:00' },
-    { coords: [5.9897, 116.0667], name: '水上清真寺 City Mosque', city: 'KK', desc: '白色建筑倒映水面' },
-    { coords: [5.9824, 116.0723], name: '菲律宾市场 Filipino Market', city: 'KK', desc: '海鲜大餐+手工艺品' },
-    { coords: [5.9791, 116.0661], name: 'Signal Hill 观景台', city: 'KK', desc: '俯瞰亚庇全城+海湾' },
-    { coords: [5.8906, 116.0514], name: '亚庇机场 BKI', city: 'KK', desc: 'Grab 到市区约 RM20' },
-    { coords: [5.9635, 116.0150], name: '东姑阿都拉曼群岛', city: 'KK', desc: '跳岛浮潜 Sapi/Manukan' },
-    { coords: [6.0622, 116.2644], name: 'Kawa Kawa 红树林', city: 'KK', desc: '长鼻猴+萤火虫半日游' },
-    { coords: [6.7302, 116.3264], name: '美人鱼岛 Mantanani', city: 'KK', desc: '玻璃海浮潜一日游' },
-];
-
-// Penang Markers
-const pnMarkers = [
-    { coords: [5.4180, 100.3346], name: ' Armenian Street 壁画街', city: 'PN', desc: '乔治市街头艺术，超出片' },
-    { coords: [5.4197, 100.3370], name: '爱情巷 Love Lane', city: 'PN', desc: '浪漫小巷，咖啡馆酒吧' },
-    { coords: [5.4105, 100.3435], name: '姓氏桥 Clan Jetties', city: 'PN', desc: '水上木屋群，日落最美' },
-    { coords: [5.4014, 100.2883], name: '极乐寺 Kek Lok Si', city: 'PN', desc: '东南亚最大佛寺' },
-    { coords: [5.4254, 100.2726], name: '升旗山 Penang Hill', city: 'PN', desc: '缆车 RM30，俯瞰全城' },
-    { coords: [5.4350, 100.3120], name: '新关仔角 Gurney Drive', city: 'PN', desc: '槟城最著名美食街' },
-    { coords: [5.4190, 100.3310], name: '蓝屋 Cheong Fatt Tze', city: 'PN', desc: '靛蓝传统建筑，拍照绝佳' },
-    { coords: [5.2971, 100.2656], name: '槟城机场 PEN', city: 'PN', desc: 'Grab 到乔治市约 RM45' },
-];
-
-// Add markers
-klMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(klColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8b8478">${m.desc}</span>`));
-kkMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(kkColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8b8478">${m.desc}</span>`));
-pnMarkers.forEach(m => L.marker(m.coords, { icon: makeMarker(pnColor) }).addTo(map).bindPopup(`<strong>${m.name}</strong><br><span style="color:#8b8478">${m.desc}</span>`));
-
-// Flight routes (dashed lines)
-L.polyline([[3.1579, 101.7117], [5.9788, 116.0753]], { color: klColor, dashArray: '10, 10', weight: 2, opacity: 0.6 }).addTo(map);
-L.polyline([[5.9788, 116.0753], [5.4141, 100.3288]], { color: kkColor, dashArray: '10, 10', weight: 2, opacity: 0.6 }).addTo(map);
-L.polyline([[5.4141, 100.3288], [3.1366, 101.6866]], { color: pnColor, dashArray: '10, 10', weight: 2, opacity: 0.6 }).addTo(map);
-
-// City labels
-L.marker([3.1579, 101.7117], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-family:Noto Serif SC,serif;font-size:14px;font-weight:700;color:#b0653e;text-shadow:0 0 8px #fff,0 1px 2px rgba(36,34,29,0.15);white-space:nowrap;">吉隆坡 KL</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
-L.marker([5.9788, 116.0753], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-family:Noto Serif SC,serif;font-size:14px;font-weight:700;color:#6f8f7f;text-shadow:0 0 8px #fff,0 1px 2px rgba(36,34,29,0.15);white-space:nowrap;">亚庇 KK</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
-L.marker([5.4141, 100.3288], { icon: L.divIcon({ className: 'city-label', html: '<div style="font-family:Noto Serif SC,serif;font-size:14px;font-weight:700;color:#8d7fae;text-shadow:0 0 8px #fff,0 1px 2px rgba(36,34,29,0.15);white-space:nowrap;">槟城 Penang</div>', iconSize: [100, 20], iconAnchor: [50, -20] }) }).addTo(map);
-
-// ===== Checkboxes =====
-// (moved to standalone script below)
-} // end if (window.L)
-</script>
-
-<script>
-// ===== Independent UI logic (runs even if map library fails) =====
-
-// Checkboxes
-document.querySelectorAll('.check-box').forEach(box => {
-    box.addEventListener('click', () => box.classList.toggle('checked'));
-});
-
-// Fade in on scroll
-function revealAllFadeIn() {
-    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-}
-if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    // Safety net: force everything visible after 3s no matter what
-    setTimeout(revealAllFadeIn, 3000);
-} else {
-    revealAllFadeIn();
-}
-
-// Nav scroll spy
-const navLinks = document.querySelectorAll('.top-nav a');
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id], header');
-    let current = '';
-    sections.forEach(section => {
-        const top = section.offsetTop - 100;
-        if (window.scrollY >= top) current = section.id;
-    });
-    navLinks.forEach(link => {
-        link.style.color = link.getAttribute('href') === '#' + current ? 'var(--text)' : '';
-    });
-});
-</script>
 </body>
 </html>
