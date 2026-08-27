@@ -230,9 +230,50 @@ footer {
   .icon-box { width: 40px; height: 40px; font-size: 1.2rem; border-radius: 11px; }
   .notes-card { padding: 16px 18px; }
 }
+
+/* ===== Access Lock ===== */
+.lock-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
+  transition: opacity 0.5s ease;
+}
+.lock-overlay.hidden { opacity: 0; pointer-events: none; }
+.lock-card {
+  background: white; border-radius: 20px; padding: 40px 36px;
+  width: min(420px, calc(100vw - 48px));
+  text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+}
+.lock-card .lock-icon { font-size: 2.6rem; margin-bottom: 14px; }
+.lock-card h2 { font-size: 1.35rem; color: #1e1b4b; margin-bottom: 8px; font-weight: 800; }
+.lock-card p { font-size: 0.9rem; color: #6b7280; margin-bottom: 24px; }
+.lock-input {
+  width: 100%; padding: 13px 16px; font-size: 1.15rem; letter-spacing: 8px; text-align: center;
+  border: 2px solid #e5e7eb; border-radius: 12px; outline: none; font-family: inherit;
+  transition: border-color 0.2s;
+}
+.lock-input:focus { border-color: #4338ca; }
+.lock-btn {
+  width: 100%; margin-top: 14px; padding: 13px; font-size: 1rem; font-weight: 700;
+  background: linear-gradient(135deg, #4338ca, #6366f1); color: white; border: none;
+  border-radius: 12px; cursor: pointer; transition: opacity 0.2s;
+}
+.lock-btn:hover { opacity: 0.9; }
+.lock-err { color: #dc2626; font-size: 0.85rem; margin-top: 12px; min-height: 20px; }
 </style>
 </head>
 <body>
+
+<div class="lock-overlay" id="lockOverlay">
+  <div class="lock-card">
+    <div class="lock-icon">🔒</div>
+    <h2>私人行程 · 需验证码</h2>
+    <p>此页面包含私人行程信息，请输入验证码查看</p>
+    <input type="password" class="lock-input" id="lockInput" placeholder="••••••" maxlength="16" autocomplete="off">
+    <button class="lock-btn" id="lockBtn">解锁查看</button>
+    <div class="lock-err" id="lockErr"></div>
+  </div>
+</div>
 
 <section class="hero">
   <div class="flag-stripe"></div>
@@ -565,7 +606,7 @@ footer {
       <li>亚航两段（<strong>AK5140</strong>、<strong>AK5325</strong>）<strong>无免费托运行李</strong>，需提前在亚航官网购买或机场柜台加购。</li>
       <li>ETS 火车 <strong>出发前 5 分钟关闭闸口</strong>，Butterworth 站建议提前 30 分钟抵达；不可携带任何类型自行车上车。</li>
       <li>吉隆坡唐人街福朋喜来登酒店尚处 <span class="warn">等待确认</span> 状态，关注订单更新。</li>
-      <li>护照号 <strong>ER9058213</strong>；出发前请确认有效期 ≥ 6 个月。</li>
+      <li>护照号 <strong>ER9****13</strong>（已打码）；出发前请确认有效期 ≥ 6 个月。</li>
       <li>双人出行：<strong>GENG/YIBIN</strong> 北京往返（去程 MH319，返程 FM7222+MU5165）；<strong>LI/JUN</strong> 上海往返（去程 MU8641，返程 MU1495）。两人 9/24 在吉隆坡汇合，10/3 各自返程。</li>
       <li>提前 24h 办理网上值机。</li>
     </ul>
@@ -575,6 +616,45 @@ footer {
 <footer>
   <p>马来西亚十日游 · 行程时间线 · 整理于 2026 年 8 月</p>
 </footer>
+
+<script>
+(function () {
+  var HASH = '023f5351b94db0bdcde8dd21da240ac75adc1fc82371c516543b25485cb900de';
+  var overlay = document.getElementById('lockOverlay');
+  var input = document.getElementById('lockInput');
+  var btn = document.getElementById('lockBtn');
+  var err = document.getElementById('lockErr');
+
+  function sha256(str) {
+    var buf = new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256', buf).then(function (hash) {
+      var hex = Array.from(new Uint8Array(hash)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+      return hex;
+    });
+  }
+  function unlock() {
+    overlay.classList.add('hidden');
+    try { sessionStorage.setItem('mls_unlocked', '1'); } catch (e) {}
+  }
+  function tryUnlock() {
+    var val = input.value.trim();
+    if (!val) { err.textContent = '请输入验证码'; return; }
+    sha256(val).then(function (hex) {
+      if (hex === HASH) { err.textContent = ''; unlock(); }
+      else {
+        err.textContent = '验证码错误，请重试';
+        input.value = '';
+        input.focus();
+      }
+    });
+  }
+  btn.addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') tryUnlock(); });
+  try {
+    if (sessionStorage.getItem('mls_unlocked') === '1') unlock();
+  } catch (e) {}
+})();
+</script>
 
 </body>
 </html>
