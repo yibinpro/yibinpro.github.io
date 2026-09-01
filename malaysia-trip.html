@@ -1,237 +1,235 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>马来西亚十日游 · 2026 国庆</title>
+<html lang="zh-CN" data-page-node-id="NEygyN8MBWzH1IfNC9a5FQ">
+<head data-page-node-id="qGSfzuYzbp9oWaGxDwZI22">
+<meta charset="UTF-8" data-page-node-id="SPvzoDLI5HsuYkaxjX3G7F">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="RmqpZXFd43Z9AptBFACy2N">
+<title>马来西亚十日游 · 思维导图</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --primary: #cc0001;
-  --primary-light: #e63946;
-  --accent: #fcd116;
-  --secondary: #010066;
-  --blue: #1e40af;
-  --green: #166534;
-  --pink: #be185d;
+  --kl: #4338ca;   /* 吉隆坡 indigo */
+  --kl-bg: #eef2ff;
+  --kk: #be185d;   /* 亚庇 pink */
+  --kk-bg: #fdf2f8;
+  --pg: #047857;   /* 槟城 green */
+  --pg-bg: #ecfdf5;
+  --rt: #c2410c;   /* 返程 orange */
+  --rt-bg: #fff7ed;
   --text: #1f2937;
   --text-light: #6b7280;
   --border: #e5e7eb;
   --bg: #faf7f2;
   --card: #ffffff;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 30px rgba(0,0,0,0.10);
+  --shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 html { scroll-behavior: smooth; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.65;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-a { color: var(--primary); text-decoration: none; }
-a:hover { text-decoration: underline; }
 
-/* ===== Hero ===== */
+/* ===== Hero（紧凑） ===== */
 .hero {
   background: linear-gradient(135deg, #cc0001 0%, #e63946 35%, #f97316 75%, #fcd116 100%);
   color: white;
-  padding: 60px 20px 110px;
+  padding: 34px 18px 44px;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 .hero::before {
-  content: '';
-  position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0;
   background:
     radial-gradient(circle at 18% 25%, rgba(255,255,255,0.18), transparent 40%),
     radial-gradient(circle at 82% 70%, rgba(255,255,255,0.12), transparent 40%);
 }
 .flag-stripe {
-  position: absolute; left: 0; right: 0; top: 0; height: 8px;
-  background:
-    repeating-linear-gradient(90deg,
-      #cc0001 0 14px,
-      #ffffff 14px 28px,
-      #cc0001 28px 42px,
-      #fcd116 42px 56px);
+  position: absolute; left: 0; right: 0; top: 0; height: 6px;
+  background: repeating-linear-gradient(90deg, #cc0001 0 14px, #ffffff 14px 28px, #cc0001 28px 42px, #fcd116 42px 56px);
   opacity: 0.85;
 }
-.hero-content { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
-.hero h1 { font-size: 2.6rem; letter-spacing: 6px; margin-bottom: 14px; text-shadow: 0 2px 12px rgba(0,0,0,0.20); font-weight: 800; }
-.hero .subtitle { font-size: 1.1rem; opacity: 0.95; margin-bottom: 24px; }
-.city-chips { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { font-size: 1.7rem; letter-spacing: 4px; margin-bottom: 8px; text-shadow: 0 2px 12px rgba(0,0,0,0.2); font-weight: 800; }
+.hero .subtitle { font-size: 0.88rem; opacity: 0.95; margin-bottom: 14px; }
 .chip {
-  background: rgba(255,255,255,0.20);
-  border: 1px solid rgba(255,255,255,0.30);
-  padding: 7px 16px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  display: inline-block; background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 4px 12px; border-radius: 999px; font-size: 0.78rem; margin: 2px 3px;
 }
 
-/* ===== Summary ===== */
-.summary-wrap { max-width: 980px; margin: -60px auto 36px; padding: 0 20px; position: relative; z-index: 2; }
-.summary {
+/* ===== 日期导览条（横滑） ===== */
+.date-strip {
+  display: flex; gap: 6px; overflow-x: auto;
+  padding: 14px 16px 12px;
   background: white;
-  border-radius: 22px;
-  padding: 22px 28px;
-  box-shadow: var(--shadow-md);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
-.stat { text-align: center; padding: 4px 0; }
-.stat .num { font-size: 1.9rem; font-weight: 800; color: var(--primary); line-height: 1.15; }
-.stat .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
-
-/* ===== Section title ===== */
-.section-title {
-  max-width: 980px; margin: 0 auto 18px; padding: 0 20px;
-  font-size: 1.25rem; color: var(--secondary);
-  display: flex; align-items: center; gap: 10px;
-  font-weight: 700;
-}
-.section-title::before { content: ''; width: 4px; height: 22px; background: var(--primary); border-radius: 2px; }
-
-/* ===== Timeline ===== */
-.timeline { max-width: 980px; margin: 0 auto 80px; padding: 0 20px; }
-.day-card {
-  background: white;
-  border-radius: 18px;
-  margin-bottom: 22px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.15s, box-shadow 0.2s;
-}
-.day-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.day-header {
-  background: linear-gradient(120deg, #1e3a8a, #1e40af);
-  color: white;
-  padding: 18px 22px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.day-header.tone-pink { background: linear-gradient(120deg, #9d174d, #be185d); }
-.day-header.tone-orange { background: linear-gradient(120deg, #7c2d12, #c2410c); }
-.date-box {
-  background: rgba(255,255,255,0.16);
-  padding: 8px 14px;
-  border-radius: 12px;
-  text-align: center;
-  min-width: 76px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-.date-box .day-num { font-size: 1.8rem; font-weight: 800; line-height: 1; }
-.date-box .day-month { font-size: 0.7rem; opacity: 0.85; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
-.day-title h3 { font-size: 1.1rem; margin-bottom: 4px; font-weight: 700; }
-.day-title .meta { font-size: 0.82rem; opacity: 0.88; }
-.day-body { padding: 22px; }
-.segment { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px dashed var(--border); }
-.segment:last-child { border-bottom: none; padding-bottom: 0; }
-.segment:first-child { padding-top: 0; }
-.icon-box {
+.date-strip::-webkit-scrollbar { display: none; }
+.date-cell {
   flex-shrink: 0;
-  width: 46px; height: 46px;
-  border-radius: 13px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
+  min-width: 60px; padding: 8px 6px 6px;
+  border-radius: 12px; text-align: center;
+  border: 1.5px solid transparent;
+  background: #f9fafb;
 }
-.icon-box.flight { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: var(--blue); }
-.icon-box.hotel  { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: var(--pink); }
-.icon-box.train  { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: var(--green); }
-.segment-body { flex: 1; min-width: 0; }
-.segment-title { font-weight: 700; margin-bottom: 6px; font-size: 1.02rem; color: var(--text); }
+.date-cell .d { font-size: 1.05rem; font-weight: 800; line-height: 1.1; }
+.date-cell .m { font-size: 0.62rem; color: var(--text-light); letter-spacing: 0.5px; }
+.date-cell .city { font-size: 0.6rem; margin-top: 3px; font-weight: 600; }
+.date-cell.c-kl { background: var(--kl-bg); border-color: #c7d2fe; color: var(--kl); }
+.date-cell.c-kk { background: var(--kk-bg); border-color: #fbcfe8; color: var(--kk); }
+.date-cell.c-pg { background: var(--pg-bg); border-color: #a7f3d0; color: var(--pg); }
+.date-cell.c-rt { background: var(--rt-bg); border-color: #fed7aa; color: var(--rt); }
+.date-cell.today { outline: 2px solid #f59e0b; }
 
-.flight-route {
-  display: flex; align-items: center; gap: 10px;
-  margin: 10px 0;
-  padding: 12px 14px;
-  background: linear-gradient(90deg, #f0f9ff, #e0f2fe);
-  border-radius: 12px;
+/* ===== 思维导图 ===== */
+.mm { max-width: 860px; margin: 0 auto; padding: 18px 14px 40px; }
+
+/* 根节点 */
+.root-node {
+  background: linear-gradient(135deg, #1e1b4b, #3730a3);
+  color: white; text-align: center;
+  border-radius: 18px; padding: 20px 16px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
 }
-.flight-route .airport { flex: 1; min-width: 0; }
-.flight-route .time { font-size: 1.15rem; font-weight: 700; color: var(--secondary); }
-.flight-route .code { font-size: 0.85rem; font-weight: 700; color: var(--text); margin-top: 4px; }
-.flight-route .name { font-size: 0.74rem; color: var(--text-light); margin-top: 2px; }
-.flight-route .arrow { text-align: center; font-size: 1.3rem; color: var(--primary); flex-shrink: 0; }
-.flight-route .duration { font-size: 0.7rem; color: var(--text-light); margin-top: 2px; }
+.root-node .r-title { font-size: 1.25rem; font-weight: 800; letter-spacing: 3px; }
+.root-node .r-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 6px; }
+.root-stats { display: flex; justify-content: center; gap: 18px; margin-top: 12px; font-size: 0.78rem; }
+.root-stats b { font-size: 1.05rem; display: block; color: #fcd116; }
 
-.detail-line { font-size: 0.9rem; color: var(--text-light); margin: 4px 0; }
-.detail-line strong { color: var(--text); }
-.tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
-.tag {
-  display: inline-block; padding: 3px 10px;
-  background: #f3f4f6; color: var(--text-light);
-  border-radius: 10px; font-size: 0.72rem;
+/* 分支（城市） */
+.branch {
+  background: var(--card);
+  border-radius: 16px;
+  margin: 14px 0;
+  overflow: hidden;
+  box-shadow: var(--shadow);
 }
-.tag.flag { background: #dbeafe; color: var(--blue); }
-.tag.note { background: #fef3c7; color: #92400e; }
-
-.hotel-box {
-  margin-top: 8px;
+.branch > summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; gap: 12px;
   padding: 14px 16px;
-  background: linear-gradient(135deg, #fdf2f8, #fce7f3);
-  border-radius: 12px;
-  border-left: 4px solid var(--pink);
+  -webkit-tap-highlight-color: transparent;
 }
-.hotel-box .name { font-weight: 700; color: #831843; margin-bottom: 6px; font-size: 1rem; }
-.hotel-box .info { font-size: 0.86rem; color: #6b21a8; line-height: 1.7; }
-.hotel-box .info small { color: var(--text-light); }
-.hotel-box .warn { color: #b91c1c; font-weight: 700; }
+.branch > summary::-webkit-details-marker { display: none; }
+.branch > summary .dot {
+  width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,0.5);
+}
+.branch > summary .b-title { flex: 1; min-width: 0; }
+.branch > summary .b-title .city-name { font-size: 1.08rem; font-weight: 800; color: white; }
+.branch > summary .b-title .city-sub { font-size: 0.74rem; color: rgba(255,255,255,0.9); margin-top: 2px; }
+.branch > summary .nights {
+  background: rgba(255,255,255,0.22); color: white;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+}
+.branch > summary .chev {
+  color: white; font-size: 0.9rem; transition: transform 0.25s; flex-shrink: 0;
+}
+.branch[open] > summary .chev { transform: rotate(90deg); }
+.branch.c-kl > summary { background: linear-gradient(120deg, #3730a3, #4f46e5); }
+.branch.c-kk > summary { background: linear-gradient(120deg, #9d174d, #db2777); }
+.branch.c-pg > summary { background: linear-gradient(120deg, #065f46, #059669); }
+.branch.c-rt > summary { background: linear-gradient(120deg, #9a3412, #ea580c); }
 
-/* ===== Notes & Footer ===== */
-.notes { max-width: 980px; margin: 0 auto 60px; padding: 0 20px; }
-.notes-card {
-  background: #fffbeb;
-  border: 1px solid #fde68a;
-  border-radius: 14px;
-  padding: 20px 24px;
-  font-size: 0.9rem;
-  color: #78350f;
+.branch-body { padding: 14px 16px 16px; }
+
+/* 节点行 */
+.node {
+  position: relative;
+  padding: 10px 10px 10px 22px;
+  border-radius: 12px;
+  margin-bottom: 6px;
 }
-.notes-card h4 { font-size: 1rem; margin-bottom: 10px; color: #92400e; font-weight: 700; }
-.notes-card ul { padding-left: 20px; }
+.node::before {
+  content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px;
+  background: #e5e7eb; border-radius: 2px;
+}
+.node::after {
+  content: ''; position: absolute; left: 2px; top: 18px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #cbd5e1; border: 2px solid white;
+  box-shadow: 0 0 0 1px #cbd5e1;
+}
+.node .n-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.node .n-date {
+  font-size: 0.7rem; font-weight: 800; color: white;
+  background: #6b7280; padding: 2px 8px; border-radius: 999px;
+  letter-spacing: 0.5px; white-space: nowrap;
+}
+.node .n-title { font-weight: 700; font-size: 0.97rem; }
+.node .n-desc { font-size: 0.84rem; color: var(--text-light); margin-top: 4px; }
+.node .n-desc b { color: var(--text); }
+.node .tags { margin-top: 6px; display: flex; gap: 5px; flex-wrap: wrap; }
+.tag {
+  display: inline-block; padding: 2px 9px; border-radius: 999px;
+  font-size: 0.68rem; font-weight: 600;
+}
+.tag.done { background: #dcfce7; color: #15803d; }
+.tag.rec  { background: #dbeafe; color: #1d4ed8; }
+.tag.opt  { background: #fef3c7; color: #b45309; }
+.tag.food { background: #fce7f3; color: #be185d; }
+.tag.warn { background: #fee2e2; color: #b91c1c; }
+
+/* 住宿节点 */
+.node.hotel { background: #f9fafb; border: 1px solid var(--border); }
+.node.hotel::before { background: transparent; }
+.node.hotel::after { display: none; }
+.node.hotel .n-title { color: #374151; }
+.node.hotel .n-title .hotel-icon { margin-right: 4px; }
+.node.hotel .n-meta { font-size: 0.76rem; color: var(--text-light); margin-top: 2px; }
+
+/* 已安排高亮 */
+.node.pinned {
+  background: linear-gradient(90deg, #f0fdf4, #ffffff);
+  border: 1px solid #bbf7d0;
+}
+.node.pinned::after { background: #22c55e; box-shadow: 0 0 0 1px #22c55e; }
+.node.pinned .n-title { color: #166534; }
+
+/* 子折叠 */
+details.sub { margin: 8px 0 6px; }
+details.sub > summary {
+  list-style: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.84rem; font-weight: 700; color: var(--text);
+  padding: 8px 10px; border-radius: 10px; background: #f3f4f6;
+  -webkit-tap-highlight-color: transparent;
+}
+details.sub > summary::-webkit-details-marker { display: none; }
+details.sub > summary .chev { font-size: 0.7rem; transition: transform 0.2s; }
+details.sub[open] > summary .chev { transform: rotate(90deg); }
+details.sub .sub-body { margin-top: 6px; }
+
+/* 子节点（缩进一层） */
+.node.sub-node { margin-left: 14px; }
+.node.sub-node .n-date { background: #9ca3af; }
+
+/* 航班/交通节点 */
+.node.transport .n-title { color: #1e40af; }
+.node.transport::after { background: #93c5fd; box-shadow: 0 0 0 1px #93c5fd; }
+
+/* ===== 贴士 ===== */
+.notes { max-width: 860px; margin: 0 auto 40px; padding: 0 14px; }
+.notes-card {
+  background: #fffbeb; border: 1px solid #fde68a; border-radius: 14px;
+  padding: 18px 20px; font-size: 0.85rem; color: #78350f;
+}
+.notes-card h4 { font-size: 0.95rem; margin-bottom: 10px; color: #92400e; font-weight: 700; }
+.notes-card ul { padding-left: 18px; }
 .notes-card li { margin-bottom: 6px; }
 .notes-card li:last-child { margin-bottom: 0; }
+.warn { color: #b91c1c; font-weight: 700; }
 
-footer {
-  text-align: center;
-  padding: 30px 20px 50px;
-  color: var(--text-light);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-  background: white;
-}
+footer { text-align: center; padding: 24px 20px 40px; color: var(--text-light); font-size: 0.8rem; border-top: 1px solid var(--border); background: white; }
 
-/* ===== Responsive ===== */
-@media (max-width: 720px) {
-  .hero { padding: 50px 16px 90px; }
-  .hero h1 { font-size: 1.8rem; letter-spacing: 3px; }
-  .hero .subtitle { font-size: 0.95rem; }
-  .chip { font-size: 0.82rem; padding: 5px 12px; }
-  .summary { grid-template-columns: repeat(2, 1fr); padding: 18px 14px; gap: 12px; }
-  .stat .num { font-size: 1.5rem; }
-  .day-header { padding: 14px 16px; gap: 12px; flex-wrap: wrap; }
-  .date-box { min-width: 60px; padding: 6px 10px; }
-  .date-box .day-num { font-size: 1.5rem; }
-  .day-body { padding: 16px; }
-  .flight-route { padding: 10px; gap: 6px; }
-  .flight-route .time { font-size: 1rem; }
-  .flight-route .code { font-size: 0.78rem; }
-  .flight-route .name { font-size: 0.7rem; }
-  .segment { gap: 10px; }
-  .icon-box { width: 40px; height: 40px; font-size: 1.2rem; border-radius: 11px; }
-  .notes-card { padding: 16px 18px; }
-}
-
-/* ===== Access Lock ===== */
+/* ===== 验证码锁 ===== */
 .lock-overlay {
   position: fixed; inset: 0; z-index: 9999;
   display: flex; align-items: center; justify-content: center;
@@ -240,381 +238,277 @@ footer {
 }
 .lock-overlay.hidden { opacity: 0; pointer-events: none; }
 .lock-card {
-  background: white; border-radius: 20px; padding: 40px 36px;
-  width: min(420px, calc(100vw - 48px));
+  background: white; border-radius: 20px; padding: 36px 28px;
+  width: min(400px, calc(100vw - 48px));
   text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.35);
 }
-.lock-card .lock-icon { font-size: 2.6rem; margin-bottom: 14px; }
-.lock-card h2 { font-size: 1.35rem; color: #1e1b4b; margin-bottom: 8px; font-weight: 800; }
-.lock-card p { font-size: 0.9rem; color: #6b7280; margin-bottom: 24px; }
+.lock-card .lock-icon { font-size: 2.4rem; margin-bottom: 12px; }
+.lock-card h2 { font-size: 1.3rem; color: #1e1b4b; margin-bottom: 8px; font-weight: 800; }
+.lock-card p { font-size: 0.88rem; color: #6b7280; margin-bottom: 20px; }
 .lock-input {
   width: 100%; padding: 13px 16px; font-size: 1.15rem; letter-spacing: 8px; text-align: center;
   border: 2px solid #e5e7eb; border-radius: 12px; outline: none; font-family: inherit;
-  transition: border-color 0.2s;
 }
 .lock-input:focus { border-color: #4338ca; }
 .lock-btn {
-  width: 100%; margin-top: 14px; padding: 13px; font-size: 1rem; font-weight: 700;
+  width: 100%; margin-top: 12px; padding: 13px; font-size: 1rem; font-weight: 700;
   background: linear-gradient(135deg, #4338ca, #6366f1); color: white; border: none;
-  border-radius: 12px; cursor: pointer; transition: opacity 0.2s;
+  border-radius: 12px; cursor: pointer;
 }
-.lock-btn:hover { opacity: 0.9; }
-.lock-err { color: #dc2626; font-size: 0.85rem; margin-top: 12px; min-height: 20px; }
+.lock-btn:active { opacity: 0.85; }
+.lock-err { color: #dc2626; font-size: 0.85rem; margin-top: 10px; min-height: 20px; }
+
+@media (min-width: 720px) {
+  .hero h1 { font-size: 2.2rem; }
+  .mm, .notes { padding-left: 24px; padding-right: 24px; }
+}
 </style>
 </head>
-<body>
+<body data-page-node-id="yFMM8kzoALNZbNnIrh7ben">
 
-<div class="lock-overlay" id="lockOverlay">
-  <div class="lock-card">
-    <div class="lock-icon">🔒</div>
-    <h2>私人行程 · 需验证码</h2>
-    <p>此页面包含私人行程信息，请输入验证码查看</p>
-    <input type="password" class="lock-input" id="lockInput" placeholder="••••••" maxlength="16" autocomplete="off">
-    <button class="lock-btn" id="lockBtn">解锁查看</button>
-    <div class="lock-err" id="lockErr"></div>
+<div class="lock-overlay" id="lockOverlay" data-page-node-id="WCMSjVMB3ZH9dOCVcm1mdu">
+  <div class="lock-card" data-page-node-id="VWcXFeXcvwdTRqdeQk8Xwt">
+    <div class="lock-icon" data-page-node-id="EcAFbzCue2kvs7cajWaQCf">🔒</div>
+    <h2 data-page-node-id="KKcPrDp8p6E9mtxQHQyjDn">私人行程 · 需验证码</h2>
+    <p data-page-node-id="NgmgGt9rRN1b5efEFzMksX">此页面包含私人行程信息，请输入验证码查看</p>
+    <input type="password" class="lock-input" id="lockInput" placeholder="••••••" maxlength="16" autocomplete="off" data-page-node-id="LpvvdQ6eNmX0BP96zvA22u">
+    <button class="lock-btn" id="lockBtn" data-page-node-id="lFQsLU9ZMFWFu7VqHWj2mL">解锁查看</button>
+    <div class="lock-err" id="lockErr" data-page-node-id="w5c6ilS2HnknUf23QpaCsu"></div>
   </div>
 </div>
 
-<section class="hero">
-  <div class="flag-stripe"></div>
-  <div class="hero-content">
-    <h1>马来西亚十日游</h1>
-    <p class="subtitle">2026 国庆假期 · 北京+上海出发 · 9月24日 → 10月3日 · 共 10 天 9 晚</p>
-    <div class="city-chips">
-      <span class="chip">吉隆坡 Kuala Lumpur</span>
-      <span class="chip">哥打京那巴鲁 Kota Kinabalu</span>
-      <span class="chip">槟城 Penang</span>
+<section class="hero" data-page-node-id="fXNYCvtlN8Z1Cd0vsLfa2j">
+  <div class="flag-stripe" data-page-node-id="8L0jtZGgrv2kpzBPri2N8A"></div>
+  <div class="hero-content" data-page-node-id="TFQQs4sshQN9BjW2qCNFPr">
+    <h1 data-page-node-id="foFqR6eg5KMY54CRecpLjP">🗺️ 马来西亚十日游</h1>
+    <p class="subtitle" data-page-node-id="S4JDrl9YduaE4bm5h8a2CW">2026 国庆 · 北京+上海出发 · 9/24 → 10/3 · 3 城 9 晚</p>
+    <div data-page-node-id="CNibN7dTYX8CPCImr9twYO">
+      <span class="chip" data-page-node-id="nfmyvvNpUpz7p7TZTtrDFV">吉隆坡</span><span class="chip" data-page-node-id="2mOHGaEX0DdE7dTFnLR7n3">亚庇</span><span class="chip" data-page-node-id="MpZDlFd90DAayJec4ENEZq">槟城</span>
     </div>
   </div>
 </section>
 
-<div class="summary-wrap">
-  <div class="summary">
-    <div class="stat"><div class="num">9</div><div class="label">总晚数</div></div>
-    <div class="stat"><div class="num">5</div><div class="label">家酒店</div></div>
-    <div class="stat"><div class="num">7</div><div class="label">段航程</div></div>
-    <div class="stat"><div class="num">3</div><div class="label">座城市</div></div>
-  </div>
+<!-- 日期导览 -->
+<div class="date-strip" data-page-node-id="A3Vg0yJH9tHYBfIZlAdwRZ">
+  <div class="date-cell c-kl" data-page-node-id="ZDre6mJKhau9guMRWHGdCm"><div class="d" data-page-node-id="sZygeEpGQnaFLgxnticQKX">24</div><div class="m" data-page-node-id="8LtmhMkB8o8HQXVGoDZRzS">SEP·四</div><div class="city" data-page-node-id="v1ivxyaSTtdjtJSxXye8ZQ">✈️ 吉隆坡</div></div>
+  <div class="date-cell c-kl" data-page-node-id="p3X0pPbLEHWhUUA0TaAyPF"><div class="d" data-page-node-id="q6pzwmMffNogE6X7nHgmP3">25</div><div class="m" data-page-node-id="cc5iZfkVtDzZ0rKTMvXC8O">SEP·五</div><div class="city" data-page-node-id="4M5dMmRPFCxzQ7geAKWEcT">吉隆坡</div></div>
+  <div class="date-cell c-kk" data-page-node-id="jWt9vdFcLqIfsJFZVAGpD7"><div class="d" data-page-node-id="YqSqvyGAaoT5TozkAoL6vW">26</div><div class="m" data-page-node-id="iTpzNUGXo0aSlwiQq9x20D">SEP·六</div><div class="city" data-page-node-id="JyWHGniKIiniLvp2S0n0dk">✈️ 亚庇</div></div>
+  <div class="date-cell c-kk" data-page-node-id="6yvbS2ou98rIMx3gcsForz"><div class="d" data-page-node-id="Ttg2bh4WYtz56H38GshJds">27</div><div class="m" data-page-node-id="7KhDSyomdJjo9A0CIXmoIK">SEP·日</div><div class="city" data-page-node-id="tOAdM6LybR7UGUuFzfDbqu">跳岛</div></div>
+  <div class="date-cell c-kk" data-page-node-id="SbU2Oo9LZxa3JLY3EuK0AH"><div class="d" data-page-node-id="Og1eFm9rvT7yxF1GCRoDA2">28</div><div class="m" data-page-node-id="eZNANyF04DXNrKnDIm4BAA">SEP·一</div><div class="city" data-page-node-id="dECW8ykXomCZZl8GPYYWDd">红树林</div></div>
+  <div class="date-cell c-kk" data-page-node-id="ZZaEeLSu1MHdjCtEMaJrYB"><div class="d" data-page-node-id="kBJvDt20bh8JCaG73pgDfC">29</div><div class="m" data-page-node-id="JBW3BaDYLZ4JMNjraGAJqA">SEP·二</div><div class="city" data-page-node-id="0ZJsGtLVJKQMcwyK3UQYxS">桨板</div></div>
+  <div class="date-cell c-kk" data-page-node-id="Lx6KPNyEzolFro8HtTHmsH"><div class="d" data-page-node-id="v0YiKCgrEmF1xFJp9bOPOs">30</div><div class="m" data-page-node-id="IwH7hnSV9XUsjT0PfIKZBK">SEP·三</div><div class="city" data-page-node-id="tojlBtWHwpA9wKnvkbLpmT">✈️ 槟城</div></div>
+  <div class="date-cell c-pg" data-page-node-id="92geRH7QwTyFhQ5gLmwIO9"><div class="d" data-page-node-id="d9uwyabrRXm14wKUMh6nsZ">01</div><div class="m" data-page-node-id="XizPQvA1e4Y4cFHZhPeDfL">OCT·四</div><div class="city" data-page-node-id="8Z1JfZi4ryYwNJgzg7vepD">槟城</div></div>
+  <div class="date-cell c-rt" data-page-node-id="0N0EU5G184bjJMN7J49a1m"><div class="d" data-page-node-id="6EU4HsyrRJr1yeSPXCjp4z">02</div><div class="m" data-page-node-id="m7tuVskAl2JRJxUTYyFdmS">OCT·五</div><div class="city" data-page-node-id="yzWEqDrAalyzqe1q3175hi">🚆 回KL</div></div>
+  <div class="date-cell c-rt" data-page-node-id="NOWhHt8qOpeFqNmSmmaaDY"><div class="d" data-page-node-id="Po9CkcMyAeKTiBk4CaC01T">03</div><div class="m" data-page-node-id="HUIm5WoGpQJx6TWfXo62rq">OCT·六</div><div class="city" data-page-node-id="BQCY7JfS6SI8ECizBsRcNr">✈️ 返程</div></div>
 </div>
 
-<h2 class="section-title">📍 行程时间线</h2>
+<div class="mm" data-page-node-id="s2PpackZyCHO2zf56jOtbN">
 
-<div class="timeline">
+  <!-- 根节点 -->
+  <div class="root-node" data-page-node-id="TWtTZOYO6pL1Jw9K3hLAK7">
+    <div class="r-title" data-page-node-id="4q8JbM32m80uqFT9WJ1R2r">马来西亚 · 国庆十日</div>
+    <div class="r-sub" data-page-node-id="smaHbhNO7mXb93oTlz1STg">9月24日 → 10月3日 · 吉隆坡 / 亚庇 / 槟城</div>
+    <div class="root-stats" data-page-node-id="Eco8sEJUKjLlr7WJWW9Ii2">
+      <div data-page-node-id="A1ZBlwTGaX5EMAgVFjd7dc"><b data-page-node-id="DkOuItFotksMbSQoKJhl0G">3</b>城市</div>
+      <div data-page-node-id="60YFn7dPQHxk4OghYw4anq"><b data-page-node-id="wq22OMQeofNvrd53FFeKAs">5</b>酒店</div>
+      <div data-page-node-id="ZfjJf1MjEVYdZFq9AT5dZo"><b data-page-node-id="CNWTmmrDR2anEYmgVSh3IG">7</b>航程</div>
+      <div data-page-node-id="YvtG7Mfgx6lwC5h4JYWjJ9"><b data-page-node-id="uG35iwSSob7thiolXDFoRj">1</b>火车</div>
+    </div>
+  </div>
 
-<!-- ===== Day 1: 9/24 北京 -> 吉隆坡 ===== -->
-<div class="day-card">
-  <div class="day-header">
-    <div class="date-box"><div class="day-num">24</div><div class="day-month">SEP</div></div>
-    <div class="day-title"><h3>Day 1 · 北京 → 吉隆坡</h3><div class="meta">周四 · 启程日</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box flight">✈️</div>
-      <div class="segment-body">
-        <div class="segment-title">去程 · 北京大兴 → 吉隆坡</div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">10:00</div><div class="code">PKX</div><div class="name">北京大兴</div></div>
-          <div class="arrow">✈️<div class="duration">6h 30m</div></div>
-          <div class="airport"><div class="time">16:30</div><div class="code">KUL T1</div><div class="name">吉隆坡国际机场</div></div>
-        </div>
-        <div class="detail-line"><strong>马来西亚航空 MH319</strong> · 预订号 <strong>EBAT8S</strong></div>
-        <div class="tags"><span class="tag flag">已出票</span><span class="tag">GENG/YIBIN</span></div>
-      </div>
-    </div>
-    <div class="segment">
-      <div class="icon-box flight">✈️</div>
-      <div class="segment-body">
-        <div class="segment-title">去程 · 上海浦东 → 吉隆坡</div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">09:25</div><div class="code">PVG T1</div><div class="name">上海浦东</div></div>
-          <div class="arrow">✈️<div class="duration">5h 25m</div></div>
-          <div class="airport"><div class="time">14:50</div><div class="code">KUL T1</div><div class="name">吉隆坡国际机场</div></div>
-        </div>
-        <div class="detail-line"><strong>东方航空 MU8641</strong></div>
-        <div class="tags"><span class="tag flag">已出票</span><span class="tag">LI/JUN</span></div>
-      </div>
-    </div>
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">入住 · 吉隆坡市中心皇冠假日酒店</div>
-        <div class="hotel-box">
-          <div class="name">吉隆坡市中心皇冠假日酒店（洲际酒店集团旗下）</div>
-          <div class="info"><strong>标准双床房 · 1 间</strong><br>
-            入住 <strong>09/24</strong> → 离店 <strong>09/26</strong> · 2 晚<br>
-            <small>📍 No 22, Menara 8, Malaysia</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <!-- ============ 吉隆坡 ============ -->
+  <details class="branch c-kl" open data-page-node-id="HxQyn9DWXWpE0uAABQRmsu">
+    <summary data-page-node-id="3gEdiACrdOFS0pV2W73gRI">
+      <span class="dot" data-page-node-id="CEXlhB1xMOp5oa1DoFFbY3"></span>
+      <span class="b-title" data-page-node-id="YOTLLjBGeYYglbHO4blhmU">
+        <div class="city-name" data-page-node-id="U1QrGkUB3PVjcrwKnnCd3q">🏙️ 吉隆坡 Kuala Lumpur</div>
+        <div class="city-sub" data-page-node-id="nKaJfijChROPfL8ugYaBeb">9/24 → 9/26 · 入境第一站</div>
+      </span>
+      <span class="nights" data-page-node-id="YTUSr2pt4G6HikLmypih4J">2 晚</span>
+      <span class="chev" data-page-node-id="z7ixlcaMjbUQHiX9m7SOdK">▶</span>
+    </summary>
+    <div class="branch-body" data-page-node-id="aVluGMJfdee79eSEOnMjlo">
 
-<!-- ===== Day 2: 9/25 吉隆坡 ===== -->
-<div class="day-card">
-  <div class="day-header">
-    <div class="date-box"><div class="day-num">25</div><div class="day-month">SEP</div></div>
-    <div class="day-title"><h3>Day 2 · 吉隆坡</h3><div class="meta">周五 · 自由活动</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">皇冠假日 · 第 2 晚</div>
-        <div class="hotel-box">
-          <div class="info">双子塔 · 独立广场 · 茨厂街 · 武吉免登 · 阿罗街夜市</div>
-        </div>
+      <div class="node transport" data-page-node-id="6AzmpgvoiapvoLQEk5cnjo">
+        <div class="n-head" data-page-node-id="zNyGkIuvzZvVAtNbAzCcfb"><span class="n-date" data-page-node-id="JCQgHWDtiaS9f6h48AGhUW">9/24</span><span class="n-title" data-page-node-id="XRlZ09gjaOHlCC30YAYIGj">✈️ 去程 · 两队先后抵达</span></div>
+        <div class="n-desc" data-page-node-id="IOffGzAqjJQhlWbVjQGKb6">上海 <b data-page-node-id="zGKC8Vh9Hak7GhiWGE9Isz">MU8641</b> 09:25→14:50 先到；北京 <b data-page-node-id="nsoQWA9zTDWMOtBvUWF32H">MH319</b> 10:00→16:30 后到，机场汇合</div>
+        <div class="tags" data-page-node-id="fT3F8qHbA1L6tF0xPaStdn"><span class="tag done" data-page-node-id="zyeG2E2NG3TXYZgG90eg2W">已出票</span></div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== Day 3: 9/26 吉隆坡 -> 亚庇 ===== -->
-<div class="day-card">
-  <div class="day-header tone-pink">
-    <div class="date-box"><div class="day-num">26</div><div class="day-month">SEP</div></div>
-    <div class="day-title"><h3>Day 3 · 吉隆坡 → 哥打京那巴鲁</h3><div class="meta">周六 · 飞往沙巴亚庇</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box flight">✈️</div>
-      <div class="segment-body">
-        <div class="segment-title">国内段 · 吉隆坡 → 亚庇</div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">12:05</div><div class="code">KUL T2</div><div class="name">吉隆坡国际机场</div></div>
-          <div class="arrow">✈️<div class="duration">2h 35m</div></div>
-          <div class="airport"><div class="time">14:40</div><div class="code">BKI T1</div><div class="name">哥打京那巴鲁</div></div>
-        </div>
-        <div class="detail-line"><strong>亚洲航空 AK5140</strong> · 空客 321(中) · 经济舱 · 无餐食</div>
-        <div class="tags"><span class="tag flag">已出票</span><span class="tag note">⚠ 无免费托运行李</span></div>
+      <div class="node hotel" data-page-node-id="CXdi1E2Mxif6oflKtFtMSg">
+        <div class="n-head" data-page-node-id="vCk1GzCrJM7rmZEhKf1g10"><span class="n-title" data-page-node-id="aceWSKt1DdHQyLeRbYiWhQ">🏨 住：吉隆坡市中心皇冠假日 · 2 晚（已订）</span></div>
+        <div class="n-meta" data-page-node-id="1sRXCuIu599DBh8NPHLMLm">入住 9/24 → 离店 9/26 · 标准双床房</div>
       </div>
-    </div>
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">入住 · The Cara Hotel</div>
-        <div class="hotel-box">
-          <div class="name">The Cara Hotel · 海岸 Shore</div>
-          <div class="info"><strong>1 间 · 2 晚</strong><br>
-            入住 <strong>09/26</strong> → 离店 <strong>09/28</strong> · 房费 <strong>¥2,311.26</strong><br>
-            <small>📍 Kota Kinabalu, Sabah</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== Day 4: 9/27 亚庇 ===== -->
-<div class="day-card">
-  <div class="day-header tone-pink">
-    <div class="date-box"><div class="day-num">27</div><div class="day-month">SEP</div></div>
-    <div class="day-title"><h3>Day 4 · 哥打京那巴鲁</h3><div class="meta">周日 · 沙巴自由活动</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">The Cara Hotel · 第 2 晚</div>
-        <div class="hotel-box">
-          <div class="info">东姑阿都拉曼海洋公园跳岛 · 亚庇市 · 富丽堂海边日落</div>
-        </div>
+      <div class="node" data-page-node-id="mEERv1ljEeWWUkKLakI5G0">
+        <div class="n-head" data-page-node-id="xxW5FWrC3FjKBjTCNgoBjY"><span class="n-date" data-page-node-id="IDzlBQkgB5iPXzXRlh1LsY">9/24 晚</span><span class="n-title" data-page-node-id="tEBuYRLRQTJjtK5DZLuNFd">双子塔夜景 + 武吉免登</span></div>
+        <div class="n-desc" data-page-node-id="J7DJc66YPSPJcxAIXM8wvq">落地休整后，去 <b data-page-node-id="MvXh3pKifeaWZwJhkulU0G">KLCC 双子塔</b>看灯光夜景，顺路逛武吉免登商圈，晚餐吃<b data-page-node-id="mFTOHOb9uapkKYeB9b6Xnq">肉骨茶</b></div>
+        <div class="tags" data-page-node-id="cGYCPTmtaGcSmJQ6kBevA8"><span class="tag rec" data-page-node-id="63JsVimXAy6l7SbH3YSBjN">推荐</span></div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== Day 5: 9/28 亚庇 换酒店 ===== -->
-<div class="day-card">
-  <div class="day-header tone-pink">
-    <div class="date-box"><div class="day-num">28</div><div class="day-month">SEP</div></div>
-    <div class="day-title"><h3>Day 5 · 哥打京那巴鲁</h3><div class="meta">周一 · 换酒店 · 升级海景房</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">换酒店 · 哥打京那巴鲁喜来登酒店</div>
-        <div class="hotel-box">
-          <div class="name">Sheraton Kota Kinabalu</div>
-          <div class="info"><strong>豪华双人床海景房 · 两张双人大床 · 1 间</strong><br>
-            入住 <strong>09/28</strong> → 离店 <strong>09/30</strong> · 2 晚 · 房费 <strong>¥2,132.02</strong>
-          </div>
+      <div class="node pinned" data-page-node-id="VuorE6tCYcEbj2r2kLkk8X">
+        <div class="n-head" data-page-node-id="37N1kWIoiMqligVvykWDjM"><span class="n-date" data-page-node-id="QsVrcp6w2gTxqXgJUxrSc5">9/25</span><span class="n-title" data-page-node-id="FlCOoMGOzvD439XzsL5ywk">吉隆坡市区一日 · 经典打卡</span></div>
+        <div class="n-desc" data-page-node-id="vNEFEXS09WdlUpjzoqEPBY">
+          <b data-page-node-id="9VKrB2UklknHphsgvRhXxo">独立广场</b>（殖民建筑群）→ <b data-page-node-id="ZNgVtrh4caHTJKML2JL9G8">茨厂街</b>唐人街午餐 → <b data-page-node-id="JiCA2ZorWcnaEy9JKDlwrF">中央市场</b>买手信 → <b data-page-node-id="MaaLRXAWlvk01YG5bQ5gwh">双子塔</b>登塔（下午光线好，提前线上买票）→ <b data-page-node-id="bf70nGLsN6GF7SHvdkeaGV">阿罗街夜市</b>晚餐（沙爹、烤鱼、榴莲）<br data-page-node-id="ze5ZHLwhs1hhEdmaVKvcbZ">
+          可选加料：一早去 <b data-page-node-id="YrrzRXx2JGmk1NsGMSfZxR">黑风洞</b> 七彩阶梯（市区以北 13km，需早起，时间紧可放弃）
         </div>
+        <div class="tags" data-page-node-id="sA4dtoDTGZ6lcA57eoghcn"><span class="tag rec" data-page-node-id="el2jFyudbi1hRMBiMHd20n">推荐</span><span class="tag food" data-page-node-id="Cqi4XVA61CIeHWY4Ct9fMu">阿罗街夜市</span></div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== Day 6: 9/29 亚庇 ===== -->
-<div class="day-card">
-  <div class="day-header tone-pink">
-    <div class="date-box"><div class="day-num">29</div><div class="day-month">SEP</div></div>
-    <div class="day-title"><h3>Day 6 · 哥打京那巴鲁</h3><div class="meta">周二 · 沙巴自由活动</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">喜来登 · 第 2 晚</div>
-        <div class="hotel-box">
-          <div class="info">京那巴鲁山（神山）· 海鲜大排档 · 丹绒亚路海滩日落</div>
-        </div>
+      <div class="node" data-page-node-id="LCdF0KvetIXKS5aRCi17fh">
+        <div class="n-head" data-page-node-id="UzjHWCSSbUucZyrhUPByu3"><span class="n-date" data-page-node-id="UUHRJtRUoLvvOkqFn17Dy1">9/26 上午</span><span class="n-title" data-page-node-id="NTRmpOuPG5wZOa9iekgbhl">退房 → 转机亚庇</span></div>
+        <div class="n-desc" data-page-node-id="s0Nqbm2Hv5Fh5VyEjQ75Y6">亚航 <b data-page-node-id="z80N1CL0guX7XNHMIgS67h">AK5140</b> 12:05→14:40 · 无免费托运行李，留足值机时间</div>
+        <div class="tags" data-page-node-id="RGP8RdHWaZwhD66lGg4Fm3"><span class="tag done" data-page-node-id="xuTAyvfcAe7fQmr35KQ5Qt">已出票</span><span class="tag warn" data-page-node-id="3iNmR8b2HpFFZbGf0gVXcH">⚠ 无行李额</span></div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== Day 7: 9/30 亚庇 -> 槟城 ===== -->
-<div class="day-card">
-  <div class="day-header tone-pink">
-    <div class="date-box"><div class="day-num">30</div><div class="day-month">SEP</div></div>
-    <div class="day-title"><h3>Day 7 · 哥打京那巴鲁 → 槟城</h3><div class="meta">周三 · 红眼航班飞槟城</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box flight">✈️</div>
-      <div class="segment-body">
-        <div class="segment-title">国内段 · 亚庇 → 槟城</div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">21:15</div><div class="code">BKI T1</div><div class="name">哥打京那巴鲁</div></div>
-          <div class="arrow">✈️<div class="duration">2h 40m</div></div>
-          <div class="airport"><div class="time">23:55</div><div class="code">PEN</div><div class="name">槟城机场</div></div>
-        </div>
-        <div class="detail-line"><strong>亚洲航空 AK5325</strong> · 空客 320(中) · 经济舱 · 无餐食</div>
-        <div class="tags"><span class="tag flag">已出票</span><span class="tag note">⚠ 无免费托运行李</span></div>
-      </div>
     </div>
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">入住 · 辉盛凯贝丽槟城酒店</div>
-        <div class="hotel-box">
-          <div class="name">Fraser Place Penang（辉盛凯贝丽槟城）</div>
-          <div class="info"><strong>尊贵双床房 · 1 间</strong><br>
-            入住 <strong>09/30</strong> → 离店 <strong>10/02</strong> · 2 晚 · 房费 <strong>¥1,563.08</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  </details>
 
-<!-- ===== Day 8: 10/01 槟城 ===== -->
-<div class="day-card">
-  <div class="day-header">
-    <div class="date-box"><div class="day-num">01</div><div class="day-month">OCT</div></div>
-    <div class="day-title"><h3>Day 8 · 槟城</h3><div class="meta">周四 · 槟城自由活动</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">辉盛凯贝丽 · 第 2 晚</div>
-        <div class="hotel-box">
-          <div class="info">乔治市 · 壁画街 · 升旗山 · 极乐寺 · 槟城美食（叻沙、炒粿条、福建虾面）</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <!-- ============ 亚庇 ============ -->
+  <details class="branch c-kk" open data-page-node-id="DVQsiPGYEHGq7e1Dkcj1NC">
+    <summary data-page-node-id="eCmn0K9iW6qAWwTsLKoeNL">
+      <span class="dot" data-page-node-id="8pBXmGIO9HeGbZQd0naPxy"></span>
+      <span class="b-title" data-page-node-id="GTYXZpsA5K69lDDG1Jjl1D">
+        <div class="city-name" data-page-node-id="GRO8zeQWkv4mvEWHkP6ETm">🏝️ 哥打京那巴鲁 Kota Kinabalu</div>
+        <div class="city-sub" data-page-node-id="JezUpXTCN5oHIe8i62OP4l">9/26 → 9/30 · 沙巴核心 · 4 天 4 晚</div>
+      </span>
+      <span class="nights" data-page-node-id="ajGjYpCB35rL7Chk7fP6vP">4 晚</span>
+      <span class="chev" data-page-node-id="6XRAUIPyPUoVafDNAMXkay">▶</span>
+    </summary>
+    <div class="branch-body" data-page-node-id="5uAaPYxmTUi8uPMizsFwLk">
 
-<!-- ===== Day 9: 10/02 槟城 → 吉隆坡 ===== -->
-<div class="day-card">
-  <div class="day-header">
-    <div class="date-box"><div class="day-num">02</div><div class="day-month">OCT</div></div>
-    <div class="day-title"><h3>Day 9 · 槟城 → 吉隆坡</h3><div class="meta">周五 · ETS 火车 + 唐人街福朋</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box train">🚆</div>
-      <div class="segment-body">
-        <div class="segment-title">马来西亚铁路 ETS · 北海 → 吉隆坡中央车站</div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">13:05</div><div class="code">BUTTERWORTH</div><div class="name">北海（槟城对岸）</div></div>
-          <div class="arrow">🚆<div class="duration">3h 35m</div></div>
-          <div class="airport"><div class="time">16:40</div><div class="code">KL SENTRAL</div><div class="name">吉隆坡中央车站</div></div>
-        </div>
-        <div class="detail-line"><strong>ETS EX9109 Express</strong> · 预订号 <strong>T260839464905</strong> · 票价 <strong>MYR 114.00</strong></div>
-        <div class="tags"><span class="tag flag">成人票</span><span class="tag">Coach B · Seat 14C</span><span class="tag">GENG YIBIN</span></div>
+      <div class="node hotel" data-page-node-id="KDWEalb2ptFXZPFlDFPMAa">
+        <div class="n-head" data-page-node-id="Nz8743PPDDL1CS0GKiM3IE"><span class="n-title" data-page-node-id="JT7Xq0d7RCq1Dq1ru1hCFo">🏨 住：The Cara（9/26-28）→ 喜来登海景（9/28-30）</span></div>
+        <div class="n-meta" data-page-node-id="2IiQfY69BUnNTgLZrYjUQ2">均 2 晚 · 已订</div>
       </div>
-    </div>
-    <div class="segment">
-      <div class="icon-box hotel">🏨</div>
-      <div class="segment-body">
-        <div class="segment-title">入住 · 吉隆坡唐人街福朋喜来登酒店</div>
-        <div class="hotel-box">
-          <div class="name">吉隆坡唐人街福朋喜来登酒店</div>
-          <div class="info"><strong>豪华双床房 · 1 间</strong><br>
-            入住 <strong>10/02</strong> → 离店 <strong>10/03</strong> · 1 晚 · 房费 <strong>¥1,615.94</strong><br>
-            <small class="warn">⚠ 状态：等待确认</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== Day 10: 10/03 返程 ===== -->
-<div class="day-card">
-  <div class="day-header tone-orange">
-    <div class="date-box"><div class="day-num">03</div><div class="day-month">OCT</div></div>
-    <div class="day-title"><h3>Day 10 · 返程日</h3><div class="meta">周六 · 国庆假期最后一天</div></div>
-  </div>
-  <div class="day-body">
-    <div class="segment">
-      <div class="icon-box flight">✈️</div>
-      <div class="segment-body">
-        <div class="segment-title">返程 · 吉隆坡 → 上海浦东</div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">14:00</div><div class="code">KUL T1</div><div class="name">吉隆坡国际机场</div></div>
-          <div class="arrow">✈️<div class="duration">5h 20m</div></div>
-          <div class="airport"><div class="time">19:20</div><div class="code">PVG T1</div><div class="name">上海浦东国际机场</div></div>
-        </div>
-        <div class="detail-line"><strong>东方航空 MU1495</strong></div>
-        <div class="tags"><span class="tag flag">已出票</span><span class="tag">LI/JUN · 直接返程上海</span></div>
+      <div class="node" data-page-node-id="LGb3DqaCuHztng6CiAI0qk">
+        <div class="n-head" data-page-node-id="anIaasj1aqkhIBP9uEB4oz"><span class="n-date" data-page-node-id="s7qeAGGsMcZGcMZYlhNR4c">9/26 下午</span><span class="n-title" data-page-node-id="E15m1ARMSzVggjy4F8KXUB">抵达 + 丹绒亚路日落</span></div>
+        <div class="n-desc" data-page-node-id="SLXHH1yAz6l4nrdQpUcTfw">14:40 落地 → 入住 → 傍晚赶 <b data-page-node-id="b1pnPktUbwIIbhYhAECX0z">丹绒亚路海滩</b>（日落约 18:00-18:30，全球前十日落，免费）。晚上海边夜市/菲律宾市场</div>
+        <div class="tags" data-page-node-id="4wxo7A3r1Bc4QfKLbELoGw"><span class="tag rec" data-page-node-id="SCc6cml0Q7ABDcs4bmEj2s">推荐</span></div>
       </div>
-    </div>
-    <div class="segment">
-      <div class="icon-box flight">✈️</div>
-      <div class="segment-body">
-        <div class="segment-title">返程 · 吉隆坡 → 上海 → 北京</div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">14:00</div><div class="code">KUL T1</div><div class="name">吉隆坡国际机场</div></div>
-          <div class="arrow">✈️<div class="duration">5h 20m</div></div>
-          <div class="airport"><div class="time">19:20</div><div class="code">PVG T1</div><div class="name">上海浦东国际机场</div></div>
-        </div>
-        <div class="detail-line"><strong>上海航空 FM7222</strong> · 预订号 <strong>PERKOR</strong></div>
-        <div class="flight-route">
-          <div class="airport"><div class="time">21:35</div><div class="code">PVG T1</div><div class="name">上海浦东</div></div>
-          <div class="arrow">✈️<div class="duration">2h 15m</div></div>
-          <div class="airport"><div class="time">23:50</div><div class="code">PKX</div><div class="name">北京大兴</div></div>
-        </div>
-        <div class="detail-line"><strong>东方航空 MU5165</strong> · 预订号 <strong>PERKOR</strong></div>
-        <div class="tags"><span class="tag flag">已出票</span><span class="tag">GENG/YIBIN · 经上海中转回北京</span></div>
+
+      <div class="node pinned" data-page-node-id="xkDaS5IdnUcYa1EDobj0K4">
+        <div class="n-head" data-page-node-id="NtHF3HPWJ8ftxG4GPmXzHn"><span class="n-date" data-page-node-id="FzMguvn3DpAJPJS6zBshoj">9/27</span><span class="n-title" data-page-node-id="DM8ysX0n5MvGbiAlsRBBwD">🏝️ 跳岛 · 东姑阿都拉曼海洋公园（已安排）</span></div>
+        <div class="n-desc" data-page-node-id="FOoKqcqTnsUoRte9oRGnz0">哲斯顿码头出发，船程约 20 分钟。主推 <b data-page-node-id="iMwRiTKy8Z6b9U3LN2KB91">沙比岛</b>（浮潜鱼多）+ <b data-page-node-id="7Bk94wWWKk424z8Guccmrb">马穆迪岛</b>；可加<b data-page-node-id="zmJPJX6a8Dm1roIQwXvUxk">香蕉船/拖曳伞</b>。<br data-page-node-id="FlfyX5QQLPhmXoG85b3GBU">晚上 <b data-page-node-id="1GEl636waRfMqtjTToKoXZ">加雅街周日夜市</b>（只有周日！17:00-22:00，小吃+手信）</div>
+        <div class="tags" data-page-node-id="FN5KjBbbMvArY6wZDYOAgF"><span class="tag done" data-page-node-id="BWhFFmUwapluCy0AJVboQq">✓ 已安排</span><span class="tag food" data-page-node-id="1gwJOaSRsbtZd9WutVhPUv">加雅街夜市</span></div>
       </div>
+
+      <div class="node pinned" data-page-node-id="cbRSfNM2u5vxyPtMzMP5Wg">
+        <div class="n-head" data-page-node-id="h4yBSxEp5l9Syh9CVDIjJK"><span class="n-date" data-page-node-id="gQDJoN2RbVANrzxU8AooGj">9/28</span><span class="n-title" data-page-node-id="nXB8f99AdogY9ZeI6njFHF">🌳 红树林 · 长鼻猴+萤火虫（已安排）</span></div>
+        <div class="n-desc" data-page-node-id="5RpVunkd4LQ1TAN0AVYQiz">半日团：下午 1 点左右出发 → 船游红树林看<b data-page-node-id="L0Wo4Zurycm4egTvHZn4N1">长鼻猴</b> → 海上日落 → 晚餐 → 夜探<b data-page-node-id="OKI5ZmYACyOa1QeNcGoIwh">萤火虫</b>（约 21:00 返市区）。<br data-page-node-id="uMnw2zMWt2Wu17TKf8fIbV">白天可补：<b data-page-node-id="tN99lkA1iHwntfxngOJGXD">水上清真寺</b>打卡（穿长袍入内）+ <b data-page-node-id="f2cC4Vao0HpdmjAWKY1qCT">沙巴大学</b>粉红清真寺</div>
+        <div class="tags" data-page-node-id="nYiG98ND41s5V68kEABPpp"><span class="tag done" data-page-node-id="dZzD9kKyswdhRKL3z9cUpP">✓ 已安排</span><span class="tag opt" data-page-node-id="j0QoI5YyUr3tmEn5jOgwrh">可选白天</span></div>
+      </div>
+
+      <div class="node pinned" data-page-node-id="SP7Ss8xpdUMyZ7a82BLdSA">
+        <div class="n-head" data-page-node-id="VCmAf4hXdNx8jIbHjFjn9N"><span class="n-date" data-page-node-id="ny5oMzEC4tkYDHmNQcsUxz">9/29</span><span class="n-title" data-page-node-id="9I6REIvuoEJeEFoaZbBdDd">🏄 落日桨板 SUP（已安排）</span></div>
+        <div class="n-desc" data-page-node-id="R5EruYtJdYduPUjszoWfzZ">傍晚丹绒亚路海面<b data-page-node-id="d4rWgOYkMA6cEra2VOAhvK">桨板上看日落</b>，很出片。白天机动选项（三选一）：<br data-page-node-id="RNQL3yLdA8nbf2RHApTbkl">
+          A. <b data-page-node-id="Yctb4cboBVjhgD2B58PXkc">神山一日游</b>（京那巴鲁山，凌晨 4 点出发，牛场+吊桥，很累但值得）<br data-page-node-id="TxRZqiWyVAaFcItEkBV4Cw">
+          B. <b data-page-node-id="m8Gk76KsqdsXIGav2kpSzS">美人鱼岛</b>（浮潜天堂，单程 2h 船，适合爱水的人）<br data-page-node-id="jsrPzqcA6bFtsxusb2Td7Z">
+          C. 轻松：市区 SPA + 菲律宾市场海鲜</div>
+        <div class="tags" data-page-node-id="iz0bF699it27LykGugiHVX"><span class="tag done" data-page-node-id="ccq7GuoXqEvcBXd45t266X">✓ 已安排</span><span class="tag opt" data-page-node-id="zz5YQHadO3W8zWFZX6aLSJ">白天三选一</span></div>
+      </div>
+
+      <div class="node" data-page-node-id="mTjbqnT3YRrtlWGbzPiTeL">
+        <div class="n-head" data-page-node-id="Q5Zp4GeIMXmY1PnFVxGkl1"><span class="n-date" data-page-node-id="vqWpAT3IfqcMjFvmjGnM5W">9/30</span><span class="n-title" data-page-node-id="JZNHzTArlb3hw5iSDt6Fed">自由日 + 夜飞槟城</span></div>
+        <div class="n-desc" data-page-node-id="HnXWXMrfxlQQr4FCabEQjG">上午市区补漏/买沙巴手信（白咖啡、虾酱）→ 傍晚退房 → 亚航 <b data-page-node-id="b7XOeJE43sUvgkqrBeJA9s">AK5325</b> 21:15→23:55 红眼飞槟城（无行李额）</div>
+        <div class="tags" data-page-node-id="PPLAQME7L9MYFMhISqi0a4"><span class="tag done" data-page-node-id="jEnHFAG0zyH1K9U1A5gmLr">已出票</span><span class="tag warn" data-page-node-id="qman29sORgVUwEtR9pH1d9">⚠ 无行李额</span></div>
+      </div>
+
     </div>
-  </div>
-</div>
+  </details>
 
-</div><!-- /timeline -->
+  <!-- ============ 槟城 ============ -->
+  <details class="branch c-pg" open data-page-node-id="UyMkqCsMpyJTmnAGVESMVg">
+    <summary data-page-node-id="pcvJGUjzihsS5IxEBEGe8D">
+      <span class="dot" data-page-node-id="FDIiap7bD0SDHo8GAC4hcD"></span>
+      <span class="b-title" data-page-node-id="SCsI88acFu45k5Sl1wy7ee">
+        <div class="city-name" data-page-node-id="DZp2BBYHZ8dG8RYhqPbqKR">🎨 槟城 Penang</div>
+        <div class="city-sub" data-page-node-id="WOcxF8db0myQiBy48dgnj1">9/30 → 10/2 · 美食与壁画之城</div>
+      </span>
+      <span class="nights" data-page-node-id="XpwGFmnzHr0AKrVNHbP93G">2 晚</span>
+      <span class="chev" data-page-node-id="iVw8CuerTAH96tv232eeo8">▶</span>
+    </summary>
+    <div class="branch-body" data-page-node-id="gSUFZGK62X47rbelZuZYf6">
 
-<div class="notes">
-  <div class="notes-card">
-    <h4>📋 出行贴士</h4>
-    <ul>
-      <li>亚航两段（<strong>AK5140</strong>、<strong>AK5325</strong>）<strong>无免费托运行李</strong>，需提前在亚航官网购买或机场柜台加购。</li>
-      <li>ETS 火车 <strong>出发前 5 分钟关闭闸口</strong>，Butterworth 站建议提前 30 分钟抵达；不可携带任何类型自行车上车。</li>
-      <li>吉隆坡唐人街福朋喜来登酒店尚处 <span class="warn">等待确认</span> 状态，关注订单更新。</li>
-      <li>护照号 <strong>ER9****13</strong>（已打码）；出发前请确认有效期 ≥ 6 个月。</li>
-      <li>双人出行：<strong>GENG/YIBIN</strong> 北京往返（去程 MH319，返程 FM7222+MU5165）；<strong>LI/JUN</strong> 上海往返（去程 MU8641，返程 MU1495）。两人 9/24 在吉隆坡汇合，10/3 各自返程。</li>
-      <li>提前 24h 办理网上值机。</li>
+      <div class="node hotel" data-page-node-id="9UD2HD4R74UzB4JbR1nnS8">
+        <div class="n-head" data-page-node-id="6sKTTONh1JvtSiJHsRMVki"><span class="n-title" data-page-node-id="1z7669KDvYBfWhJCC0Y6SP">🏨 住：辉盛凯贝丽槟城 · 2 晚（已订）</span></div>
+        <div class="n-meta" data-page-node-id="tCBauOFF3JkLE5CrjM9mYr">入住 9/30 → 离店 10/2 · 尊贵双床房</div>
+      </div>
+
+      <div class="node pinned" data-page-node-id="SdEejFh6Iye5s7g1MR2Upt">
+        <div class="n-head" data-page-node-id="Vofx30ExqlMD8s4gVRX4Sj"><span class="n-date" data-page-node-id="BajpBZ92cOwAZP4mh6EabX">10/1</span><span class="n-title" data-page-node-id="hUQFFU0OPwUkpRXpKgmeWE">乔治市一日 · 壁画+升旗山</span></div>
+        <div class="n-desc" data-page-node-id="XJ8GkfJ1gAWhg2hbHgGoW5">
+          上午：<b data-page-node-id="28tXw6LnM8QvagxA9mIeZA">乔治市壁画街</b>（姐弟共骑等街头艺术，早去人少）→ <b data-page-node-id="4WxE0lxqWfkVI88KCBd7Bh">姓周桥</b>水上渔村 → <b data-page-node-id="IBiqN0LkVqqR6p4yZg07C5">爱情巷</b>老建筑<br data-page-node-id="qKokBhVhXMRAXX98dCBqGr">
+          下午：<b data-page-node-id="eXIieyFiC1A8t6X0c9cQs7">升旗山</b> 缆车上山俯瞰全城（避开正午，山顶凉快）→ 下山顺路 <b data-page-node-id="J9bFweCxzPeGIPxOpzBaCv">极乐寺</b>（万佛宝塔+大观音像）<br data-page-node-id="eWyfe2c92B1zl4NT0D2Aw9">
+          晚上：<b data-page-node-id="BJFfKomB70jrxUuExYtjUw">汕头街美食</b>——炒粿条、福建虾面、叻沙、四果汤、娘惹糕
+        </div>
+        <div class="tags" data-page-node-id="d8yGjDSBQVETWi98Hq6UF7"><span class="tag rec" data-page-node-id="OrHbT32AmvjbWGrE3rs3kl">推荐</span><span class="tag food" data-page-node-id="HoFQeSWS42a0WGtFGGXAgS">汕头街</span></div>
+      </div>
+
+      <div class="node" data-page-node-id="xnTbq7UtSJUFefddtagAYF">
+        <div class="n-head" data-page-node-id="ecvr5fRliZfYAVLpfTJHp3"><span class="n-date" data-page-node-id="tVKFSmhrKb1ncwIN7O1vJ1">10/2 上午</span><span class="n-title" data-page-node-id="EWHwQpSaPZApVvU6G7SCrS">收尾 + ETS 回吉隆坡</span></div>
+        <div class="n-desc" data-page-node-id="T9TyFYZMPg9oCULqC55tda">可选：<b data-page-node-id="NZbQFij8wyMdfrZMmH6tWM">巴都丁宜海滩</b> 晨泳，或再逛乔治市补手信（豆蔻油、白咖啡、土产店）<br data-page-node-id="iAndedMtwShTE18y4w4ZdW">
+        13:05 北海站 <b data-page-node-id="Br4JdN0whXygypsRgjdB1k">ETS EX9109</b> → 16:40 吉隆坡中央车站（MYR 114，提前 30 分钟到站）</div>
+        <div class="tags" data-page-node-id="SyYFEggaTSfhgZN8t6knWD"><span class="tag done" data-page-node-id="X39v3aKYsfcY84ZcU5FOve">已出票</span><span class="tag opt" data-page-node-id="IZ5RxzZ0o93Cut7l78kwb9">可选</span></div>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ============ 吉隆坡返程 ============ -->
+  <details class="branch c-rt" open data-page-node-id="jkkXHFhuBU4ioVUeKdc9Kp">
+    <summary data-page-node-id="WPPds9okaUS8F22rY3vNIs">
+      <span class="dot" data-page-node-id="bLCS0J4xw3K9vYZLDMOjo2"></span>
+      <span class="b-title" data-page-node-id="KdHzL0S3t5Qjq19G3jbhUX">
+        <div class="city-name" data-page-node-id="Bv6vIU8CPD1QZuNJYqMHLD">🧳 吉隆坡 · 返程夜</div>
+        <div class="city-sub" data-page-node-id="NWt9LxrwPFMnAfMGB9FQnv">10/2 → 10/3 · 中转一晚</div>
+      </span>
+      <span class="nights" data-page-node-id="ybkbyYZGaiD5I9vQSRMojZ">1 晚</span>
+      <span class="chev" data-page-node-id="IMuu9Ai0ZUjSxNmdqP2BRi">▶</span>
+    </summary>
+    <div class="branch-body" data-page-node-id="wLfk9aibcUeevEEWdEv5iK">
+
+      <div class="node hotel" data-page-node-id="8rGjgFmwppPd6p5eXBLkef">
+        <div class="n-head" data-page-node-id="nhSU24B9SakJGSQC8yuSa4"><span class="n-title" data-page-node-id="hTOlrPMfHAg3GQT9TrEkGh">🏨 住：唐人街福朋喜来登 · 1 晚</span></div>
+        <div class="n-meta" data-page-node-id="RxqXmikKNfLQB3ieVgcTWZ">入住 10/2 → 离店 10/3 · <span class="warn" data-page-node-id="ICw64l7NGhz6qzBN8zDZA2">⚠ 待确认</span></div>
+      </div>
+
+      <div class="node" data-page-node-id="iGe73suqOfesJkY0GkDxG7">
+        <div class="n-head" data-page-node-id="CbYWmgOCDw5ouSVraAqGNP"><span class="n-date" data-page-node-id="IYFXxIdEds8qRNpsLuygtk">10/2 晚</span><span class="n-title" data-page-node-id="j9f1Wuti3NYeq5g9iwB6el">阿罗街夜市 + 双子塔夜景</span></div>
+        <div class="n-desc" data-page-node-id="qDQQLfb7BAhL7tnzvgtDvY">16:40 到 KL Sentral → 入住 → <b data-page-node-id="HlpK903I6QhSmvG723BCeH">阿罗街</b>吃烤鱼沙爹 → 最后一晚看<b data-page-node-id="jP1sjnOido8tU5xyGM00QK">双子塔</b>夜景</div>
+        <div class="tags" data-page-node-id="iuj760OVghHCCnLVjPiINt"><span class="tag rec" data-page-node-id="CQQeQCu5j6powkabrq8t6p">推荐</span><span class="tag food" data-page-node-id="m0z15YjnB3STyLcBr4Oc6V">夜市</span></div>
+      </div>
+
+      <div class="node" data-page-node-id="IcFUoCwTQVSP755WZHU5SV">
+        <div class="n-head" data-page-node-id="ujpX1fl44nQt9ZHwEmDYGX"><span class="n-date" data-page-node-id="HIgHt86FTtHG95td9ip8Gg">10/3</span><span class="n-title" data-page-node-id="5jDMH0YiiA9P7tekaEEC75">✈️ 各自返程</span></div>
+        <div class="n-desc" data-page-node-id="aMKtgdclUc1T7AYnaDqkTD">上午茨厂街扫货 → 机场<br data-page-node-id="NE1EDACx1CfZWtspwWOnrQ">
+        上海队友 <b data-page-node-id="4q0fr5FeIcf70xhB3DrNfV">MU1495</b> 14:00→19:20 直飞浦东；北京 <b data-page-node-id="gXKQeoC8YZgDme1W9177r9">FM7222+MU5165</b> 经浦东 23:50 落地大兴</div>
+        <div class="tags" data-page-node-id="z7LPO33ENj4s7ijuVXYdOS"><span class="tag done" data-page-node-id="e7WXYowuOeusZcGS7Q8T96">已出票</span></div>
+      </div>
+
+    </div>
+  </details>
+
+</div><!-- /mm -->
+
+<div class="notes" data-page-node-id="cSn4tkk4Rxg1gfbwSNLNbh">
+  <div class="notes-card" data-page-node-id="yfQdMH7Cg13vcHOYhABCcQ">
+    <h4 data-page-node-id="GULEOxIV9jjPT2rLhNhROs">📋 出行贴士</h4>
+    <ul data-page-node-id="siSpYtqkIuPJFtLuVbBI8C">
+      <li data-page-node-id="xmXLftiXy4FjvCIQuPn5pE">亚航两段（AK5140、AK5325）<strong data-page-node-id="MrEtwNIyFDYMcYj8BMuK0I">无免费托运行李</strong>，提前官网买或柜台加购。</li>
+      <li data-page-node-id="YU1v4CM34Mq1SDA3ZcG2s2">亚庇三件事（跳岛/红树林/落日桨板）建议<b data-page-node-id="vzvM2khC16ACTR8DNs7IOj">提前 1-2 天</b>在 Klook / 携程 / 当地旅行社订团，红树林和桨板都看天气。</li>
+      <li data-page-node-id="sdz4hhqgVB0lLXpD1mmpjc">神山一日游体力消耗大，凌晨 4 点出发；若怕累，9/29 选市区轻松线更合适。</li>
+      <li data-page-node-id="BpPTBrEjcG6A2Nmgq7D4xg">马来打车用 <strong data-page-node-id="cjxFIGueNBMfzwFfSCCicb">Grab</strong>；亚庇跳岛码头叫 <strong data-page-node-id="nxbZEfODaIy1lnd4NVkOi8">哲斯顿码头</strong>（Jesselton Point）。</li>
+      <li data-page-node-id="37hIkipRLRSqZ5hGajJRAc">吉隆坡双子塔登塔、升旗山缆车都建议<b data-page-node-id="G3EF39QbCMBvy6P01sWrB7">线上提前买票</b>，现场排队久。</li>
+      <li data-page-node-id="s1mwkb78XsJIauRMPAfbsl">加雅街夜市只在<b data-page-node-id="HmbAQG3LcggHGLwEGRXBkN">周日</b>，正好卡在 9/27，别错过。</li>
+      <li data-page-node-id="qoeRfE4ZE01nB4K2d0zcrR">护照号 <strong data-page-node-id="Eo02SjL8bSt7cSa5WLtxxq">ER9****13</strong>（已打码）；出发前确认有效期 ≥ 6 个月。</li>
     </ul>
   </div>
 </div>
 
-<footer>
-  <p>马来西亚十日游 · 行程时间线 · 整理于 2026 年 8 月</p>
+<footer data-page-node-id="rRnJQmbQ73HkTDGDQjlFig">
+  <p data-page-node-id="EhwMVemo5yXIvhAoNKoAxU">马来西亚十日游 · 思维导图版 · 更新于 2026 年 9 月</p>
 </footer>
 
 <script>
@@ -628,8 +522,7 @@ footer {
   function sha256(str) {
     var buf = new TextEncoder().encode(str);
     return crypto.subtle.digest('SHA-256', buf).then(function (hash) {
-      var hex = Array.from(new Uint8Array(hash)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
-      return hex;
+      return Array.from(new Uint8Array(hash)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
     });
   }
   function unlock() {
@@ -641,18 +534,12 @@ footer {
     if (!val) { err.textContent = '请输入验证码'; return; }
     sha256(val).then(function (hex) {
       if (hex === HASH) { err.textContent = ''; unlock(); }
-      else {
-        err.textContent = '验证码错误，请重试';
-        input.value = '';
-        input.focus();
-      }
+      else { err.textContent = '验证码错误，请重试'; input.value = ''; input.focus(); }
     });
   }
   btn.addEventListener('click', tryUnlock);
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') tryUnlock(); });
-  try {
-    if (sessionStorage.getItem('mls_unlocked') === '1') unlock();
-  } catch (e) {}
+  try { if (sessionStorage.getItem('mls_unlocked') === '1') unlock(); } catch (e) {}
 })();
 </script>
 
